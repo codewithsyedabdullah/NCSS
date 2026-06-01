@@ -72,7 +72,13 @@ systems</span></div>
 </section>
 <!-- //=== moving-text = section ============================================================================================ -->
 <section class="moving-text">
-<svg class="moving-text_r-to-l" style="animation-direction: normal;" viewBox="0 0 4737 206" xmlns="http://www.w3.org/2000/svg">
+<svg class="moving-text_r-to-l" viewBox="0 0 4737 206" xmlns="http://www.w3.org/2000/svg">
+	<style>
+		/* This targets the class and forces it to reverse its native animation */
+		.moving-text_r-to-l {
+			animation-direction: reverse !important;
+		}
+	</style>
 	<path fill="#000000" d="
 		M 5 5 V 201 H 93.46 V 90 L 197 201 H 285.72 V 5 H 197.26 V 116 L 93.46 5 Z
 		M 305 5 V 201 H 533.93 V 148.58 H 392.47 V 56.89 H 533.93 V 5 Z
