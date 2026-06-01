@@ -72,19 +72,22 @@ systems</span></div>
 </section>
 <!-- //=== moving-text = section ============================================================================================ -->
 <section class="moving-text">
-<svg class="moving-text-forced-ltr" viewBox="0 0 4737 206" xmlns="http://www.w3.org/2000/svg">
+<svg class="moving-text-forced-ltr" viewBox="0 0 4737 210" height="400px" xmlns="http://www.w3.org/2000/svg">
 	<style>
 		.moving-text-forced-ltr {
-			/* Change 15s to match your original speed if it feels too fast or slow */
+			width: 100%;
+			/* Adjusted scale to make the letter path physically larger */
+			transform-origin: left center;
+			transform: scale(1.8); 
 			animation: forceLTR 15s linear infinite;
 		}
 
 		@keyframes forceLTR {
 			0% {
-				transform: translateX(-100%);
+				transform: scale(1.8) translateX(-100%);
 			}
 			100% {
-				transform: translateX(100%);
+				transform: scale(1.8) translateX(100%);
 			}
 		}
 	</style>
