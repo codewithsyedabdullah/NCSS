@@ -4560,3 +4560,7 @@ button::-moz-focus-inner {
   /* Adjusting bottom margin relative to the layout standard spacing rules */
   margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); 
 }
+
+.at-ncss-we-work__container {
+  text-align: center;
+}
