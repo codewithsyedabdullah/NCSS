@@ -4598,3 +4598,29 @@ button::-moz-focus-inner {
   position: relative;
   z-index: 1;
 }
+
+/* ==========================================================================
+   at-ncss-we-work Section Styles
+   ========================================================================== */
+
+.at-ncss-we-work {
+  width: 100%;
+  display: block;
+}
+
+.at-ncss-we-work__title {
+  text-align: center;         /* Perfectly aligns the text to the center */
+  margin-bottom: 0px !important; /* Removes the generic .title bottom margin */
+}
+
+/* responsive spacing adjustments based on your clamp structures */
+@supports (margin-top: clamp(2rem, 1.1rem + 4vw, 3.5rem)) {
+  .at-ncss-we-work {
+    margin-top: clamp(2rem, 1.1rem + 4vw, 3.5rem);
+  }
+}
+@supports not (margin-top: clamp(2rem, 1.1rem + 4vw, 3.5rem)) {
+  .at-ncss-we-work {
+    margin-top: calc(2rem + 1.5 * (100vw - 22.5rem) / 37.5);
+  }
+}
