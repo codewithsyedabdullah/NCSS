@@ -4539,88 +4539,24 @@ button::-moz-focus-inner {
   }
 }
 
-/* ===============================
-   FIX: At NCSS section alignment
-================================= */
-
+/* Centering Title Section Properties */
 .at-ncss-we-work {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px 20px;
   text-align: center;
 }
 
-/* inner wrapper fix (important) */
-.at-ncss-we-work .home__container,
-.at-ncss-we-work .home__wrapper {
+.at-ncss-we-work__container {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-/* title centering */
 .at-ncss-we-work__title {
-  width: 100%;
   text-align: center;
-  display: block;
-  margin: 0 auto;
-}
-
-/* ===============================
-   FIX: prevent spacing shift above moving text
-================================= */
-
-.moving-text {
-  width: 100%;
-  display: block;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* safety: remove accidental duplicate spacing */
-.moving-text + .moving-text {
-  display: none;
-}
-
-/* ===============================
-   FIX: global wrapper conflicts (common issue)
-================================= */
-
-.home__wrapper {
-  display: block; /* prevents flex interference if inherited */
-}
-
-/* optional: ensure section order doesn't visually overlap */
-.home section {
-  position: relative;
-  z-index: 1;
-}
-
-/* ==========================================================================
-   at-ncss-we-work Section Styles
-   ========================================================================== */
-
-.at-ncss-we-work {
-  width: 100%;
-  display: block;
-}
-
-.at-ncss-we-work__title {
-  text-align: center;         /* Perfectly aligns the text to the center */
-  margin-bottom: 0px !important; /* Removes the generic .title bottom margin */
-}
-
-/* responsive spacing adjustments based on your clamp structures */
-@supports (margin-top: clamp(2rem, 1.1rem + 4vw, 3.5rem)) {
-  .at-ncss-we-work {
-    margin-top: clamp(2rem, 1.1rem + 4vw, 3.5rem);
-  }
-}
-@supports not (margin-top: clamp(2rem, 1.1rem + 4vw, 3.5rem)) {
-  .at-ncss-we-work {
-    margin-top: calc(2rem + 1.5 * (100vw - 22.5rem) / 37.5);
-  }
+  margin-inline: auto;
+  /* Adjusting bottom margin relative to the layout standard spacing rules */
+  margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); 
 }
