@@ -36,7 +36,12 @@
 <header class="header">
 <div class="header__container">
 <div class="header__wrapper">
-<a class="header__logo" href="index.html"><picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="ncss logo"></picture></a>
+<a class="header__logo" href="index.html" style="display: inline-flex; align-items: center;">
+  <picture style="display: flex; align-items: center;">
+    <source srcset="img/logo.webp" type="image/webp">
+    <img src="img/logo.png" alt="ncss logo" style="max-height: 40px !important; width: auto !important; object-fit: contain !important;">
+  </picture>
+</a>
 <nav class="header__menu menu">
 <ul class="menu__items">
 <li class="menu__item"><a href="index.html">about us.</a></li>
