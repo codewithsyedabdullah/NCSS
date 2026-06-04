@@ -36,10 +36,10 @@
 <header class="header">
 <div class="header__container">
 <div class="header__wrapper">
-<a class="header__logo" href="index.html" style="display: inline-flex; align-items: center;">
-  <picture style="display: flex; align-items: center;">
+<a class="header__logo" href="index.html" style="height: 100% !important; max-height: 48px !important; display: inline-flex !important; align-items: center !important;">
+  <picture style="height: 100% !important; display: flex !important; align-items: center !important;">
     <source srcset="img/logo.webp" type="image/webp">
-    <img src="img/logo.png" alt="ncss logo" style="max-height: 40px !important; width: auto !important; object-fit: contain !important;">
+    <img src="img/logo.png" alt="ncss logo" style="height: 100% !important; width: auto !important; max-height: 100% !important; object-fit: contain !important;">
   </picture>
 </a>
 <nav class="header__menu menu">
@@ -58,8 +58,14 @@
 <div class="home__wrapper">
 <!-- //=== welcome = section ================================================================================================== -->
 <section class="welcome">
-<div id="preload-text-position-holder" class="welcome__title" style="text-transform: none !important;"><span class="text_thin" style="text-transform: none !important;">WELCOME TO </span><span class="text-accent_violet" style="text-transform: none !important;">NCSS </span>DEVELOPMENT</div>
-<div id="preload-text-original" class="welcome__title" style="text-transform: none !important;"><span class="text_thin" style="text-transform: none !important;">WELCOME TO </span><span class="text-accent_violet" style="text-transform: none !important;">NCSS </span>DEVELOPMENT</div>
+<div id="preload-text-position-holder" class="welcome__title" style="text-transform: none !important; font-size: clamp(1.7rem, 5.5vw, 3.5rem) !important; line-height: 1.2 !important; text-align: center !important; width: 100% !important;">
+  <span class="text_thin" style="text-transform: none !important; white-space: nowrap;">Welcome to </span>
+  <span style="white-space: nowrap;"><span class="text-accent_violet" style="text-transform: none !important;">NCSS</span> Development</span>
+</div>
+<div id="preload-text-original" class="welcome__title" style="text-transform: none !important; font-size: clamp(1.7rem, 5.5vw, 3.5rem) !important; line-height: 1.2 !important; text-align: center !important; width: 100% !important;">
+  <span class="text_thin" style="text-transform: none !important; white-space: nowrap;">Welcome to </span>
+  <span style="white-space: nowrap;"><span class="text-accent_violet" style="text-transform: none !important;">NCSS</span> Development</span>
+</div>
 <div class="welcome__content media-block media-block_animated">
 <div class="media-block__row">
 <div class="media-block__text text_grey _text-anim-origin">Software</div>
