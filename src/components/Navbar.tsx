@@ -1,43 +1,53 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, ArrowUpRight } from "lucide-react";
 
-const sections = ["Home", "About", "Departments", "Why", "Contact"];
+const links = [
+  { label: "Home", href: "#" },
+  { label: "About", href: "#about" },
+  { label: "Departments", href: "#departments" },
+  { label: "Why NCSS", href: "#why" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-black/80 to-transparent px-6 sm:px-10 lg:px-16 py-5 lg:py-7">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#" className="font-display text-white text-[clamp(0.9rem,1.5vw,1.2rem)] uppercase tracking-[0.15em] font-medium">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-[#0a0b0e]/80 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-10 lg:px-16 py-4 lg:py-5">
+        <a
+          href="#"
+          className="font-anton text-white uppercase text-[clamp(1.1rem,1.8vw,1.4rem)] tracking-[0.08em] font-normal"
+        >
           NCSS
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex items-center gap-6">
-            {sections.map((s) => (
-              <a
-                key={s}
-                href={s === "Home" ? "#" : `#${s.toLowerCase()}`}
-                className="font-body text-[clamp(10px,0.75vw,12px)] text-white/50 hover:text-white transition-colors uppercase tracking-[0.2em]"
-              >
-                {s}
-              </a>
-            ))}
-          </nav>
-          <span className="w-px h-5 bg-white/10" />
+        <nav className="hidden md:flex items-center gap-8">
+          {links.map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="font-inter text-[clamp(10px,0.7vw,12px)] text-white/60 hover:text-accent transition-colors tracking-[0.12em] uppercase font-medium"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden md:flex items-center">
           <a
             href="#contact"
-            className="font-mono text-[clamp(9px,0.65vw,11px)] text-white/70 hover:text-white transition-colors uppercase tracking-[0.15em]"
+            className="btn-filled-2 inline-flex items-center gap-1.5 px-5 py-2.5 text-[clamp(9px,0.65vw,11px)] tracking-[0.12em] uppercase font-inter font-bold"
           >
-            Join_Us
+            Join NCSS
+            <ArrowUpRight size={12} />
           </a>
         </div>
 
         <button
-          className="md:hidden flex flex-col items-end gap-1.5"
+          className="md:hidden flex flex-col items-end space-y-1"
           onClick={() => setOpen(true)}
-          aria-label="Menu"
+          aria-label="Open menu"
         >
           <span className="block w-6 h-px bg-white/80" />
           <span className="block w-6 h-px bg-white/80" />
@@ -46,33 +56,48 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`fixed inset-0 z-50 bg-black/98 backdrop-blur-2xl transition-all duration-500 ${
+        className={`fixed inset-0 z-50 bg-[#0a0b0e]/98 backdrop-blur-lg transition-all duration-500 ${
           open ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="flex items-center justify-between px-6 sm:px-10 py-5 lg:py-7">
-          <span className="font-display text-white text-lg uppercase tracking-[0.15em]">NCSS</span>
+        <div className="flex items-center justify-between px-6 sm:px-10 py-4 lg:py-5">
+          <span className="font-anton text-white uppercase text-xl tracking-[0.08em]">NCSS</span>
           <button onClick={() => setOpen(false)}>
             <X size={20} className="text-white" />
           </button>
         </div>
-        <div className="flex flex-col items-center justify-center h-[calc(100%-80px)] gap-8">
-          {sections.map((s, i) => (
+
+        <div className="flex flex-col items-center justify-center h-[calc(100%-72px)] gap-7">
+          {links.map(({ label, href }, i) => (
             <a
-              key={s}
-              href={s === "Home" ? "#" : `#${s.toLowerCase()}`}
-              className="font-display text-[clamp(1.8rem,6vw,3rem)] text-white uppercase tracking-tight hover:text-white/60 transition-colors"
+              key={label}
+              href={href}
+              className="font-anton text-[clamp(2.5rem,6vw,4rem)] text-white uppercase tracking-tight hover:text-accent transition-colors"
               style={{
                 transition: `opacity 0.4s ease-out, transform 0.4s ease-out`,
                 transitionDelay: `${i * 60 + 80}ms`,
                 opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(20px)",
+                transform: open ? "translateY(0)" : "translateY(16px)",
               }}
               onClick={() => setOpen(false)}
             >
-              {s}
+              {label}
             </a>
           ))}
+          <a
+            href="#contact"
+            className="btn-filled-2 inline-flex items-center gap-2 px-7 py-3.5 text-xs tracking-[0.12em] uppercase font-inter font-bold mt-3"
+            style={{
+              transition: `opacity 0.4s ease-out, transform 0.4s ease-out`,
+              transitionDelay: `${links.length * 60 + 80}ms`,
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(16px)",
+            }}
+            onClick={() => setOpen(false)}
+          >
+            Join NCSS
+            <ArrowUpRight size={14} />
+          </a>
         </div>
       </div>
     </header>
