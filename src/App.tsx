@@ -8,10 +8,17 @@ export default function App() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[#0a0b0e]">
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/5 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/5 blur-[100px]" />
+      {/* YouTube Video Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2">
+          <iframe
+            src="https://www.youtube.com/embed/vXGZyqynrZw?autoplay=1&mute=1&loop=1&playlist=vXGZyqynrZw&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+            className="absolute inset-0 w-full h-full"
+            allow="autoplay; encrypted-media"
+            title="Background video"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Navbar */}
