@@ -1,109 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>#NcssStories — NUST Computer Science Society</title>
+<title>#NCSSstories</title>
 <meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<!-- <style>body{opacity: 0;}</style> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css?_v=20230327195509" />
+<link rel="stylesheet" href="css/style.min.css?_v=20230327195509">
+<link rel="shortcut icon" href="favicon.ico">
+<!-- <meta name="robots" content="noindex, nofollow"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/space-theme.css">
-<style>
-.stories-hero { padding: 160px 40px 80px; max-width: 1831px; margin: 0 auto; }
-.stories-hero__title { font-family: 'Anton', sans-serif; font-size: clamp(42px, 7vw, 110px); text-transform: uppercase; line-height: 0.9; }
-.stories-grid { padding: 80px 40px; max-width: 1831px; margin: 0 auto; }
-.stories-grid__title { font-size: clamp(32px, 4vw, 64px); margin-bottom: 48px; }
-.stories-masonry { columns: 3; column-gap: 12px; }
-.story-item { break-inside: avoid; border-radius: 16px; overflow: hidden; margin-bottom: 12px; position: relative; cursor: none; }
-.story-item img { width: 100%; display: block; filter: saturate(0.65) contrast(1.1); transition: filter 0.5s, transform 0.5s; }
-.story-item:hover img { filter: saturate(1) contrast(1.1); transform: scale(1.03); }
-.story-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,8,40,0.5) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; }
-.story-item:hover .story-item-overlay { opacity: 1; }
-@media (max-width: 768px) {
-  .stories-masonry { columns: 2; }
-  .stories-hero, .stories-grid { padding-left: 20px; padding-right: 20px; }
-}
-@media (max-width: 420px) {
-  .stories-masonry { columns: 1; }
-}
-</style>
 </head>
 <body>
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<div id="cursor-trail"></div>
-<div id="texture-overlay"></div>
-<div id="stars-bg"><canvas id="stars-canvas"></canvas></div>
-<div class="page-transition" id="page-transition"></div>
-
-<div class="sp-mobile-nav" id="mobile-nav">
-  <button class="sp-mobile-close" id="mobile-close">✕</button>
-  <a href="index.html">About Us.</a>
-  <a href="careers.html">Careers.</a>
-  <a href="contacts.html">Contacts.</a>
-  <a href="ncssstories.html">#NcssStories</a>
+<div class="wrapper">
+<header class="header">
+<div class="header__container">
+<div class="header__wrapper">
+<a class="header__logo" href="index.html"><picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="ncss logo"></picture></a>
+<nav class="header__menu menu">
+<ul class="menu__items">
+<li class="menu__item"><a href="index.html">about us.</a></li>
+<li class="menu__item"><a href="careers.html">careers.</a></li>
+<li class="menu__item"><a href="contacts.html">contacts.</a></li>
+<li class="menu__item menu__item_gradient"><a href="ncssstories.html">#ncssstories</a></li>
+</ul>
+</nav>
 </div>
-
-<header class="sp-header">
-  <a class="sp-logo" href="index.html">
-    <picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="NCSS Logo"></picture>
-    NCSS
-  </a>
-  <nav class="sp-nav liquid-glass">
-    <ul>
-      <li><a href="index.html">About Us.</a></li>
-      <li><a href="careers.html">Careers.</a></li>
-      <li><a href="contacts.html">Contacts.</a></li>
-      <li><a href="ncssstories.html" style="color:var(--neon)">#NcssStories</a></li>
-    </ul>
-  </nav>
-  <button class="sp-nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
 </header>
-
-<main>
-  <div class="stories-hero">
-    <div class="sp-section-label reveal">Community Stories</div>
-    <h1 class="stories-hero__title reveal reveal-delay-1">
-      <span class="text-neon">#</span>NCSS<br>
-      <span style="font-family:'Condiment',cursive;font-size:0.55em;color:var(--neon);text-transform:none;transform:rotate(-1deg);display:inline-block">Stories</span>
-    </h1>
-  </div>
-
-  <div class="stories-grid">
-    <div class="sp-section-label reveal">Our Moments</div>
-    <h2 class="stories-grid__title reveal reveal-delay-1">From the <span class="text-muted">team</span><span style="color:var(--orange);">/</span></h2>
-    <div class="stories-masonry reveal reveal-delay-2">
-      <div class="story-item"><picture><source srcset="img/stories/photo-1.webp" type="image/webp"><img src="img/stories/photo-1.jpg" alt="Story 1"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-2.webp" type="image/webp"><img src="img/stories/photo-2.jpg" alt="Story 2"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-3.webp" type="image/webp"><img src="img/stories/photo-3.jpg" alt="Story 3"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-4.webp" type="image/webp"><img src="img/stories/photo-4.jpg" alt="Story 4"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-5.webp" type="image/webp"><img src="img/stories/photo-5.jpg" alt="Story 5"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-6.webp" type="image/webp"><img src="img/stories/photo-6.jpg" alt="Story 6"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-7.webp" type="image/webp"><img src="img/stories/photo-7.jpg" alt="Story 7"></picture><div class="story-item-overlay"></div></div>
-      <div class="story-item"><picture><source srcset="img/stories/photo-8.webp" type="image/webp"><img src="img/stories/photo-8.jpg" alt="Story 8"></picture><div class="story-item-overlay"></div></div>
-    </div>
-  </div>
+<main class="kronstories">
+<div class="kronstories__container">
+<div class="kronstories__wrapper">
+<section class="stories">
+<div class="stories__title title title_big">
+<div class="stories__title_first-part">ncss</div>
+<div class="stories__title_second-part"><span class="text_grey">Stories</span><span class="text-accent_orange">/</span></div>
+</div>
+</section>
+</div>
+</div>
+<!-- Slider main container -->
+<div class="swiper stories-slider">
+<!-- Additional required wrapper -->
+<div class="swiper-wrapper">
+<!-- Slides -->
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-1.webp" type="image/webp"><img src="img/stories/photo-1.jpg" alt="Ships of the desert"></picture>
+</div>
+<div class="stories-slide__text">Ships of the desert</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-2.webp" type="image/webp"><img src="img/stories/photo-2.jpg" alt="Admire the spire"></picture>
+</div>
+<div class="stories-slide__text">Admire the spire</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-3.webp" type="image/webp"><img src="img/stories/photo-3.jpg" alt="The East is a delicate matter"></picture>
+</div>
+<div class="stories-slide__text">The East is a delicate matter</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-4.webp" type="image/webp"><img src="img/stories/photo-4.jpg" alt="Night City Lights"></picture>
+</div>
+<div class="stories-slide__text">Night City Lights</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-5.webp" type="image/webp"><img src="img/stories/photo-5.jpg" alt="Sunset"></picture>
+</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-6.webp" type="image/webp"><img src="img/stories/photo-6.jpg" alt="It is the tallest one!"></picture>
+</div>
+<div class="stories-slide__text">It is the tallest one!</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-7.webp" type="image/webp"><img src="img/stories/photo-7.jpg" alt="An old little village"></picture>
+</div>
+<div class="stories-slide__text">An old little village</div>
+</div>
+<div class="swiper-slide stories-slide">
+<div class="stories-slide__img">
+<picture><source srcset="img/stories/photo-8.webp" type="image/webp"><img src="img/stories/photo-8.jpg" alt="Just a flowerbed in the yard"></picture>
+</div>
+<div class="stories-slide__text">Just a flowerbed in the yard</div>
+</div>
+</div>
+</div>
 </main>
-
-<footer class="sp-footer">
-  <div class="sp-footer__inner">
-    <div class="sp-footer__copy">© 2026 NUST Computer Science Society</div>
-    <ul class="sp-footer__links">
-      <li><a href="index.html">About Us.</a></li>
-      <li><a href="careers.html">Careers.</a></li>
-      <li><a href="contacts.html">Contacts.</a></li>
-      <li><a href="ncssstories.html">#NcssStories</a></li>
-    </ul>
-  </div>
+<footer class="footer">
+<div class="footer__container">
+<div class="footer__wrapper">
+<nav class="footer__menu menu-footer">
+<ul class="menu-footer__items">
+<li class="menu-footer__item"><a href="index.html">about us.</a></li>
+<li class="menu-footer__item"><a href="careers.html">careers.</a></li>
+<li class="menu-footer__item"><a href="contacts.html">contacts.</a></li>
+<li class="menu-footer__item menu-footer__item_gradient"><a href="ncssstories.html">#ncssstories</a></li>
+</ul>
+</nav>
+<div class="footer__copyright">© 2026 NUST Computer Science Society</div>
+</div>
+</div>
 </footer>
-
-<script>
-(function(){const canvas=document.getElementById('stars-canvas'),ctx=canvas.getContext('2d');let stars=[],W,H;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}function createStars(n){stars=[];for(let i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2,o:Math.random()*0.6+0.1,speed:Math.random()*0.3+0.05,pulse:Math.random()*Math.PI*2});}function draw(){ctx.clearRect(0,0,W,H);stars.forEach(s=>{s.pulse+=0.008;const o=s.o*(0.6+0.4*Math.sin(s.pulse));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(239,244,255,${o})`;ctx.fill();s.y-=s.speed;if(s.y<-2){s.y=H+2;s.x=Math.random()*W;}});requestAnimationFrame(draw);}resize();createStars(150);draw();window.addEventListener('resize',()=>{resize();createStars(150);});})();
-const dot=document.getElementById('cursor-dot'),ring=document.getElementById('cursor-ring'),trail=document.getElementById('cursor-trail');let mx=0,my=0,rx=0,ry=0,tx=0,ty=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});function lerp(a,b,t){return a+(b-a)*t;}function animCursor(){rx=lerp(rx,mx,0.18);ry=lerp(ry,my,0.18);tx=lerp(tx,mx,0.09);ty=lerp(ty,my,0.09);ring.style.left=rx+'px';ring.style.top=ry+'px';trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animCursor);}animCursor();
-document.getElementById('nav-toggle').addEventListener('click',()=>document.getElementById('mobile-nav').classList.add('open'));document.getElementById('mobile-close').addEventListener('click',()=>document.getElementById('mobile-nav').classList.remove('open'));
-const revealEls=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}}),{threshold:0.1});revealEls.forEach(el=>observer.observe(el));
-document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto'))return;a.addEventListener('click',e=>{e.preventDefault();const pt=document.getElementById('page-transition');pt.classList.add('entering');setTimeout(()=>{window.location.href=href;},480);});});window.addEventListener('pageshow',()=>{const pt=document.getElementById('page-transition');pt.style.transition='none';pt.classList.remove('entering');setTimeout(()=>pt.style.transition='',50);});
-</script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js?_v=20230327195509"></script>
+<script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js?_v=20230327195509"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12?_v=20230327195509"></script>
+<script src="js/app.min.js?_v=20230327195509"></script>
 </body>
 </html>

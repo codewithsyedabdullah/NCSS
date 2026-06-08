@@ -3,727 +3,569 @@
 <head>
 <title>NUST Computer Science Society</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
+<!-- <style>body{opacity: 0;}</style> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css?_v=20230327195509" />
+<link rel="stylesheet" href="css/style.min.css?_v=20230327195509">
+
+
 <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/space-theme.css">
+<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicons/favicon-48x48.png">
+
+<link rel="manifest" href="favicons/manifest.webmanifest" crossorigin="use-credentials">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#fff">
+<meta name="application-name" content="Image to Favicon From Poper">
+
+<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Image to Favicon From Poper">
+
+
+<!-- <meta name="robots" content="noindex, nofollow"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-<!-- Custom Cursor -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<div id="cursor-trail"></div>
-
-<!-- Texture Overlay -->
-<div id="texture-overlay"></div>
-
-<!-- Stars Background -->
-<div id="stars-bg"><canvas id="stars-canvas"></canvas></div>
-
-<!-- Page Transition -->
-<div class="page-transition" id="page-transition"></div>
-
-<!-- Mobile Nav -->
-<div class="sp-mobile-nav" id="mobile-nav">
-  <button class="sp-mobile-close" id="mobile-close">✕</button>
-  <a href="index.html">About Us.</a>
-  <a href="careers.html">Careers.</a>
-  <a href="contacts.html">Contacts.</a>
-  <a href="ncssstories.html">#NcssStories</a>
+<div class="preload-bg"></div>
+<div class="wrapper">
+<header class="header">
+<div class="header__container">
+<div class="header__wrapper">
+<a class="header__logo" href="index.html"><picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="ncss logo"></picture></a>
+<nav class="header__menu menu">
+<ul class="menu__items">
+<li class="menu__item"><a href="index.html">about us.</a></li>
+<li class="menu__item"><a href="careers.html">careers.</a></li>
+<li class="menu__item"><a href="contacts.html">contacts.</a></li>
+<li class="menu__item menu__item_gradient"><a href="ncssstories.html">#ncssstories</a></li>
+</ul>
+</nav>
 </div>
-
-<!-- Header -->
-<header class="sp-header">
-  <a class="sp-logo" href="index.html">
-    <picture>
-      <source srcset="img/logo.webp" type="image/webp">
-      <img src="img/logo.png" alt="NCSS Logo">
-    </picture>
-    NCSS
-  </a>
-  <nav class="sp-nav liquid-glass">
-    <ul>
-      <li><a href="index.html">About Us.</a></li>
-      <li><a href="careers.html">Careers.</a></li>
-      <li><a href="contacts.html">Contacts.</a></li>
-      <li><a href="ncssstories.html" style="color:var(--neon)">#NcssStories</a></li>
-    </ul>
-  </nav>
-  <button class="sp-nav-toggle" id="nav-toggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+</div>
 </header>
-
-<!-- ═══ HERO SECTION ═══════════════════════════════════════════ -->
-<section class="sp-hero">
-  <div class="sp-hero__video-wrap">
-    <video src="img/home/welcome/media-3.mp4" autoplay muted loop playsinline></video>
-  </div>
-
-  <!-- Social icons desktop -->
-  <div class="sp-hero__social">
-    <a href="contacts.html" class="liquid-glass" title="Contact">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/>
-      </svg>
-    </a>
-    <a href="#" class="liquid-glass" title="GitHub">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-      </svg>
-    </a>
-    <a href="ncssstories.html" class="liquid-glass" title="Stories">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
-    </a>
-  </div>
-
-  <div class="sp-hero__content">
-    <div class="sp-section-label reveal">Hero / Welcome</div>
-    <h1 class="sp-hero__title reveal reveal-delay-1">
-      Welcome to
-      <span class="text-neon">NCSS</span>
-      Development
-      <span class="sp-hero__title-accent accent-script">CS Society/</span>
-    </h1>
-    <p class="sp-hero__sub reveal reveal-delay-2">
-      NUST Computer Science Society — building software solutions, 
-      growing talent, and shaping the future of tech.
-    </p>
-  </div>
-
-  <div class="sp-hero__scroll">scroll</div>
-</section>
-
-<!-- ═══ MARQUEE ════════════════════════════════════════════════ -->
-<div class="sp-marquee">
-  <div class="sp-marquee__track">
-    <span class="sp-marquee__item">Software</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Development</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Society</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item"><span class="violet">NUST</span></span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Software</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Development</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Society</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item"><span class="violet">NUST</span></span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="sp-marquee__item">Software</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Development</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Society</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item"><span class="violet">NUST</span></span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Software</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Development</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item">Society</span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-    <span class="sp-marquee__item"><span class="violet">NUST</span></span>
-    <span class="sp-marquee__item"><span class="neon">✦</span></span>
-  </div>
+<main class="home">
+<div class="home__container">
+<div class="home__wrapper">
+<!-- //=== welcome = section ================================================================================================== -->
+<section class="welcome">
+<div id="preload-text-position-holder" class="welcome__title" style="text-transform: none !important;"><span class="text_thin" style="text-transform: none !important;">WELCOME TO </span><span class="text-accent_violet" style="text-transform: none !important;">NCSS </span>DEVELOPMENT</div>
+<div id="preload-text-original" class="welcome__title" style="text-transform: none !important;"><span class="text_thin" style="text-transform: none !important;">WELCOME TO </span><span class="text-accent_violet" style="text-transform: none !important;">NCSS </span>DEVELOPMENT</div>
+<div class="welcome__content media-block media-block_animated">
+<div class="media-block__row">
+<div class="media-block__text text_grey _text-anim-origin">Software</div>
+<div class="media-block__text text_grey _animate-appear media-block__animate-text media-block__animate-text_r-l">
+Software</div>
+<div class="media-block__media _animate-appear _img-anim-hidden">
+<picture><source srcset="img/home/welcome/media-1.webp" type="image/webp"><img src="img/home/welcome/media-1.webp" alt="skyscrapers"></picture>
 </div>
-
-<!-- ═══ ABOUT / AT NCSS WE WORK ═══════════════════════════════ -->
-<section class="sp-about">
-  <div class="sp-about__inner">
-    <div class="sp-section-label reveal">001 / About Us</div>
-    <div class="sp-about__row">
-      <div class="sp-about__heading reveal reveal-delay-1">
-        <h2>
-          AT <span class="text-neon">NCSS</span>,<br>
-          WE WORK AS A<br>
-          <span style="font-family:'Condiment',cursive;font-size:0.6em;color:var(--neon);transform:rotate(-1deg);display:inline-block;text-transform:none">unified</span>
-          TEAM.
-        </h2>
-      </div>
-      <div class="sp-about__desc reveal reveal-delay-2">
-        NUST Computer Science Society provides technology solutions to optimize your business.
-        We make your goals a reality with our software systems — built by students, powered by excellence.
-      </div>
-    </div>
-
-    <!-- Stats -->
-    <div class="sp-about__stats reveal reveal-delay-3">
-      <div class="sp-about__stat">
-        <span class="sp-about__stat-num">7</span>
-        <span class="sp-about__stat-label">Years Active</span>
-      </div>
-      <div class="sp-about__stat">
-        <span class="sp-about__stat-num">50+</span>
-        <span class="sp-about__stat-label">Team Members</span>
-      </div>
-      <div class="sp-about__stat">
-        <span class="sp-about__stat-num">30+</span>
-        <span class="sp-about__stat-label">Projects Delivered</span>
-      </div>
-      <div class="sp-about__stat">
-        <span class="sp-about__stat-num">∞</span>
-        <span class="sp-about__stat-label">Ambition</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ASTRONAUT ══════════════════════════════════════════════ -->
-<div class="sp-astronaut">
-  <picture>
-    <source srcset="img/home/astronaut.webp" type="image/webp">
-    <img src="img/home/astronaut.png" alt="Astronaut">
-  </picture>
 </div>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ WHAT WE DO ═════════════════════════════════════════════ -->
-<section class="sp-what">
-  <div class="sp-section-label reveal">002 / What We Do</div>
-  <div class="sp-what__header">
-    <h2 class="sp-what__title reveal reveal-delay-1">
-      What <span class="text-muted">we do</span>
-      <span style="color:var(--orange);">/</span>
-    </h2>
-    <span class="sp-what__accent reveal reveal-delay-2">7 years/</span>
-  </div>
-  <div class="sp-what__body">
-    <div class="sp-what__years liquid-glass reveal reveal-delay-1">
-      <div class="sp-what__years-num">7</div>
-      <div class="sp-what__years-label">years of experience</div>
-    </div>
-    <p class="sp-what__text reveal reveal-delay-2">
-      <span class="text-violet">NCSS</span> brings over 7 years of experience
-      in the FinTech sector, a solid track record, and enduring integration background
-      in enterprise-grade projects to our clients' disposal.
-      We are a team of passionate engineers, designers, and innovators
-      dedicated to pushing boundaries and delivering real-world impact.
-    </p>
-  </div>
+<div class="media-block__row">
+<div class="media-block__media _animate-appear _img-anim-hidden">
+<picture><source srcset="img/home/welcome/media-2.webp" type="image/webp"><img src="img/home/welcome/media-2.webp" alt="ncss office number"></picture>
+</div>
+<div class="media-block__text text_grey _text-anim-origin">Development</div>
+<div class="media-block__text text_grey _animate-appear media-block__animate-text media-block__animate-text_l-r">
+Development</div>
+</div>
+<div class="media-block__row">
+<div class="media-block__text text_grey _text-anim-origin">SOCIETY</div>
+<div class="media-block__text text_grey _animate-appear media-block__animate-text media-block__animate-text_r-l">
+SOCIETY
+</div>
+<div class="media-block__media _animate-appear _img-anim-hidden">
+<video src="img/home/welcome/media-3.mp4" autoplay muted loop playsinline alt="video of buildings"></video>
+</div>
+</div>
+</div>
+<div class="welcome__goals goals block-cross-out _glass-blured">
+<div class="goals__title text_grey">We make your goals a reality with our <span class="text-accent_aqua">software
+systems</span></div>
+<div class="goals__description">NUST Computer Science Society provides technology solutions to optimize your business<span class="text-accent_orange">/</span></div>
+</div>
 </section>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ WHAT WE OFFER ══════════════════════════════════════════ -->
-<section class="sp-offer">
-  <div class="sp-section-label reveal">003 / Services</div>
-  <h2 class="sp-offer__title reveal reveal-delay-1">
-    What we <span class="text-muted">offer</span><span style="color:var(--orange);">/</span>
-  </h2>
-  <div class="sp-offer__grid">
-    <div class="sp-offer__card liquid-glass reveal reveal-delay-1">
-      <div class="sp-offer__card-bar"></div>
-      <div class="sp-offer__num">01</div>
-      <div class="sp-offer__card-title">Enterprise Software Development</div>
-      <div class="sp-offer__card-text">
-        Full-stack engineering solutions for complex enterprise challenges. 
-        From architecture to deployment, we build systems that scale.
-      </div>
-    </div>
-    <div class="sp-offer__card liquid-glass reveal reveal-delay-2">
-      <div class="sp-offer__card-bar"></div>
-      <div class="sp-offer__num">02</div>
-      <div class="sp-offer__card-title">Support Anytime & Anywhere</div>
-      <div class="sp-offer__card-text">
-        Around-the-clock technical support and maintenance. 
-        Our team is always ready to resolve issues and keep your systems running.
-      </div>
-    </div>
-    <div class="sp-offer__card liquid-glass reveal reveal-delay-3">
-      <div class="sp-offer__card-bar"></div>
-      <div class="sp-offer__num">03</div>
-      <div class="sp-offer__card-title">Development & Analytics</div>
-      <div class="sp-offer__card-text">
-        Data-driven development with deep analytics integration. 
-        Turn raw data into actionable insights and intelligent applications.
-      </div>
-    </div>
-    <div class="sp-offer__card liquid-glass reveal reveal-delay-4">
-      <div class="sp-offer__card-bar"></div>
-      <div class="sp-offer__num">04</div>
-      <div class="sp-offer__card-title">Promotion & Partnerships</div>
-      <div class="sp-offer__card-text">
-        Strategic technology partnerships and co-development opportunities. 
-        We grow together with our partners and clients.
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ PARTNERS ═══════════════════════════════════════════════ -->
-<section class="sp-partners">
-  <div class="sp-section-label reveal">004 / Partners</div>
-  <h2 class="sp-partners__title reveal reveal-delay-1">
-    Who we <span class="text-muted">partner with</span><span style="color:var(--orange);">/</span>
-  </h2>
-  <div class="sp-partners__grid">
-    <a class="sp-partners__card liquid-glass reveal reveal-delay-1" href="https://changelly.com/" target="_blank">
-      <picture>
-        <source srcset="img/home/partners/partner_logo_1.webp" type="image/webp">
-        <img src="img/home/partners/partner_logo_1.png" alt="Changelly">
-      </picture>
-    </a>
-    <a class="sp-partners__card liquid-glass reveal reveal-delay-2" href="https://www.moonpay.com/" target="_blank">
-      <picture>
-        <source srcset="img/home/partners/partner_logo_2.webp" type="image/webp">
-        <img src="img/home/partners/partner_logo_2.png" alt="MoonPay">
-      </picture>
-    </a>
-    <a class="sp-partners__card liquid-glass reveal reveal-delay-3" href="https://www.simplex.com/" target="_blank">
-      <picture>
-        <source srcset="img/home/partners/partner_logo_3.webp" type="image/webp">
-        <img src="img/home/partners/partner_logo_3.png" alt="Simplex">
-      </picture>
-    </a>
-  </div>
-</section>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ HOW WE WORK ════════════════════════════════════════════ -->
-<section class="sp-how">
-  <div class="sp-section-label reveal">005 / Culture</div>
-  <div class="sp-how__inner liquid-glass">
-    <h2 class="sp-how__title reveal reveal-delay-1">
-      How we <span class="text-muted">work</span><span style="color:var(--orange);">/</span>
-    </h2>
-    <ul class="sp-how__list">
-      <li class="sp-how__item reveal reveal-delay-1">
-        <span class="sp-how__num">01</span>
-        You gain control over your workflow, not the other way around
-      </li>
-      <li class="sp-how__item reveal reveal-delay-2">
-        <span class="sp-how__num">02</span>
-        You bring your skills to exciting, challenging tasks and develop yourself professionally
-      </li>
-      <li class="sp-how__item reveal reveal-delay-3">
-        <span class="sp-how__num">03</span>
-        You choose whether to work flexible hours, or a hybrid schedule
-      </li>
-    </ul>
-  </div>
-</section>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ TEAM / WHO WE ARE ══════════════════════════════════════ -->
-<section class="sp-team">
-  <div class="sp-section-label reveal">006 / Team</div>
-  <h2 class="sp-team__title reveal reveal-delay-1">
-    Who <span class="text-muted">we are</span><span style="color:var(--orange);">/</span>
-  </h2>
-  <div class="sp-team__grid">
-    <div class="sp-team__card reveal reveal-delay-1">
-      <picture>
-        <source srcset="img/home/who-we-are/team-1.webp" type="image/webp">
-        <img src="img/home/who-we-are/team-1.jpg" alt="Team Member">
-      </picture>
-      <div class="sp-team__card-overlay">
-        <div>
-          <div class="sp-team__card-name">Engineering</div>
-          <div class="sp-team__card-role">Backend / Full-Stack</div>
-        </div>
-      </div>
-    </div>
-    <div class="sp-team__card reveal reveal-delay-2">
-      <picture>
-        <source srcset="img/home/who-we-are/team-2.webp" type="image/webp">
-        <img src="img/home/who-we-are/team-2.jpg" alt="Team Member">
-      </picture>
-      <div class="sp-team__card-overlay">
-        <div>
-          <div class="sp-team__card-name">Design</div>
-          <div class="sp-team__card-role">UI/UX & Graphics</div>
-        </div>
-      </div>
-    </div>
-    <div class="sp-team__card reveal reveal-delay-3">
-      <picture>
-        <source srcset="img/home/who-we-are/team-3.webp" type="image/webp">
-        <img src="img/home/who-we-are/team-3.jpg" alt="Team Member">
-      </picture>
-      <div class="sp-team__card-overlay">
-        <div>
-          <div class="sp-team__card-name">Management</div>
-          <div class="sp-team__card-role">Operations & Strategy</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ WHERE BASED PHOTOS ════════════════════════════════════ -->
-<section class="sp-where">
-  <div class="sp-where__inner">
-    <div class="sp-section-label reveal">007 / Life at NCSS</div>
-    <h2 class="sp-where__title reveal reveal-delay-1">
-      Life at <span class="text-neon">NCSS</span><span style="color:var(--orange);">/</span>
+<!-- === REPLACE LINES 58-64 WITH THIS === -->
+<section class="at-ncss-we-work" style="padding-bottom: 0 !important; margin-bottom: 0 !important;">
+  <div class="at-ncss-we-work__container _centered" style="padding-bottom: 0 !important; margin-bottom: 0 !important;">
+    <h2 class="at-ncss-we-work__title title" style="display: block; text-align: center; margin-bottom: 25px !important; padding-bottom: 0 !important;">
+      <span style="white-space: nowrap;">AT <span class="text-accent_violet" style="text-transform: none !important;">NCSS</span>,</span> 
+      WE WORK AS A
     </h2>
   </div>
-  <div class="sp-where__scroll">
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/office-interior-1.webp" type="image/webp">
-        <img src="img/home/where-based/office-interior-1.webp" alt="Office">
-      </picture>
-      <span class="sp-where__photo-label">Office</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/office-interior-2.webp" type="image/webp">
-        <img src="img/home/where-based/office-interior-2.webp" alt="Workspace">
-      </picture>
-      <span class="sp-where__photo-label">Workspace</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/office-interior-3.webp" type="image/webp">
-        <img src="img/home/where-based/office-interior-3.webp" alt="Interior">
-      </picture>
-      <span class="sp-where__photo-label">Interior</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/city-view.webp" type="image/webp">
-        <img src="img/home/where-based/city-view.webp" alt="City">
-      </picture>
-      <span class="sp-where__photo-label">City View</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/sunrise.webp" type="image/webp">
-        <img src="img/home/where-based/sunrise.webp" alt="Sunrise">
-      </picture>
-      <span class="sp-where__photo-label">Sunrise</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/snacks.webp" type="image/webp">
-        <img src="img/home/where-based/snacks.webp" alt="Team">
-      </picture>
-      <span class="sp-where__photo-label">Team</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/office-pets-1.webp" type="image/webp">
-        <img src="img/home/where-based/office-pets-1.jpg" alt="Pets">
-      </picture>
-      <span class="sp-where__photo-label">Our Pets</span>
-    </div>
-    <div class="sp-where__photo">
-      <picture>
-        <source srcset="img/home/where-based/office-pets-2.webp" type="image/webp">
-        <img src="img/home/where-based/office-pets-2.jpg" alt="Pets">
-      </picture>
-      <span class="sp-where__photo-label">Friends</span>
-    </div>
-  </div>
 </section>
 
-<div class="sp-divider"></div>
-
-<!-- ═══ TESTIMONIALS ══════════════════════════════════════════ -->
-<section class="sp-testimonials">
-  <div class="sp-section-label reveal">008 / What We Say</div>
-  <h2 class="sp-testimonials__title reveal reveal-delay-1">
-    What <span class="text-muted">we say</span><span style="color:var(--orange);">/</span>
-  </h2>
-  <div class="sp-testimonials__slider">
-    <div class="sp-testimonials__track" id="testimonial-track">
-
-      <div class="sp-testimonials__slide liquid-glass">
-        <div class="sp-testimonials__photo">
-          <picture>
-            <source srcset="img/home/what-we-say/John.webp" type="image/webp">
-            <img src="img/home/what-we-say/John.jpg" alt="John Doe">
-          </picture>
-        </div>
-        <div>
-          <p class="sp-testimonials__text">
-            The main thing which makes NUST Computer Science Society special is a very strong and motivated team,
-            management who clearly states the product, team & processes development strategy.
-          </p>
-          <div class="sp-testimonials__author">John Doe</div>
-          <div class="sp-testimonials__role">SEO</div>
-        </div>
-      </div>
-
-      <div class="sp-testimonials__slide liquid-glass">
-        <div class="sp-testimonials__photo">
-          <picture>
-            <source srcset="img/home/what-we-say/Eva.webp" type="image/webp">
-            <img src="img/home/what-we-say/Eva.jpg" alt="Eva Spring">
-          </picture>
-        </div>
-        <div>
-          <p class="sp-testimonials__text">
-            Our IT company is truly exceptional. The team's collaborative spirit and forward-thinking approach
-            make it an exciting place to work. The leadership team is open to new ideas, and the work environment
-            is inclusive, supportive, and respectful.
-          </p>
-          <div class="sp-testimonials__author">Eva Spring</div>
-          <div class="sp-testimonials__role">HR Manager</div>
-        </div>
-      </div>
-
-      <div class="sp-testimonials__slide liquid-glass">
-        <div class="sp-testimonials__photo">
-          <picture>
-            <source srcset="img/home/what-we-say/Clark.webp" type="image/webp">
-            <img src="img/home/what-we-say/Clark.jpg" alt="Clark Kent">
-          </picture>
-        </div>
-        <div>
-          <p class="sp-testimonials__text">
-            There is an exceptional place to work as a web developer. The leadership team is supportive, approachable,
-            and always willing to listen to new ideas. Our team's expertise and passion for development are second to none.
-          </p>
-          <div class="sp-testimonials__author">Clark Kent</div>
-          <div class="sp-testimonials__role">Web Developers Team Lead</div>
-        </div>
-      </div>
-
-      <div class="sp-testimonials__slide liquid-glass">
-        <div class="sp-testimonials__photo">
-          <picture>
-            <source srcset="img/home/what-we-say/Sarah.webp" type="image/webp">
-            <img src="img/home/what-we-say/Sarah.jpg" alt="Sarah Wood">
-          </picture>
-        </div>
-        <div>
-          <p class="sp-testimonials__text">
-            I am thrilled to work as a technical writer here. Our team's dedication to producing high-quality
-            documentation is unparalleled. Our management is supportive and collaborative, and the technical
-            writing team's contributions are valued by everyone.
-          </p>
-          <div class="sp-testimonials__author">Sarah Wood</div>
-          <div class="sp-testimonials__role">Technical Writer</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="sp-testimonials__controls">
-    <button class="sp-testimonials__btn" id="prev-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-    </button>
-    <div class="sp-testimonials__dots" id="dots">
-      <div class="sp-testimonials__dot active"></div>
-      <div class="sp-testimonials__dot"></div>
-      <div class="sp-testimonials__dot"></div>
-      <div class="sp-testimonials__dot"></div>
-    </div>
-    <button class="sp-testimonials__btn" id="next-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m9 18 6-6-6-6"/>
-      </svg>
-    </button>
-  </div>
+<section class="moving-text">
+<svg class="moving-text_r-to-l" viewBox="0 0 4737 206" xmlns:svg="http://www.w3.org/2000/svg">
+							<path d="M 5,5 V 66.380859 H 89.564453 V 201 H 178.60742 V 66.380859 h 84.56446 V 5 Z M 279.24219,5 V 201 H 508.17188 V 148.57617 H 366.70508 V 127.23633 H 504.74805 V 76.128906 H 366.70508 V 56.898438 H 506.85547 V 5 Z m 327.7207,0 -94.3125,196 h 89.83399 l 12.11914,-27.13477 H 719.18945 L 731.57031,201 h 98.52735 L 729.72656,5 Z m 229.19336,0 v 196 h 87.46289 V 92.726562 L 983.15625,201 H 1026.625 L 1086.4258,92.726562 V 201 h 88.2519 V 5 H 1061.1348 L 1007.3926,102.20898 954.96875,5 Z M 1190.748,5 v 61.380859 h 84.5645 V 201 h 89.043 V 66.380859 h 84.5644 V 5 Z m 274.2422,0 v 196 h 228.9297 v -52.42383 h -141.4668 v -21.33984 h 138.043 V 76.128906 h -138.043 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3125,196 h 89.834 l 12.1192,-27.13477 h 104.5859 L 1917.3184,201 h 98.5273 L 1915.4746,5 Z m 229.1934,0 v 196 h 87.4629 V 92.726562 L 2168.9043,201 h 43.4687 L 2272.1738,92.726562 V 201 h 88.252 V 5 h -113.543 L 2193.1406,102.20898 2140.7168,5 Z m 354.5918,0 v 61.380859 h 84.5644 V 201 h 89.043 V 66.380859 h 84.5645 V 5 Z m 274.2422,0 v 196 h 228.9316 v -52.42383 h -141.4687 v -21.33984 h 138.0429 V 76.128906 H 2738.2012 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3106,196 h 89.8321 l 12.1191,-27.13477 h 104.5859 L 3103.0664,201 h 98.5274 L 3101.2227,5 Z m 229.1933,0 v 196 h 87.4629 V 92.726562 L 3354.6543,201 h 43.4668 L 3457.9219,92.726562 V 201 h 88.2539 V 5 h -113.543 L 3378.8906,102.20898 3326.4648,5 Z m 354.5918,0 v 61.380859 h 84.5664 V 201 h 89.043 V 66.380859 h 84.5645 V 5 Z m 274.2422,0 v 196 h 228.9317 v -52.42383 h -141.4688 v -21.33984 h 138.043 V 76.128906 h -138.043 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3105,196 h 89.832 l 12.1192,-27.13477 h 104.5859 L 4288.8164,201 h 98.5254 L 4286.9707,5 Z m 229.1934,0 v 196 h 87.4629 V 92.726562 L 4540.4023,201 h 43.4668 L 4643.6699,92.726562 V 201 h 88.2539 V 5 H 4618.3809 L 4564.6387,102.20898 4512.2129,5 Z M 666.23633,59.533203 694.16211,119.85938 h -55.32227 z m 1185.74997,0 27.9239,60.326177 h -55.3223 z m 1185.7481,0 27.9238,60.326177 h -55.3223 z m 1185.748,0 27.9238,60.326177 h -55.3222 z"></path>
+							/&gt;
+						</svg>
 </section>
-
-<div class="sp-divider"></div>
-
-<!-- ═══ CTA / JOB LISTINGS ════════════════════════════════════ -->
-<section class="sp-cta">
-  <div class="sp-cta__inner liquid-glass">
-    <div class="sp-cta__label">Join the mission/</div>
-    <h2 class="sp-cta__title">
-      See our<br>
-      <span class="text-neon">job</span> listings<span style="color:var(--orange);">/</span>
-    </h2>
-    <a href="careers.html" class="sp-cta__link">
-      See Our Job Listings
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m5 12 14 0M13 6l6 6-6 6"/>
-      </svg>
-    </a>
-  </div>
+<!-- //=== what-we-do = section ============================================================================================ -->
+<section class="what-we-do">
+<div class="what-we-do__title title">what <span class="text_grey">we do</span><span class="text-accent_orange">/</span>
+</div>
+<div class="what-we-do__content">
+<div class="what-we-do__years-block years-block block-cross-out">
+<div class="years-block__quantity">7</div>
+<div class="years-block__text text-accent_aqua">years</div>
+</div>
+<p class="what-we-do__text"><span class="text-accent_violet">NCSS</span> brings over 7 years of experience
+in the FinTech sector, a solid track record, and enduring integration background
+in enterprise-grade projects to our client's disposal</p>
+</div>
 </section>
-
-<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
-<footer class="sp-footer">
-  <div class="sp-footer__inner">
-    <div class="sp-footer__copy">© 2026 NUST Computer Science Society</div>
-    <ul class="sp-footer__links">
-      <li><a href="index.html">About Us.</a></li>
-      <li><a href="careers.html">Careers.</a></li>
-      <li><a href="contacts.html">Contacts.</a></li>
-      <li><a href="ncssstories.html">#NcssStories</a></li>
-    </ul>
-  </div>
+<div class="astronaut__container">
+<div class="astronaut rellax" data-rellax-speed="-8">
+<picture><source srcset="img/home/astronaut.webp" type="image/webp"><img src="img/home/astronaut.png" alt="astronaut"></picture>
+</div>
+</div>
+<!-- //=== what-we-offer = section ============================================================================================ -->
+<section class="what-we-offer">
+<div class="what-we-offer__title title">what we <span class="text_grey">offer</span><span class="text-accent_orange">/</span>
+</div>
+<div class="what-we-offer__content">
+<div class="what-we-offer__column">
+<div class="what-we-offer__card offer-cadr block-cross-out">
+<div class="offer-cadr__title">Enterprise Software Development</div>
+<div class="offer-cadr__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate at
+minima explicabo aliquid esse, placeat, ab eum dolorem porro modi praesentium. Praesentium error
+laborum deserunt distinctio, vero sint necessitatibus eius!</div>
+</div>
+<div class="what-we-offer__card offer-cadr block-cross-out">
+<div class="offer-cadr__title">Support Anytime & Anywhere</div>
+<div class="offer-cadr__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid illo
+eius culpa! Accusamus dicta repellat officiis deleniti beatae reiciendis ipsam, in ea, tenetur quos
+id?</div>
+</div>
+</div>
+<div class="what-we-offer__column">
+<div class="what-we-offer__card offer-cadr block-cross-out">
+<div class="offer-cadr__title">Development & Analytics</div>
+<div class="offer-cadr__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quis
+consequuntur, odit quae quod repellendus facere ab id reprehenderit quo!</div>
+</div>
+<div class="what-we-offer__card offer-cadr block-cross-out">
+<div class="offer-cadr__title">Promotion & Partnerships</div>
+<div class="offer-cadr__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+aperiam sit culpa eligendi natus ipsa fugit consequatur ut. Sequi delectus iure repudiandae
+perferendis tempora? Debitis ab, inventore in minus sapiente, incidunt nihil eum officia soluta cum,
+ipsa dolores provident beatae?</div>
+</div>
+</div>
+</div>
+</section>
+<!-- //=== partners = section ============================================================================================ -->
+<section class="partners">
+<div class="partners__title title">who we <span class="text_grey">partner with</span><span class="text-accent_orange">/</span>
+</div>
+<div class="partners__cards">
+<a class="partners__card card-partner" href="https://changelly.com/" target="_blank">
+<div class="card-partner__wrapper block-cross-in-link">
+<span class="block-cross-in-link__left-elements"></span>
+<span class="block-cross-in-link__right-elements"></span>
+<picture><source srcset="img/home/partners/partner_logo_1.webp" type="image/webp"><img src="img/home/partners/partner_logo_1.png" alt="" class="card-partner__logo"></picture>
+</div>
+</a>
+<a class="partners__card card-partner" href="https://www.moonpay.com/" target="_blank">
+<div class="card-partner__wrapper block-cross-in-link">
+<span class="block-cross-in-link__left-elements"></span>
+<span class="block-cross-in-link__right-elements"></span>
+<picture><source srcset="img/home/partners/partner_logo_2.webp" type="image/webp"><img src="img/home/partners/partner_logo_2.png" alt="" class="card-partner__logo"></picture>
+</div>
+</a>
+<a class="partners__card card-partner" href="https://www.simplex.com/" target="_blank">
+<div class="card-partner__wrapper block-cross-in-link">
+<span class="block-cross-in-link__left-elements"></span>
+<span class="block-cross-in-link__right-elements"></span>
+<picture><source srcset="img/home/partners/partner_logo_3.webp" type="image/webp"><img src="img/home/partners/partner_logo_3.png" alt="" class="card-partner__logo"></picture>
+</div>
+</a>
+</div>
+</section>
+<!--//========== how-we-work = section =========================-->
+<section class="how-we-work">
+<div class="how-we-work__title title">how we <span class="text_grey">work</span><span class="text-accent_orange">/</span>
+</div>
+<div class="how-we-work__list-wrapper block-cross-out">
+<ul class="how-we-work__list triangeled-list">
+<li class="triangeled-list__item">You gain control over your workflow, not the other way around</li>
+<li class="triangeled-list__item">You bring your skills to exciting, challenging tasks and develop
+yourself professionally</li>
+<li class="triangeled-list__item">You choose whether to work flexible hours, or a hybrid schedule</li>
+</ul>
+</div>
+<div class="how-we-work__content media-block">
+<div class="media-block__row">
+<div class="media-block__text">Design with</div>
+<div class="media-block__media media-block__media">
+<picture><source srcset="img/home/how-we-work/meeting.webp" type="image/webp"><img src="img/home/how-we-work/meeting.jpg" alt="meeting"></picture>
+</div>
+</div>
+<div class="media-block__row">
+<div class="media-block__media media-block__media_tall">
+<picture><source srcset="img/home/how-we-work/team.webp" type="image/webp"><img src="img/home/how-we-work/team.jpg" alt="team"></picture>
+</div>
+<div class="media-block__text">
+<div class="media-block__row">
+<div class="media-block__text text_grey">intelligence,</div>
+</div>
+<div class="media-block__row">
+<div class="media-block__text text_grey">develop with</div>
+</div>
+<div class="media-block__row">
+<div class="media-block__text text_grey">love</div>
+<div class="media-block__media media-block__media">
+<video src="img/home/how-we-work/new-year.mp4" autoplay muted loop playsinline alt="New year selebrating"></video>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- //=== where-we-based = section ============================================================================================ -->
+<section class="where-we-based">
+<div class="where-we-based__title title">where we're <span class="text_grey">based</span><span class="text-accent_orange">/</span>
+</div>
+<div class="where-we-based__segment where-we-based__segment_three-columns">
+<div class="where-we-based__unit column-unit column-unit_two-third">
+<div class="column-unit__title">Executive Towers – a prime location in the heart of Dubai, UAE</div>
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/city-view.webp" type="image/webp"><img src="img/home/where-based/city-view.jpg" alt="City view"></picture>
+</div>
+</div>
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/sunrise.webp" type="image/webp"><img src="img/home/where-based/sunrise.webp" alt="Sunrise"></picture>
+</div>
+</div>
+</div>
+<div class="where-we-based__segment where-we-based__segment_three-columns">
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__title">Homey Vibes – a workplace that feels like home</div>
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-interior-1.webp" type="image/webp"><img src="img/home/where-based/office-interior-1.webp" alt="office interior"></picture>
+</div>
+</div>
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-interior-2.webp" type="image/webp"><img src="img/home/where-based/office-interior-2.webp" alt="office interior"></picture>
+</div>
+</div>
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-interior-3.webp" type="image/webp"><img src="img/home/where-based/office-interior-3.webp" alt="office interior"></picture>
+</div>
+</div>
+<div class="where-we-based__unit column-unit column-unit_whole">
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-interior-4.webp" type="image/webp"><img src="img/home/where-based/office-interior-4.webp" alt="office interior"></picture>
+</div>
+</div>
+</div>
+<div class="where-we-based__segment">
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__title">Eco & Green - healthy environment & healthy snacks
+</div>
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/snacks.webp" type="image/webp"><img src="img/home/where-based/snacks.webp" alt="City view"></picture>
+</div>
+</div>
+</div>
+<div class="where-we-based__segment where-we-based__segment_two-columns">
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__title">Bring Your Pet to Work - join us in the office with your furry companion
+</div>
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-pets-1.webp" type="image/webp"><img src="img/home/where-based/office-pets-1.jpg" alt="Office pets"></picture>
+</div>
+</div>
+<div class="where-we-based__unit column-unit">
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-pets-2.webp" type="image/webp"><img src="img/home/where-based/office-pets-2.jpg" alt="Office pets"></picture>
+</div>
+</div>
+<div class="where-we-based__unit column-unit column-unit_whole">
+<div class="column-unit__image">
+<picture><source srcset="img/home/where-based/office-pets-3.webp" type="image/webp"><img src="img/home/where-based/office-pets-3.jpg" alt="Office pets"></picture>
+</div>
+</div>
+</div>
+</section>
+<!--//========== who-we-are = section =========================-->
+<section class="who-we-are">
+<div class="who-we-are__title title">who <span class="text_grey">we are</span><span class="text-accent_orange">/</span>
+</div>
+<div class="who-we-are__content media-block">
+<div class="media-block__row">
+<div class="media-block__text">NUST-BASED</div>
+<div class="media-block__media">
+<picture><source srcset="img/home/who-we-are/team-1.webp" type="image/webp"><img src="img/home/who-we-are/team-1.jpg" alt="team"></picture>
+</div>
+</div>
+<div class="media-block__row">
+<div class="media-block__media">
+<picture><source srcset="img/home/who-we-are/team-2.webp" type="image/webp"><img src="img/home/who-we-are/team-2.jpg" alt="team"></picture>
+</div>
+<div class="media-block__text">SOFTWARE</div>
+</div>
+<div class="media-block__row">
+<div class="media-block__text text_grey">SOCIETY</div>
+<div class="media-block__media">
+<picture><source srcset="img/home/who-we-are/team-3.webp" type="image/webp"><img src="img/home/who-we-are/team-3.jpg" alt="team"></picture>
+</div>
+</div>
+</div>
+<div class="who-we-are__list-wrapper block-cross-out">
+<ul class="who-we-are__list triangeled-list">
+<li class="triangeled-list__item">Development: Backend Developers, Frontend Developers, QA</li>
+<li class="triangeled-list__item">AI / Data Science: AI Specialists, Data Analysts</li>
+<li class="triangeled-list__item">Design (UI/UX, Graphics): UX/UI Designers, Graphic Designers</li>
+<li class="triangeled-list__item">Marketing / Media: Social Media Managers, PR & Outreach</li>
+</ul>
+</div>
+</section>
+<!--//========== what-we-say = section =========================-->
+<section class="what-we-say">
+<div class="what-we-say__title title">what <span class="text_grey">we say</span><span class="text-accent_orange">/</span>
+</div>
+<div class="comments">
+<div class="comments__wrapper block-cross-out">
+<!-- slider wrapper -->
+<div class="comments__slider swiper">
+<!-- moving slider part -->
+<div class="swiper-wrapper">
+<!-- slide -->
+<div class="comments__slide slide-comm swiper-slide">
+<div class="slide-comm__row">
+<div class="slide-comm__aside">
+<div class="slide-comm__photo">
+<picture><source srcset="img/home/what-we-say/John.webp" type="image/webp"><img src="img/home/what-we-say/John.jpg" alt="John Doe"></picture>
+</div>
+<div class="slide-comm__name">
+<span>John Doe</span>,
+<span>SEO</span>
+</div>
+<div class="swiper__navigation">
+<div class="swiper__buttons">
+<button type="button" class="swiper-button-prev">
+</button>
+<button type="button" class="swiper-button-next">
+</button>
+</div>
+<div class="slide-comm__line"></div>
+<div class="swiper-pagination"></div>
+</div>
+</div>
+<div class="slide-comm__text-wrapper">
+<div class="slide-comm__text needShowMore">
+<p>As an SEO specialist, I can say that our IT company is one of the best in the industry.
+Our
+team's strong technical skills and extensive knowledge of digital marketing make us
+well-equipped to handle any project. I'm consistently impressed by our leadership's
+proactive approach to identifying new opportunities for growth and our team's ability to
+innovate and execute.
+</p>
+<p>
+The main thing which makes NUST Computer Science Society special is a very strong and motivated team, management
+who
+clearly states the product, team & processes development strategy.
+</p>
+</div>
+<button type="button" class="slide-comm__button">
+<span class="slide-comm__button_full">view full text</span>
+<span class="slide-comm__button_short">view short text</span>
+</button>
+</div>
+</div>
+</div>
+<div class="comments__slide slide-comm swiper-slide">
+<div class="slide-comm__row">
+<div class="slide-comm__aside">
+<div class="slide-comm__photo">
+<picture><source srcset="img/home/what-we-say/Eva.webp" type="image/webp"><img src="img/home/what-we-say/Eva.jpg" alt="Eva Spring"></picture>
+</div>
+<div class="slide-comm__name">
+<span>Eva Spring</span>,
+<span>HR Manager</span>
+</div>
+<div class="swiper__navigation">
+<div class="swiper__buttons">
+<button type="button" class="swiper-button-prev">
+</button>
+<button type="button" class="swiper-button-next">
+</button>
+</div>
+<div class="slide-comm__line"></div>
+<div class="swiper-pagination"></div>
+</div>
+</div>
+<div class="slide-comm__text-wrapper">
+<div class="slide-comm__text needShowMore">
+<p>Our IT company is truly exceptional. The team's collaborative spirit and forward-thinking
+approach make it an exciting place to work. The leadership team is open to new ideas, and
+the work environment is inclusive, supportive, and respectful. Our company's core values
+and
+commitment to employee well-being make it a great place to work.
+</p>
+<p>
+Most of all I like atmosphere in the team.❤️
+</p>
+</div>
+<button type="button" class="slide-comm__button">
+<span class="slide-comm__button_full">view full text</span>
+<span class="slide-comm__button_short">view short text</span>
+</button>
+</div>
+</div>
+</div>
+<div class="comments__slide slide-comm swiper-slide">
+<div class="slide-comm__row">
+<div class="slide-comm__aside">
+<div class="slide-comm__photo">
+<picture><source srcset="img/home/what-we-say/Clark.webp" type="image/webp"><img src="img/home/what-we-say/Clark.jpg" alt="Clark Kent"></picture>
+</div>
+<div class="slide-comm__name">
+<span>Clark Kent</span>,
+<span>Web Developers Team Lead</span>
+</div>
+<div class="swiper__navigation">
+<div class="swiper__buttons">
+<button type="button" class="swiper-button-prev">
+</button>
+<button type="button" class="swiper-button-next">
+</button>
+</div>
+<div class="slide-comm__line"></div>
+<div class="swiper-pagination"></div>
+</div>
+</div>
+<div class="slide-comm__text-wrapper">
+<div class="slide-comm__text needShowMore">
+<p>There is an exceptional place to work as a web developer. The leadership team is
+supportive, approachable, and always willing to listen to new ideas. Our team's expertise
+and passion for development are second to none, and we are constantly pushing the
+boundaries
+of what's possible. I'm proud to lead such a talented and motivated team.
+</p>
+</div>
+<button type="button" class="slide-comm__button">
+<span class="slide-comm__button_full">view full text</span>
+<span class="slide-comm__button_short">view short text</span>
+</button>
+</div>
+</div>
+</div>
+<div class="comments__slide slide-comm swiper-slide">
+<div class="slide-comm__row">
+<div class="slide-comm__aside">
+<div class="slide-comm__photo">
+<picture><source srcset="img/home/what-we-say/Sarah.webp" type="image/webp"><img src="img/home/what-we-say/Sarah.jpg" alt="Sarah Wood"></picture>
+</div>
+<div class="slide-comm__name">
+<span>Sarah Wood</span>,
+<span>Technical Writer</span>
+</div>
+<div class="swiper__navigation">
+<div class="swiper__buttons">
+<button type="button" class="swiper-button-prev">
+</button>
+<button type="button" class="swiper-button-next">
+</button>
+</div>
+<div class="slide-comm__line"></div>
+<div class="swiper-pagination"></div>
+</div>
+</div>
+<div class="slide-comm__text-wrapper">
+<div class="slide-comm__text needShowMore">
+<p>I am thrilled to work as a technical writer in this IT company. Our team's dedication to
+producing high-quality documentation is unparalleled. Our management is supportive and
+collaborative, and we have all the resources we need to do our jobs well. The technical
+writing team's work is integral to the company's success, and our contributions are valued
+by both our colleagues and our clients.
+</p>
+</div>
+<button type="button" class="slide-comm__button">
+<span class="slide-comm__button_full">view full text</span>
+<span class="slide-comm__button_short">view short text</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--//========== our-jobs-link = section =========================-->
+<section class="our-jobs-link">
+<a href="careers.html" class="animated-link">
+<!-- <a href="/careers/" class="animated-link"> -->
+<div class="animated-link__wrapper animated-link__wrapper_rotate">
+<span class="animated-link__text animated-link__text_outlined">see our job listings</span>
+<span class="animated-link__append animated-link__append_outlined text-accent_violet">></span>
+</div>
+<div class="animated-link__wrapper">
+<span class="animated-link__text">see our job listings</span>
+<span class="animated-link__append text-accent_violet">></span>
+</div>
+</a>
+</section>
+</div>
+</div>
+</main>
+<footer class="footer">
+<div class="footer__container">
+<div class="footer__wrapper">
+<nav class="footer__menu menu-footer">
+<ul class="menu-footer__items">
+<li class="menu-footer__item"><a href="index.html">about us.</a></li>
+<li class="menu-footer__item"><a href="careers.html">careers.</a></li>
+<li class="menu-footer__item"><a href="contacts.html">contacts.</a></li>
+<li class="menu-footer__item menu-footer__item_gradient"><a href="ncssstories.html">#ncssstories</a></li>
+</ul>
+</nav>
+<div class="footer__copyright">© 2026 NUST Computer Science Society</div>
+</div>
+</div>
 </footer>
-
-<script>
-// ── Stars Canvas ───────────────────────────────────────────
-(function() {
-  const canvas = document.getElementById('stars-canvas');
-  const ctx = canvas.getContext('2d');
-  let stars = [];
-  let W, H;
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function createStars(n) {
-    stars = [];
-    for (let i = 0; i < n; i++) {
-      stars.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() * 1.2,
-        o: Math.random() * 0.6 + 0.1,
-        speed: Math.random() * 0.3 + 0.05,
-        pulse: Math.random() * Math.PI * 2
-      });
-    }
-  }
-
-  function draw(t) {
-    ctx.clearRect(0, 0, W, H);
-    stars.forEach(s => {
-      s.pulse += 0.008;
-      const opacity = s.o * (0.6 + 0.4 * Math.sin(s.pulse));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(239,244,255,${opacity})`;
-      ctx.fill();
-      s.y -= s.speed;
-      if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
-    });
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  createStars(220);
-  draw(0);
-  window.addEventListener('resize', () => { resize(); createStars(220); });
-})();
-
-// ── Custom Cursor ──────────────────────────────────────────
-(function() {
-  const dot   = document.getElementById('cursor-dot');
-  const ring  = document.getElementById('cursor-ring');
-  const trail = document.getElementById('cursor-trail');
-  let mx = 0, my = 0;
-  let rx = 0, ry = 0;
-  let tx = 0, ty = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
-  });
-
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  function animate() {
-    rx = lerp(rx, mx, 0.18);
-    ry = lerp(ry, my, 0.18);
-    tx = lerp(tx, mx, 0.09);
-    ty = lerp(ty, my, 0.09);
-    ring.style.left  = rx + 'px';
-    ring.style.top   = ry + 'px';
-    trail.style.left = tx + 'px';
-    trail.style.top  = ty + 'px';
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  // Hover effects
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      dot.style.width = '14px'; dot.style.height = '14px';
-    });
-    el.addEventListener('mouseleave', () => {
-      dot.style.width = '8px'; dot.style.height = '8px';
-    });
-  });
-})();
-
-// ── Mobile Nav ─────────────────────────────────────────────
-document.getElementById('nav-toggle').addEventListener('click', () => {
-  document.getElementById('mobile-nav').classList.add('open');
-});
-document.getElementById('mobile-close').addEventListener('click', () => {
-  document.getElementById('mobile-nav').classList.remove('open');
-});
-document.querySelectorAll('.sp-mobile-nav a').forEach(a => {
-  a.addEventListener('click', () => {
-    document.getElementById('mobile-nav').classList.remove('open');
-  });
-});
-
-// ── Scroll Reveal ──────────────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
-
-// ── Testimonials Slider ────────────────────────────────────
-(function() {
-  const track = document.getElementById('testimonial-track');
-  const dots = document.querySelectorAll('.sp-testimonials__dot');
-  let cur = 0;
-  const total = dots.length;
-
-  function goTo(n) {
-    cur = (n + total) % total;
-    track.style.transform = `translateX(-${cur * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
-  }
-
-  document.getElementById('next-btn').addEventListener('click', () => goTo(cur + 1));
-  document.getElementById('prev-btn').addEventListener('click', () => goTo(cur - 1));
-  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
-
-  // Auto-advance
-  setInterval(() => goTo(cur + 1), 5000);
-})();
-
-// ── Page transition links ──────────────────────────────────
-document.querySelectorAll('a[href]').forEach(a => {
-  const href = a.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const pt = document.getElementById('page-transition');
-    pt.classList.add('entering');
-    setTimeout(() => { window.location.href = href; }, 480);
-  });
-});
-window.addEventListener('pageshow', () => {
-  const pt = document.getElementById('page-transition');
-  pt.style.transition = 'none';
-  pt.classList.remove('entering');
-  setTimeout(() => pt.style.transition = '', 50);
-});
-</script>
+</div>
+<div id="jobs-popup" aria-hidden="true" class="popup jobs-popup">
+<div class="popup__wrapper">
+<div class="popup__container">
+<div class="popup__content">
+<div class="button-wrapper">
+<button data-close type="button" class="popup__close">back</button>
+<div class="animated-line"></div>
+</div>
+<div class="popup__title">Backend <span class="text_grey">Developers</span><span class="text-accent_orange">/</span></div>
+<div class="popup__text-wrapper block-cross-out">
+<div class="popup__text text-popup">
+<div class="text-popup__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex corrupti
+incidunt modi ipsa totam culpa numquam fuga nisi nihil quam voluptas, doloremque reprehenderit odio qui.
+</div>
+<ul class="text-popup__features triangeled-list">
+<li class="triangeled-list__item">The team uses: <br>Lorem, ipsum, dolor, sit amet.</li>
+<li class="triangeled-list__item">Primary responsibilities: <br>Lorem, amet, dolor sit.</li>
+</ul>
+</div>
+</div>
+<!-- <a href="#" class="position-button">
+<div class="position-button__title">Backend Developer (Node.js)</div>
+<div class="position-button__link">view</div>
+<picture><source srcset="img/careers/team-bg.webp" type="image/webp"><img class="position-button__bg" src="img/careers/team-bg.jpg" alt=""></picture>
+</a> -->
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js?_v=20230327195509"></script>
+<script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js?_v=20230327195509"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12?_v=20230327195509"></script>
+<script src="js/app.min.js?_v=20230327195509"></script>
 </body>
 </html>
