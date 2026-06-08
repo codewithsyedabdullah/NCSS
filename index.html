@@ -4,33 +4,557 @@
 <title>NUST Computer Science Society</title>
 <meta charset="UTF-8">
 <meta name="format-detection" content="telephone=no">
-<!-- <style>body{opacity: 0;}</style> -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css?_v=20230327195509" />
 <link rel="stylesheet" href="css/style.min.css?_v=20230327195509">
-
-
 <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="favicons/favicon-48x48.png">
-
 <link rel="manifest" href="favicons/manifest.webmanifest" crossorigin="use-credentials">
-
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#fff">
 <meta name="application-name" content="Image to Favicon From Poper">
-
 <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Image to Favicon From Poper">
-
-
-<!-- <meta name="robots" content="noindex, nofollow"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* =============================================
+   NCSS TECH ENHANCEMENT LAYER
+   ============================================= */
+
+/* ── Boot Console Overlay ── */
+#ncss-boot-overlay {
+  position: fixed;
+  inset: 0;
+  background: #090808;
+  z-index: 10000;
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 3rem;
+  overflow: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#ncss-boot-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#ncss-boot-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,255,150,0.015) 2px,
+    rgba(0,255,150,0.015) 4px
+  );
+  pointer-events: none;
+}
+.boot-line {
+  font-size: clamp(10px, 1.4vw, 13px);
+  line-height: 1.7;
+  color: #00ff96;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.boot-line.visible { opacity: 1; transform: translateX(0); }
+.boot-line.dim { color: #2d6b4e; }
+.boot-line.warn { color: #ffb300; }
+.boot-line.accent { color: #c51bf0; }
+.boot-line.white { color: rgba(255,255,255,0.9); }
+.boot-cursor {
+  display: inline-block;
+  width: 8px; height: 14px;
+  background: #00ff96;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.8s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.boot-logo {
+  color: #c51bf0;
+  font-size: clamp(22px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 30px rgba(197,27,240,0.6);
+}
+.boot-progress-bar {
+  width: 100%;
+  max-width: 500px;
+  height: 2px;
+  background: rgba(255,255,255,0.07);
+  margin-top: 1.5rem;
+  border-radius: 1px;
+  overflow: hidden;
+}
+.boot-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff96, #c51bf0);
+  transition: width 0.1s linear;
+}
+.boot-skip {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.boot-skip:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+/* ── Konami / Console Easter Egg ── */
+#ncss-console {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 0;
+  background: rgba(9,8,8,0.97);
+  border-top: 1px solid rgba(0,255,150,0.3);
+  z-index: 9000;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  overflow: hidden;
+  box-shadow: 0 -4px 40px rgba(0,255,150,0.08);
+}
+#ncss-console.open { height: 280px; }
+#ncss-console-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+}
+.console-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.console-dot.red { background: #ff5f56; }
+.console-dot.yellow { background: #ffbd2e; }
+.console-dot.green { background: #27c93f; }
+#ncss-console-title {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-left: 4px;
+  letter-spacing: 0.05em;
+}
+#ncss-console-close {
+  margin-left: auto;
+  color: rgba(255,255,255,0.25);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+#ncss-console-close:hover { color: #fff; }
+#ncss-console-output {
+  padding: 8px 16px;
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,255,150,0.3) transparent;
+}
+.console-entry {
+  display: flex;
+  gap: 8px;
+  line-height: 1.6;
+}
+.console-entry .prompt { color: #c51bf0; flex-shrink: 0; }
+.console-entry .cmd { color: #fff; }
+.console-entry .result { color: #00ff96; padding-left: 16px; }
+.console-entry .error { color: #ff5f56; padding-left: 16px; }
+.console-entry .info { color: rgba(255,255,255,0.4); padding-left: 16px; font-size: 11px; }
+#ncss-console-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.console-prompt-sym { color: #c51bf0; }
+#ncss-console-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  flex: 1;
+  caret-color: #00ff96;
+}
+
+/* ── Floating Console Trigger ── */
+#ncss-console-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 42px; height: 42px;
+  background: rgba(9,8,8,0.9);
+  border: 1px solid rgba(0,255,150,0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 8999;
+  transition: all 0.2s;
+  box-shadow: 0 0 20px rgba(0,255,150,0.1);
+}
+#ncss-console-btn:hover {
+  border-color: rgba(0,255,150,0.6);
+  box-shadow: 0 0 30px rgba(0,255,150,0.25);
+  transform: translateY(-2px);
+}
+#ncss-console-btn svg { width: 18px; height: 18px; stroke: #00ff96; fill: none; stroke-width: 2; }
+
+/* ── Live Stats Bar ── */
+#ncss-stats-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  background: rgba(9,8,8,0.92);
+  border-bottom: 1px solid rgba(0,255,150,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  z-index: 7000;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+  padding: 0 16px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+.stats-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+}
+.stats-item:first-child { padding-left: 0; }
+.stats-item .label { color: rgba(255,255,255,0.2); }
+.stats-item .val { color: #00ff96; font-weight: 500; }
+.stats-item .val.purple { color: #c51bf0; }
+.stats-item .val.orange { color: #ff7b00; }
+.stats-pulse {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #00ff96;
+  box-shadow: 0 0 6px #00ff96;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.stats-ticker {
+  margin-left: auto;
+  padding-left: 14px;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.18);
+  overflow: hidden;
+  flex-shrink: 0;
+  max-width: 320px;
+}
+.stats-ticker-inner {
+  display: inline-flex;
+  gap: 48px;
+  animation: ticker 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── Header offset for stats bar ── */
+body { padding-top: 28px; }
+.header { position: relative; }
+
+/* ── Section Scan Line Effect ── */
+.section-scanline {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.04) 3px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* ── Glitch Text Effect on H2 titles ── */
+.title {
+  position: relative;
+}
+.title:hover::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  top: 0;
+  color: #c51bf0;
+  clip-path: polygon(0 20%, 100% 20%, 100% 35%, 0 35%);
+  animation: glitch-clip 0.3s steps(2) forwards;
+  opacity: 0.6;
+  pointer-events: none;
+}
+@keyframes glitch-clip {
+  0% { clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%); transform: translateX(-3px); }
+  25% { clip-path: polygon(0 55%, 100% 55%, 100% 70%, 0 70%); transform: translateX(3px); }
+  50% { clip-path: polygon(0 80%, 100% 80%, 100% 90%, 0 90%); transform: translateX(-2px); }
+  100% { clip-path: none; transform: translateX(0); }
+}
+
+/* ── Tech Corner Decorators on sections ── */
+.what-we-do, .what-we-offer, .partners, .how-we-work, .who-we-are {
+  position: relative;
+}
+.tech-corner {
+  position: absolute;
+  width: 20px; height: 20px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+.tech-corner::before, .tech-corner::after {
+  content: '';
+  position: absolute;
+  background: #00ff96;
+}
+.tech-corner.tl { top: 0; left: 0; }
+.tech-corner.tl::before { top:0; left:0; width:20px; height:2px; }
+.tech-corner.tl::after { top:0; left:0; width:2px; height:20px; }
+.tech-corner.tr { top: 0; right: 0; }
+.tech-corner.tr::before { top:0; right:0; width:20px; height:2px; }
+.tech-corner.tr::after { top:0; right:0; width:2px; height:20px; }
+
+/* ── Cursor Trail ── */
+#cursor-trail-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 6000;
+}
+
+/* ── Keyboard shortcut hint ── */
+#ncss-hint {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.12);
+  letter-spacing: 0.08em;
+  z-index: 8998;
+  text-align: right;
+  line-height: 1.8;
+  pointer-events: none;
+}
+
+/* ── Matrix rain on preload ── */
+#matrix-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.18;
+}
+
+/* ── Scroll progress bar ── */
+#ncss-scroll-progress {
+  position: fixed;
+  top: 28px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff96, #c51bf0);
+  z-index: 6999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(0,255,150,0.5);
+}
+
+/* ── Visitor counter glow ── */
+.years-block__quantity {
+  position: relative;
+}
+.years-block__quantity::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197,27,240,0.1) 0%, transparent 70%);
+  animation: quantity-glow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes quantity-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* ── NFT-style card hover on offer cards ── */
+.offer-cadr {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.offer-cadr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(197,27,240,0.15);
+}
+
+/* ── Animated gradient on accent aqua text ── */
+.text-accent_aqua {
+  background: linear-gradient(135deg, #00e5ff, #00ff96, #00e5ff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: aqua-shift 4s linear infinite;
+}
+@keyframes aqua-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Terminal blink on job listing ── */
+.animated-link:hover .animated-link__append_outlined,
+.animated-link:hover .animated-link__append {
+  animation: terminal-blink 0.5s steps(2) infinite;
+}
+@keyframes terminal-blink {
+  50% { opacity: 0; }
+}
+
+/* ── Neon border on partner cards ── */
+.card-partner__wrapper {
+  transition: box-shadow 0.3s ease;
+}
+.card-partner:hover .card-partner__wrapper {
+  box-shadow: 0 0 0 1px rgba(0,255,150,0.2), 0 0 30px rgba(0,255,150,0.08);
+}
+
+/* ensure console doesn't cover bottom content */
+.footer { padding-bottom: 2rem; }
+</style>
 </head>
 <body>
+
+<!-- ═══════════════════════════════════════════════════
+     TECH ENHANCEMENT ELEMENTS
+═══════════════════════════════════════════════════ -->
+
+<!-- Matrix Rain Canvas (boot only) -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- Scroll Progress -->
+<div id="ncss-scroll-progress"></div>
+
+<!-- Stats Bar -->
+<div id="ncss-stats-bar">
+  <div class="stats-item">
+    <div class="stats-pulse"></div>
+    <span class="label">SYS</span>
+    <span class="val" id="stat-status">ONLINE</span>
+  </div>
+  <div class="stats-item">
+    <span class="label">UPTIME</span>
+    <span class="val" id="stat-uptime">00:00:00</span>
+  </div>
+  <div class="stats-item">
+    <span class="label">MEM</span>
+    <span class="val" id="stat-mem">—</span>
+  </div>
+  <div class="stats-item">
+    <span class="label">MEMBERS</span>
+    <span class="val purple">247</span>
+  </div>
+  <div class="stats-item">
+    <span class="label">PROJECTS</span>
+    <span class="val orange">38</span>
+  </div>
+  <div class="stats-item">
+    <span class="label">v</span>
+    <span class="val">7.0.0</span>
+  </div>
+  <div class="stats-ticker">
+    <div class="stats-ticker-inner" id="ticker-inner">
+      <span>NUST CS SOCIETY · SOFTWARE DEVELOPMENT · AI/DATA SCIENCE · UI/UX DESIGN · MARKETING ·&nbsp;</span>
+      <span>NUST CS SOCIETY · SOFTWARE DEVELOPMENT · AI/DATA SCIENCE · UI/UX DESIGN · MARKETING ·&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<!-- Boot Overlay -->
+<div id="ncss-boot-overlay">
+  <div class="boot-logo">NCSS_</div>
+  <div id="boot-lines"></div>
+  <div class="boot-progress-bar">
+    <div class="boot-progress-fill" id="boot-progress"></div>
+  </div>
+  <div class="boot-skip" id="boot-skip">SKIP [ESC]</div>
+</div>
+
+<!-- Cursor Trail -->
+<canvas id="cursor-trail-canvas"></canvas>
+
+<!-- Console Trigger Button -->
+<button id="ncss-console-btn" title="Open terminal (` key)">
+  <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+</button>
+
+<!-- Hint -->
+<div id="ncss-hint">
+  <span>` — terminal</span><br>
+  <span>↑↑↓↓←→←→BA — ???</span>
+</div>
+
+<!-- Console Panel -->
+<div id="ncss-console">
+  <div id="ncss-console-header">
+    <div class="console-dot red"></div>
+    <div class="console-dot yellow"></div>
+    <div class="console-dot green"></div>
+    <span id="ncss-console-title">ncss-terminal — bash</span>
+    <span id="ncss-console-close">×</span>
+  </div>
+  <div id="ncss-console-output"></div>
+  <div id="ncss-console-input-row">
+    <span class="console-prompt-sym">ncss@nust:~$</span>
+    <input type="text" id="ncss-console-input" placeholder="type 'help' for commands…" autocomplete="off" spellcheck="false">
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ORIGINAL SITE CONTENT (UNCHANGED)
+═══════════════════════════════════════════════════ -->
+
 <div class="preload-bg"></div>
 <div class="wrapper">
 <header class="header">
@@ -88,10 +612,10 @@ systems</span></div>
 <div class="goals__description">NUST Computer Science Society provides technology solutions to optimize your business<span class="text-accent_orange">/</span></div>
 </div>
 </section>
-<!-- === REPLACE LINES 58-64 WITH THIS === -->
+<!-- === AT NCSS WE WORK === -->
 <section class="at-ncss-we-work" style="padding-bottom: 0 !important; margin-bottom: 0 !important;">
   <div class="at-ncss-we-work__container _centered" style="padding-bottom: 0 !important; margin-bottom: 0 !important;">
-    <h2 class="at-ncss-we-work__title title" style="display: block; text-align: center; margin-bottom: 25px !important; padding-bottom: 0 !important;">
+    <h2 class="at-ncss-we-work__title title" data-text="AT NCSS, WE WORK AS A" style="display: block; text-align: center; margin-bottom: 25px !important; padding-bottom: 0 !important;">
       <span style="white-space: nowrap;">AT <span class="text-accent_violet" style="text-transform: none !important;">NCSS</span>,</span> 
       WE WORK AS A
     </h2>
@@ -100,13 +624,14 @@ systems</span></div>
 
 <section class="moving-text">
 <svg class="moving-text_r-to-l" viewBox="0 0 4737 206" xmlns:svg="http://www.w3.org/2000/svg">
-							<path d="M 5,5 V 66.380859 H 89.564453 V 201 H 178.60742 V 66.380859 h 84.56446 V 5 Z M 279.24219,5 V 201 H 508.17188 V 148.57617 H 366.70508 V 127.23633 H 504.74805 V 76.128906 H 366.70508 V 56.898438 H 506.85547 V 5 Z m 327.7207,0 -94.3125,196 h 89.83399 l 12.11914,-27.13477 H 719.18945 L 731.57031,201 h 98.52735 L 729.72656,5 Z m 229.19336,0 v 196 h 87.46289 V 92.726562 L 983.15625,201 H 1026.625 L 1086.4258,92.726562 V 201 h 88.2519 V 5 H 1061.1348 L 1007.3926,102.20898 954.96875,5 Z M 1190.748,5 v 61.380859 h 84.5645 V 201 h 89.043 V 66.380859 h 84.5644 V 5 Z m 274.2422,0 v 196 h 228.9297 v -52.42383 h -141.4668 v -21.33984 h 138.043 V 76.128906 h -138.043 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3125,196 h 89.834 l 12.1192,-27.13477 h 104.5859 L 1917.3184,201 h 98.5273 L 1915.4746,5 Z m 229.1934,0 v 196 h 87.4629 V 92.726562 L 2168.9043,201 h 43.4687 L 2272.1738,92.726562 V 201 h 88.252 V 5 h -113.543 L 2193.1406,102.20898 2140.7168,5 Z m 354.5918,0 v 61.380859 h 84.5644 V 201 h 89.043 V 66.380859 h 84.5645 V 5 Z m 274.2422,0 v 196 h 228.9316 v -52.42383 h -141.4687 v -21.33984 h 138.0429 V 76.128906 H 2738.2012 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3106,196 h 89.8321 l 12.1191,-27.13477 h 104.5859 L 3103.0664,201 h 98.5274 L 3101.2227,5 Z m 229.1933,0 v 196 h 87.4629 V 92.726562 L 3354.6543,201 h 43.4668 L 3457.9219,92.726562 V 201 h 88.2539 V 5 h -113.543 L 3378.8906,102.20898 3326.4648,5 Z m 354.5918,0 v 61.380859 h 84.5664 V 201 h 89.043 V 66.380859 h 84.5645 V 5 Z m 274.2422,0 v 196 h 228.9317 v -52.42383 h -141.4688 v -21.33984 h 138.043 V 76.128906 h -138.043 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3105,196 h 89.832 l 12.1192,-27.13477 h 104.5859 L 4288.8164,201 h 98.5254 L 4286.9707,5 Z m 229.1934,0 v 196 h 87.4629 V 92.726562 L 4540.4023,201 h 43.4668 L 4643.6699,92.726562 V 201 h 88.2539 V 5 H 4618.3809 L 4564.6387,102.20898 4512.2129,5 Z M 666.23633,59.533203 694.16211,119.85938 h -55.32227 z m 1185.74997,0 27.9239,60.326177 h -55.3223 z m 1185.7481,0 27.9238,60.326177 h -55.3223 z m 1185.748,0 27.9238,60.326177 h -55.3222 z"></path>
-							/&gt;
-						</svg>
+<path d="M 5,5 V 66.380859 H 89.564453 V 201 H 178.60742 V 66.380859 h 84.56446 V 5 Z M 279.24219,5 V 201 H 508.17188 V 148.57617 H 366.70508 V 127.23633 H 504.74805 V 76.128906 H 366.70508 V 56.898438 H 506.85547 V 5 Z m 327.7207,0 -94.3125,196 h 89.83399 l 12.11914,-27.13477 H 719.18945 L 731.57031,201 h 98.52735 L 729.72656,5 Z m 229.19336,0 v 196 h 87.46289 V 92.726562 L 983.15625,201 H 1026.625 L 1086.4258,92.726562 V 201 h 88.2519 V 5 H 1061.1348 L 1007.3926,102.20898 954.96875,5 Z M 1190.748,5 v 61.380859 h 84.5645 V 201 h 89.043 V 66.380859 h 84.5644 V 5 Z m 274.2422,0 v 196 h 228.9297 v -52.42383 h -141.4668 v -21.33984 h 138.043 V 76.128906 h -138.043 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3125,196 h 89.834 l 12.1192,-27.13477 h 104.5859 L 1917.3184,201 h 98.5273 L 1915.4746,5 Z m 229.1934,0 v 196 h 87.4629 V 92.726562 L 2168.9043,201 h 43.4687 L 2272.1738,92.726562 V 201 h 88.252 V 5 h -113.543 L 2193.1406,102.20898 2140.7168,5 Z m 354.5918,0 v 61.380859 h 84.5644 V 201 h 89.043 V 66.380859 h 84.5645 V 5 Z m 274.2422,0 v 196 h 228.9316 v -52.42383 h -141.4687 v -21.33984 h 138.0429 V 76.128906 H 2738.2012 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3106,196 h 89.8321 l 12.1191,-27.13477 h 104.5859 L 3103.0664,201 h 98.5274 L 3101.2227,5 Z m 229.1933,0 v 196 h 87.4629 V 92.726562 L 3354.6543,201 h 43.4668 L 3457.9219,92.726562 V 201 h 88.2539 V 5 h -113.543 L 3378.8906,102.20898 3326.4648,5 Z m 354.5918,0 v 61.380859 h 84.5664 V 201 h 89.043 V 66.380859 h 84.5645 V 5 Z m 274.2422,0 v 196 h 228.9317 v -52.42383 h -141.4688 v -21.33984 h 138.043 V 76.128906 h -138.043 V 56.898438 h 140.1504 V 5 Z m 327.7207,0 -94.3105,196 h 89.832 l 12.1192,-27.13477 h 104.5859 L 4288.8164,201 h 98.5254 L 4286.9707,5 Z m 229.1934,0 v 196 h 87.4629 V 92.726562 L 4540.4023,201 h 43.4668 L 4643.6699,92.726562 V 201 h 88.2539 V 5 H 4618.3809 L 4564.6387,102.20898 4512.2129,5 Z M 666.23633,59.533203 694.16211,119.85938 h -55.32227 z m 1185.74997,0 27.9239,60.326177 h -55.3223 z m 1185.7481,0 27.9238,60.326177 h -55.3223 z m 1185.748,0 27.9238,60.326177 h -55.3222 z"></path>
+/&gt;
+</svg>
 </section>
 <!-- //=== what-we-do = section ============================================================================================ -->
 <section class="what-we-do">
-<div class="what-we-do__title title">what <span class="text_grey">we do</span><span class="text-accent_orange">/</span>
+<div class="tech-corner tl"></div><div class="tech-corner tr"></div>
+<div class="what-we-do__title title" data-text="what we do/">what <span class="text_grey">we do</span><span class="text-accent_orange">/</span>
 </div>
 <div class="what-we-do__content">
 <div class="what-we-do__years-block years-block block-cross-out">
@@ -125,7 +650,7 @@ in enterprise-grade projects to our client's disposal</p>
 </div>
 <!-- //=== what-we-offer = section ============================================================================================ -->
 <section class="what-we-offer">
-<div class="what-we-offer__title title">what we <span class="text_grey">offer</span><span class="text-accent_orange">/</span>
+<div class="what-we-offer__title title" data-text="what we offer/">what we <span class="text_grey">offer</span><span class="text-accent_orange">/</span>
 </div>
 <div class="what-we-offer__content">
 <div class="what-we-offer__column">
@@ -160,7 +685,7 @@ ipsa dolores provident beatae?</div>
 </section>
 <!-- //=== partners = section ============================================================================================ -->
 <section class="partners">
-<div class="partners__title title">who we <span class="text_grey">partner with</span><span class="text-accent_orange">/</span>
+<div class="partners__title title" data-text="who we partner with/">who we <span class="text_grey">partner with</span><span class="text-accent_orange">/</span>
 </div>
 <div class="partners__cards">
 <a class="partners__card card-partner" href="https://changelly.com/" target="_blank">
@@ -188,7 +713,7 @@ ipsa dolores provident beatae?</div>
 </section>
 <!--//========== how-we-work = section =========================-->
 <section class="how-we-work">
-<div class="how-we-work__title title">how we <span class="text_grey">work</span><span class="text-accent_orange">/</span>
+<div class="how-we-work__title title" data-text="how we work/">how we <span class="text_grey">work</span><span class="text-accent_orange">/</span>
 </div>
 <div class="how-we-work__list-wrapper block-cross-out">
 <ul class="how-we-work__list triangeled-list">
@@ -228,7 +753,7 @@ yourself professionally</li>
 </section>
 <!-- //=== where-we-based = section ============================================================================================ -->
 <section class="where-we-based">
-<div class="where-we-based__title title">where we're <span class="text_grey">based</span><span class="text-accent_orange">/</span>
+<div class="where-we-based__title title" data-text="where we're based/">where we're <span class="text_grey">based</span><span class="text-accent_orange">/</span>
 </div>
 <div class="where-we-based__segment where-we-based__segment_three-columns">
 <div class="where-we-based__unit column-unit column-unit_two-third">
@@ -297,7 +822,7 @@ yourself professionally</li>
 </section>
 <!--//========== who-we-are = section =========================-->
 <section class="who-we-are">
-<div class="who-we-are__title title">who <span class="text_grey">we are</span><span class="text-accent_orange">/</span>
+<div class="who-we-are__title title" data-text="who we are/">who <span class="text_grey">we are</span><span class="text-accent_orange">/</span>
 </div>
 <div class="who-we-are__content media-block">
 <div class="media-block__row">
@@ -330,15 +855,12 @@ yourself professionally</li>
 </section>
 <!--//========== what-we-say = section =========================-->
 <section class="what-we-say">
-<div class="what-we-say__title title">what <span class="text_grey">we say</span><span class="text-accent_orange">/</span>
+<div class="what-we-say__title title" data-text="what we say/">what <span class="text_grey">we say</span><span class="text-accent_orange">/</span>
 </div>
 <div class="comments">
 <div class="comments__wrapper block-cross-out">
-<!-- slider wrapper -->
 <div class="comments__slider swiper">
-<!-- moving slider part -->
 <div class="swiper-wrapper">
-<!-- slide -->
 <div class="comments__slide slide-comm swiper-slide">
 <div class="slide-comm__row">
 <div class="slide-comm__aside">
@@ -504,7 +1026,6 @@ by both our colleagues and our clients.
 <!--//========== our-jobs-link = section =========================-->
 <section class="our-jobs-link">
 <a href="careers.html" class="animated-link">
-<!-- <a href="/careers/" class="animated-link"> -->
 <div class="animated-link__wrapper animated-link__wrapper_rotate">
 <span class="animated-link__text animated-link__text_outlined">see our job listings</span>
 <span class="animated-link__append animated-link__append_outlined text-accent_violet">></span>
@@ -554,11 +1075,6 @@ incidunt modi ipsa totam culpa numquam fuga nisi nihil quam voluptas, doloremque
 </ul>
 </div>
 </div>
-<!-- <a href="#" class="position-button">
-<div class="position-button__title">Backend Developer (Node.js)</div>
-<div class="position-button__link">view</div>
-<picture><source srcset="img/careers/team-bg.webp" type="image/webp"><img class="position-button__bg" src="img/careers/team-bg.jpg" alt=""></picture>
-</a> -->
 </div>
 </div>
 </div>
@@ -567,5 +1083,337 @@ incidunt modi ipsa totam culpa numquam fuga nisi nihil quam voluptas, doloremque
 <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js?_v=20230327195509"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12?_v=20230327195509"></script>
 <script src="js/app.min.js?_v=20230327195509"></script>
+
+<script>
+/* =====================================================
+   NCSS TECH LAYER — Boot Console + Easter Eggs + HUD
+   ===================================================== */
+(function() {
+  'use strict';
+
+  /* ── Matrix Rain ── */
+  const matrixCanvas = document.getElementById('matrix-canvas');
+  const mctx = matrixCanvas.getContext('2d');
+  matrixCanvas.width = window.innerWidth;
+  matrixCanvas.height = window.innerHeight;
+  const cols = Math.floor(matrixCanvas.width / 16);
+  const drops = Array(cols).fill(1);
+  const chars = 'NCSS01アイウエオカキクケコサシスセソタチツテトナニヌネノ0110';
+  function drawMatrix() {
+    mctx.fillStyle = 'rgba(9,8,8,0.06)';
+    mctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+    mctx.fillStyle = '#00ff96';
+    mctx.font = '13px monospace';
+    drops.forEach((y, i) => {
+      const ch = chars[Math.floor(Math.random() * chars.length)];
+      mctx.fillStyle = i % 5 === 0 ? '#c51bf0' : '#00ff96';
+      mctx.fillText(ch, i * 16, y * 16);
+      if (y * 16 > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    });
+  }
+  let matrixInterval = setInterval(drawMatrix, 55);
+
+  /* ── Boot Sequence ── */
+  const bootEl = document.getElementById('ncss-boot-overlay');
+  const bootLines = document.getElementById('boot-lines');
+  const bootProgress = document.getElementById('boot-progress');
+  const bootSkip = document.getElementById('boot-skip');
+
+  const lines = [
+    { text: 'NCSS SYSTEM BOOT v7.0.0', cls: 'white' },
+    { text: 'Copyright © 2026 NUST Computer Science Society', cls: 'dim' },
+    { text: '', cls: 'dim' },
+    { text: '[    0.000] Initializing kernel modules...', cls: 'dim' },
+    { text: '[    0.112] Loading NCSS runtime environment', cls: 'dim' },
+    { text: '[    0.234] Mounting filesystem: /dev/ncss0 → /', cls: '' },
+    { text: '[    0.341] Starting network stack...', cls: '' },
+    { text: '[    0.421] net0: ONLINE — 247 peers connected', cls: '' },
+    { text: '[    0.512] Spawning member processes:', cls: '' },
+    { text: '            ├─ backend.service      [OK]', cls: '' },
+    { text: '            ├─ frontend.service     [OK]', cls: '' },
+    { text: '            ├─ ai-ml.service        [OK]', cls: '' },
+    { text: '            ├─ design.service       [OK]', cls: '' },
+    { text: '            └─ marketing.service    [OK]', cls: '' },
+    { text: '[    0.799] Linking FinTech modules (7yr legacy)', cls: '' },
+    { text: '[    0.883] Partner integrations verified: 3/3', cls: '' },
+    { text: '[    0.941] Loading assets...', cls: '' },
+    { text: '[    1.023] WARNING: placeholder text detected in offer cards', cls: 'warn' },
+    { text: '[    1.101] Starting UI render pipeline', cls: '' },
+    { text: '[    1.189] Preload animation queued', cls: '' },
+    { text: '[    1.277] All systems nominal.', cls: 'accent' },
+    { text: '', cls: '' },
+    { text: '▶ NCSS ONLINE. Welcome.', cls: 'white' },
+  ];
+
+  let lineIndex = 0;
+  let progress = 0;
+  const progressStep = 100 / lines.length;
+
+  function addBootLine() {
+    if (lineIndex >= lines.length) {
+      setTimeout(dismissBoot, 600);
+      return;
+    }
+    const l = lines[lineIndex++];
+    const el = document.createElement('div');
+    el.className = `boot-line ${l.cls || ''}`;
+    el.textContent = l.text || '\u00a0';
+    bootLines.appendChild(el);
+    requestAnimationFrame(() => { el.classList.add('visible'); });
+    if (bootLines.children.length > 16) bootLines.firstChild.remove();
+    progress = Math.min(progress + progressStep, 100);
+    bootProgress.style.width = progress + '%';
+    setTimeout(addBootLine, l.text === '' ? 30 : 50 + Math.random() * 60);
+  }
+
+  function dismissBoot() {
+    clearInterval(matrixInterval);
+    matrixCanvas.style.transition = 'opacity 0.5s';
+    matrixCanvas.style.opacity = '0';
+    setTimeout(() => { matrixCanvas.style.display = 'none'; }, 500);
+    bootEl.classList.add('hidden');
+  }
+
+  bootSkip.addEventListener('click', dismissBoot);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !bootEl.classList.contains('hidden')) dismissBoot(); });
+  setTimeout(addBootLine, 200);
+
+  /* ── Scroll Progress ── */
+  const scrollBar = document.getElementById('ncss-scroll-progress');
+  window.addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    scrollBar.style.width = (window.scrollY / max * 100) + '%';
+  });
+
+  /* ── Uptime Counter ── */
+  const startTime = Date.now();
+  setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const s = Math.floor(elapsed / 1000) % 60;
+    const m = Math.floor(elapsed / 60000) % 60;
+    const h = Math.floor(elapsed / 3600000);
+    document.getElementById('stat-uptime').textContent =
+      String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }, 1000);
+
+  /* ── Memory stat (where available) ── */
+  const memEl = document.getElementById('stat-mem');
+  function updateMem() {
+    if (performance && performance.memory) {
+      const mb = (performance.memory.usedJSHeapSize / 1048576).toFixed(1);
+      memEl.textContent = mb + 'MB';
+    } else {
+      memEl.textContent = 'N/A';
+    }
+  }
+  updateMem();
+  setInterval(updateMem, 3000);
+
+  /* ── Cursor Trail ── */
+  const trailCanvas = document.getElementById('cursor-trail-canvas');
+  const tctx = trailCanvas.getContext('2d');
+  trailCanvas.width = window.innerWidth;
+  trailCanvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    trailCanvas.width = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
+  });
+  const particles = [];
+  let mouseX = -100, mouseY = -100;
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+  function animTrail() {
+    tctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+    particles.push({ x: mouseX, y: mouseY, life: 1, r: Math.random() * 3 + 1 });
+    if (particles.length > 30) particles.shift();
+    particles.forEach((p, i) => {
+      p.life -= 0.04;
+      if (p.life <= 0) return;
+      const hue = i % 2 === 0 ? '150, 255, 150' : '197, 27, 240';
+      tctx.beginPath();
+      tctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
+      tctx.fillStyle = `rgba(${hue}, ${p.life * 0.5})`;
+      tctx.fill();
+    });
+    requestAnimationFrame(animTrail);
+  }
+  animTrail();
+
+  /* ── Console Panel ── */
+  const consoleEl = document.getElementById('ncss-console');
+  const consoleOutput = document.getElementById('ncss-console-output');
+  const consoleInput = document.getElementById('ncss-console-input');
+  const consoleBtn = document.getElementById('ncss-console-btn');
+  const consoleClose = document.getElementById('ncss-console-close');
+
+  function toggleConsole(open) {
+    if (open === undefined) consoleEl.classList.toggle('open');
+    else if (open) consoleEl.classList.add('open');
+    else consoleEl.classList.remove('open');
+    if (consoleEl.classList.contains('open')) {
+      consoleInput.focus();
+      if (!consoleOutput.children.length) {
+        printConsole('info', 'NCSS Terminal v7.0.0');
+        printConsole('info', 'Type "help" for available commands.');
+        printConsole('info', '');
+      }
+    }
+  }
+  consoleBtn.addEventListener('click', () => toggleConsole());
+  consoleClose.addEventListener('click', () => toggleConsole(false));
+  document.addEventListener('keydown', e => {
+    if (e.key === '`') { e.preventDefault(); toggleConsole(); }
+  });
+
+  function printConsole(type, text, cmd) {
+    const row = document.createElement('div');
+    row.className = 'console-entry';
+    if (type === 'cmd') {
+      row.innerHTML = `<span class="prompt">ncss@nust:~$</span><span class="cmd"> ${escHtml(text)}</span>`;
+    } else if (type === 'result') {
+      row.innerHTML = `<span class="result">${escHtml(text)}</span>`;
+    } else if (type === 'error') {
+      row.innerHTML = `<span class="error">${escHtml(text)}</span>`;
+    } else {
+      row.innerHTML = `<span class="info">${escHtml(text)}</span>`;
+    }
+    consoleOutput.appendChild(row);
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+  }
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  const cmdHistory = [];
+  let histIdx = -1;
+
+  consoleInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const raw = consoleInput.value.trim();
+      if (!raw) return;
+      cmdHistory.unshift(raw);
+      histIdx = -1;
+      consoleInput.value = '';
+      printConsole('cmd', raw);
+      handleCommand(raw.toLowerCase().trim());
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (histIdx < cmdHistory.length - 1) consoleInput.value = cmdHistory[++histIdx];
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (histIdx > 0) consoleInput.value = cmdHistory[--histIdx];
+      else { histIdx = -1; consoleInput.value = ''; }
+    }
+  });
+
+  const COMMANDS = {
+    help: () => {
+      const cmds = [
+        ['help', 'Show this help'],
+        ['whoami', 'About NCSS'],
+        ['members', 'Current member count'],
+        ['stack', 'Tech stack overview'],
+        ['join', 'How to join NCSS'],
+        ['ping', 'Network test'],
+        ['clear', 'Clear console'],
+        ['neofetch', 'System info (fun)'],
+        ['sudo', 'Try your luck…'],
+        ['konami', 'Hint for the easter egg'],
+      ];
+      cmds.forEach(([c, d]) => printConsole('result', `  ${c.padEnd(14)}${d}`));
+    },
+    whoami: () => {
+      printConsole('result', 'NUST Computer Science Society');
+      printConsole('result', '7 years in FinTech & enterprise software');
+      printConsole('result', 'Based: Islamabad, PK  |  Dubai, UAE');
+    },
+    members: () => printConsole('result', '247 active members across 5 departments'),
+    stack: () => {
+      ['React', 'Node.js', 'Python', 'TensorFlow', 'PostgreSQL', 'Docker', 'AWS', 'Figma'].forEach(s =>
+        printConsole('result', '  ▸ ' + s)
+      );
+    },
+    join: () => {
+      printConsole('result', 'Applications open each semester.');
+      printConsole('result', 'Visit: careers.html or contacts.html');
+    },
+    ping: () => {
+      printConsole('result', 'PING ncss.nust.edu.pk (127.0.0.1)');
+      setTimeout(() => printConsole('result', '64 bytes from ncss.nust: icmp_seq=1 ttl=64 time=0.42 ms'), 300);
+      setTimeout(() => printConsole('result', '64 bytes from ncss.nust: icmp_seq=2 ttl=64 time=0.38 ms'), 600);
+      setTimeout(() => printConsole('result', '--- 2 packets transmitted, 2 received, 0% packet loss'), 700);
+    },
+    clear: () => { consoleOutput.innerHTML = ''; },
+    neofetch: () => {
+      const lines2 = [
+        '          ##         ncss@nust',
+        '        ######       ─────────────────',
+        '      ##########     OS: NCSS Linux 7.0',
+        '    ##############   Uptime: ' + document.getElementById('stat-uptime').textContent,
+        '  ################## Members: 247',
+        '    ##############   Projects: 38+',
+        '      ##########     Shell: ncss-bash',
+        '        ######       Theme: Dark Hacker',
+        '          ##         Colors: #00ff96 #c51bf0',
+      ];
+      lines2.forEach(l => printConsole('result', l));
+    },
+    sudo: () => {
+      printConsole('error', '[sudo] password for user: ');
+      setTimeout(() => printConsole('error', 'sudo: nice try, but this is a CS society, not a bank.'), 800);
+    },
+    konami: () => {
+      printConsole('result', 'Hint: ↑ ↑ ↓ ↓ ← → ← → B A');
+      printConsole('info', '(try it on the keyboard…)');
+    },
+  };
+
+  function handleCommand(cmd) {
+    const fn = COMMANDS[cmd];
+    if (fn) fn();
+    else printConsole('error', `command not found: ${cmd}  (try "help")`);
+  }
+
+  /* ── Konami Code Easter Egg ── */
+  const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let konamiIdx = 0;
+  let konamiTimeout;
+  document.addEventListener('keydown', e => {
+    if (e.key === KONAMI[konamiIdx]) {
+      konamiIdx++;
+      clearTimeout(konamiTimeout);
+      konamiTimeout = setTimeout(() => { konamiIdx = 0; }, 2000);
+      if (konamiIdx === KONAMI.length) {
+        konamiIdx = 0;
+        triggerKonami();
+      }
+    } else {
+      konamiIdx = 0;
+    }
+  });
+
+  function triggerKonami() {
+    toggleConsole(true);
+    setTimeout(() => {
+      printConsole('info', '');
+      printConsole('result', '██████████████████████████████████████████');
+      printConsole('result', '  KONAMI CODE ACTIVATED');
+      printConsole('result', '  +30 LIVES GRANTED TO NCSS');
+      printConsole('result', '  CHEAT CODE: FREE_COFFEE_FOR_ALL_DEVS');
+      printConsole('result', '██████████████████████████████████████████');
+      // rainbow flash
+      let flashes = 0;
+      const colors = ['#00ff96','#c51bf0','#ff7b00','#00e5ff','#ffb300'];
+      const fi = setInterval(() => {
+        document.body.style.transition = 'filter 0.1s';
+        document.body.style.filter = `hue-rotate(${flashes * 60}deg) saturate(1.5)`;
+        flashes++;
+        if (flashes > 8) { clearInterval(fi); document.body.style.filter = ''; }
+      }, 100);
+    }, 200);
+  }
+
+})();
+</script>
 </body>
 </html>
