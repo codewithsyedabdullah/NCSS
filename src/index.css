@@ -1,10 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #EFF4FF;
-  --color-neon: #6FFF00;
+  --color-cream: #e5e5e5;
+  --color-neon: #39ff14;
+  --color-orange: #ff4500;
+  --color-bg: #010828;
+  --color-bg-alt: #0a0b0e;
+  --color-cyan: #67e8f9;
+  --color-pink: #f472b6;
+  --color-yellow: #fcd34d;
   --font-grotesk: "Anton", sans-serif;
   --font-condiment: "Condiment", cursive;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 * {
@@ -15,13 +23,21 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   background: #010828;
-  color: #EFF4FF;
-  font-family: monospace, monospace;
+  color: #e5e5e5;
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(57, 255, 20, 0.3);
+  color: #e5e5e5;
 }
 
 .liquid-glass {
@@ -49,4 +65,28 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+.terminal-border {
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.2), inset 0 0 3px rgba(57, 255, 20, 0.1);
+}
+
+.glow-orange {
+  box-shadow: 0 0 8px rgba(255, 69, 0, 0.5), inset 0 0 4px rgba(255, 69, 0, 0.15);
+}
+
+.glow-neon {
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.4), inset 0 0 3px rgba(57, 255, 20, 0.1);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '▊';
+  animation: blink 1s step-end infinite;
+  color: #39ff14;
 }

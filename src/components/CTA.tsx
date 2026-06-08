@@ -22,7 +22,7 @@ const socialLinks = [
     ),
     href: "https://github.com/ncss",
     label: "Github",
-    viewBox: "0 0 24 24",
+    viewBox: "0 24 24",
   },
 ];
 
@@ -34,51 +34,76 @@ export default function CTA() {
         loop
         muted
         playsInline
-        className="w-full h-auto block"
+        className="w-full h-auto block min-h-[clamp(200px,40vw,600px)] object-cover"
         src={CTA_VIDEO}
       />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 bg-[#010828]/50 flex items-center">
         <div className="relative w-full max-w-[1831px] mx-auto px-4 sm:px-6 lg:px-10 lg:pr-[20%] lg:pl-[15%]">
-          <span className="absolute -top-8 sm:-top-12 lg:-top-16 left-4 lg:left-auto font-condiment text-neon text-[17px] sm:text-[36px] md:text-[48px] lg:text-[68px] mix-blend-exclusion normal-case">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[4px] border border-neon/30 mb-4 sm:mb-6 bg-neon/5">
+            <span className="w-2 h-2 rounded-full bg-neon animate-pulse" />
+            <span className="font-mono text-[clamp(8px,1vw,10px)] text-neon uppercase tracking-[2px]">
+              ncss --join
+            </span>
+          </div>
+
+          <span className="block font-condiment text-neon text-[clamp(1rem,3vw,2.5rem)] mix-blend-exclusion normal-case mb-2">
             Go beyond
           </span>
+
           <div className="text-right">
-            <h2 className="font-grotesk text-[16px] sm:text-[32px] md:text-[48px] lg:text-[60px] uppercase text-cream leading-[1.1]">
-              <span className="block mb-4 sm:mb-6 lg:mb-12">JOIN US.</span>
+            <h2 className="font-grotesk text-[clamp(1rem,4vw,3.75rem)] uppercase text-cream leading-[1.1]">
+              <span className="block mb-[clamp(0.5rem,2vw,1rem)]">JOIN US.</span>
               <span className="block">REVEAL WHAT&apos;S HIDDEN.</span>
               <span className="block">DEFINE WHAT&apos;S NEXT.</span>
               <span className="block">FOLLOW THE SIGNAL.</span>
             </h2>
           </div>
-        </div>
-      </div>
 
-      <div
-        className="absolute hidden lg:block"
-        style={{ left: "8%", bottom: "12%" }}
-      >
-        <div className="liquid-glass rounded-[0.5rem] sm:rounded-[0.75rem] lg:rounded-[1.25rem] flex flex-col pointer-events-auto">
-          {socialLinks.map((item, i) => (
-            <a
-              key={item.label}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center justify-center hover:bg-white/10 transition-colors
-                w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem]
-                h-[14vw] sm:h-[3rem] md:h-[3.5rem] lg:h-[4rem]
-                ${i < socialLinks.length - 1 ? "border-b border-white/10" : ""}`}
-              aria-label={item.label}
-            >
-              {item.icon ? (
-                <item.icon size={20} className="text-cream" />
-              ) : (
-                <svg viewBox={item.viewBox} width={20} height={20} fill="currentColor" className="text-cream">
-                  {item.svg}
-                </svg>
-              )}
-            </a>
-          ))}
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 lg:hidden">
+            {socialLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-[clamp(2.5rem,8vw,3.5rem)] h-[clamp(2.5rem,8vw,3.5rem)] rounded-[4px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] transition-colors"
+                aria-label={item.label}
+              >
+                {item.icon ? (
+                  <item.icon size={18} className="text-cream/80" />
+                ) : (
+                  <svg viewBox={item.viewBox} width={18} height={18} fill="currentColor" className="text-cream/80">
+                    {item.svg}
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute hidden lg:block" style={{ left: "8%", bottom: "12%" }}>
+          <div className="rounded-[4px] border border-white/10 bg-[#0a0b0e]/80 backdrop-blur-sm flex flex-col">
+            {socialLinks.map((item, i) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center justify-center hover:bg-white/[0.06] transition-colors
+                  w-[clamp(3rem,12vw,16rem)] h-[clamp(2.5rem,3.5vw,4rem)]
+                  ${i < socialLinks.length - 1 ? "border-b border-white/10" : ""}`}
+                aria-label={item.label}
+              >
+                {item.icon ? (
+                  <item.icon size={20} className="text-cream/80" />
+                ) : (
+                  <svg viewBox={item.viewBox} width={20} height={20} fill="currentColor" className="text-cream/80">
+                    {item.svg}
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
