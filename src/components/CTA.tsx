@@ -24,66 +24,66 @@ const socialLinks = [
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative py-28 sm:py-32 lg:py-40 bg-[#0a0b0e]">
+    <section id="contact" className="relative py-32 sm:py-36 lg:py-48 bg-[#0a0b0e]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <div>
-            <div className="inline-flex items-center gap-2 border border-white/5 bg-white/[0.02] px-3 py-1.5 mb-5">
-              <span className="font-mono text-[clamp(8px,0.55vw,9px)] text-[#666] uppercase tracking-[0.2em]">
+            <div className="inline-flex items-center gap-2 border border-white/5 bg-white/[0.02] px-4 py-2 mb-6">
+              <span className="font-mono text-[clamp(11px,0.65vw,12px)] text-[#666] uppercase tracking-[0.2em]">
                 Get Involved
               </span>
             </div>
-            <h2 className="font-anton text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.2rem,5.5vw,4.5rem)] font-normal mb-6">
+            <h2 className="font-anton text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.2rem,5.5vw,4.5rem)] font-normal mb-8">
               Ready to
               <br />
               <span className="text-accent">Join Us?</span>
             </h2>
-            <p className="font-inter text-[clamp(0.85rem,1vw,1rem)] text-[#999] leading-relaxed max-w-md mb-8 font-normal">
+            <p className="font-inter text-[clamp(1rem,1.1vw,1.15rem)] text-[#999] leading-relaxed max-w-lg mb-10 font-normal">
               Whether you&apos;re a seasoned developer or just starting out, there&apos;s a place for you at NCSS.
               Let&apos;s build something amazing together.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="mailto:info@ncss.edu.pk"
-                className="btn-filled-2 inline-flex items-center gap-2 px-6 py-3.5 text-[clamp(10px,0.7vw,12px)] tracking-[0.12em] uppercase font-inter font-bold glow-accent"
+                className="btn-filled-2 inline-flex items-center gap-2 px-8 sm:px-10 py-4 sm:py-4.5 text-[clamp(12px,0.8vw,14px)] tracking-[0.12em] uppercase font-inter font-bold glow-accent"
               >
                 Contact Us
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={15} />
               </a>
               <a
                 href="careers.html"
-                className="btn-filled inline-flex items-center gap-2 px-6 py-3.5 text-[clamp(10px,0.7vw,12px)] tracking-[0.12em] uppercase font-inter font-bold"
+                className="btn-filled inline-flex items-center gap-2 px-8 sm:px-10 py-4 sm:py-4.5 text-[clamp(12px,0.8vw,14px)] tracking-[0.12em] uppercase font-inter font-bold"
               >
                 Open Positions
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={15} />
               </a>
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2 border border-white/5 bg-white/[0.02] px-3 py-1.5 mb-2 self-start">
-              <span className="font-mono text-[clamp(8px,0.55vw,9px)] text-[#666] uppercase tracking-[0.2em]">
+          <div className="flex flex-col gap-6">
+            <div className="inline-flex items-center gap-2 border border-white/5 bg-white/[0.02] px-4 py-2 self-start">
+              <span className="font-mono text-[clamp(11px,0.65vw,12px)] text-[#666] uppercase tracking-[0.2em]">
                 Connect
               </span>
             </div>
-            <div className="border border-white/5 bg-white/[0.02] p-6 sm:p-8">
-              <p className="font-inter text-[clamp(0.8rem,0.85vw,0.9rem)] text-[#999] mb-4 font-normal">
+            <div className="border border-white/5 bg-white/[0.02] p-8 sm:p-10">
+              <p className="font-inter text-[clamp(0.9rem,0.95vw,1rem)] text-[#999] mb-5 font-normal">
                 Follow us on social media for updates on events, workshops, and more.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-4">
                 {socialLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-white/10 hover:border-white/30 px-4 py-3 text-[clamp(8px,0.55vw,10px)] tracking-[0.12em] uppercase font-inter font-medium text-white/60 hover:text-white hover:bg-white/[0.04] transition-all"
+                    className="inline-flex items-center gap-2 border border-white/10 hover:border-white/30 px-5 py-3.5 text-[clamp(11px,0.65vw,12px)] tracking-[0.12em] uppercase font-inter font-medium text-white/60 hover:text-white hover:bg-white/[0.04] transition-all"
                     aria-label={link.label}
                   >
                     {link.icon ? (
-                      <link.icon size={13} />
+                      <link.icon size={14} />
                     ) : (
-                      <svg viewBox="0 0 24 24" width={13} height={13} fill="currentColor">
+                      <svg viewBox="0 0 24 24" width={14} height={14} fill="currentColor">
                         {link.svg}
                       </svg>
                     )}
@@ -92,11 +92,11 @@ export default function CTA() {
                 ))}
               </div>
             </div>
-            <div className="border border-white/5 bg-white/[0.02] p-6 sm:p-8">
-              <p className="font-anton text-white text-[clamp(1rem,1.2vw,1.3rem)] uppercase tracking-tight mb-1 font-normal">
+            <div className="border border-white/5 bg-white/[0.02] p-8 sm:p-10">
+              <p className="font-anton text-white text-[clamp(1.2rem,1.4vw,1.5rem)] uppercase tracking-tight mb-1.5 font-normal">
                 NUST Computer Science Society
               </p>
-              <p className="font-mono text-[clamp(8px,0.5vw,10px)] text-[#666] uppercase tracking-[0.08em]">
+              <p className="font-mono text-[clamp(10px,0.6vw,12px)] text-[#666] uppercase tracking-[0.08em]">
                 &copy; {new Date().getFullYear()} NCSS. All rights reserved.
               </p>
             </div>
