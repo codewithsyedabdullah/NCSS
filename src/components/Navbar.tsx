@@ -5,7 +5,8 @@ const links = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
   { label: "Departments", href: "#departments" },
-  { label: "Why NCSS", href: "#why" },
+  { label: "Careers", href: "careers.html", external: true },
+  { label: "Stories", href: "ncssstories.html", external: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -23,13 +24,14 @@ export default function Navbar() {
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
-          {links.map(({ label, href }) => (
+          {links.map(({ label, href, external }) => (
             <a
               key={label}
               href={href}
-              className="font-inter text-[clamp(10px,0.7vw,12px)] text-white/60 hover:text-accent transition-colors tracking-[0.12em] uppercase font-medium"
+              className="font-inter text-[clamp(10px,0.7vw,12px)] text-white/60 hover:text-accent transition-colors tracking-[0.12em] uppercase font-medium inline-flex items-center gap-1"
             >
               {label}
+              {external && <ArrowUpRight size={10} className="opacity-60" />}
             </a>
           ))}
         </nav>
@@ -68,11 +70,11 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-col items-center justify-center h-[calc(100%-72px)] gap-7">
-          {links.map(({ label, href }, i) => (
+          {links.map(({ label, href, external }, i) => (
             <a
               key={label}
               href={href}
-              className="font-anton text-[clamp(2.5rem,6vw,4rem)] text-white uppercase tracking-tight hover:text-accent transition-colors"
+              className="font-anton text-[clamp(2.5rem,6vw,4rem)] text-white uppercase tracking-tight hover:text-accent transition-colors inline-flex items-center gap-3"
               style={{
                 transition: `opacity 0.4s ease-out, transform 0.4s ease-out`,
                 transitionDelay: `${i * 60 + 80}ms`,
@@ -82,6 +84,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
             >
               {label}
+              {external && <ArrowUpRight size={20} className="opacity-50" />}
             </a>
           ))}
           <a

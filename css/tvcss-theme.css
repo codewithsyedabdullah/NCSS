@@ -1,4 +1,5 @@
-/* ===== TVCSS Theme — NCSS HTML pages ===== */
+/* ===== TVCSS Theme — Override for NCSS HTML pages ===== */
+@import url("https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 :root {
   --bg: #0a0b0e;
@@ -8,6 +9,7 @@
   --accent: #ff4500;
   --accent-hover: #e63e00;
   --secondary: #39ff14;
+  --secondary-hover: #2edb0f;
   --border-color: #ff4e0d;
   --radius: 4px;
   --font-heading: "Anton", sans-serif;
@@ -15,6 +17,7 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+/* ---- Base overrides ---- */
 body {
   background: var(--bg) !important;
   background-image: none !important;
@@ -30,14 +33,36 @@ body {
   background: var(--bg) !important;
 }
 
+/* ---- Font overrides ---- */
 .title,
-[class*="__title"] {
+h1, h2, h3, h4, h5, h6,
+.welcome__title,
+.what-we-do__title,
+.what-we-offer__title,
+.partners__title,
+.how-we-work__title,
+.where-we-based__title,
+.who-we-are__title,
+.what-we-say__title,
+.choose-kron__title,
+.job-listing__title,
+.cascade__title,
+.relocate__title,
+.contacts__title,
+.stories__title {
   font-family: var(--font-heading) !important;
   font-weight: 400 !important;
-  text-transform: uppercase;
+  text-transform: uppercase !important;
   letter-spacing: 0.02em;
 }
 
+[class*="__title"],
+[class*="title"] {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+}
+
+/* ---- Color overrides ---- */
 .text-accent_violet {
   color: var(--accent) !important;
 }
@@ -51,6 +76,7 @@ body {
   color: var(--text-muted) !important;
 }
 
+/* ---- TVCSS Button classes ---- */
 .btn-filled,
 .btn-filled-2,
 .btn-primary {
@@ -89,6 +115,7 @@ body {
 }
 .btn-filled-2:hover {
   background: var(--accent-hover);
+  border-color: var(--accent-hover);
   box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
 }
 
@@ -102,6 +129,7 @@ body {
   color: var(--bg);
 }
 
+/* ---- Glow utilities ---- */
 .glow-accent {
   box-shadow: 0 0 24px rgba(255, 69, 0, 0.3);
 }
@@ -109,6 +137,69 @@ body {
   box-shadow: 0 0 24px rgba(57, 255, 20, 0.25);
 }
 
+/* ---- Code / mono tags ---- */
+code,
+.tag-mono,
+[class*="__tag"],
+[class*="__code"] {
+  font-family: var(--font-mono) !important;
+  font-weight: 500;
+}
+
+/* ---- Partner card logos on dark bg ---- */
+.card-partner__wrapper img,
+.partners__card img {
+  filter: brightness(0) invert(1) opacity(0.85);
+}
+.card-partner__wrapper img:hover,
+.partners__card img:hover {
+  filter: brightness(0) invert(1) opacity(1);
+}
+
+/* ---- Job position cards border ---- */
+.position-job__wrapper {
+  border-color: var(--accent) !important;
+}
+
+/* ---- Typed text cursor color ---- */
+.typed-cursor {
+  color: var(--accent) !important;
+}
+
+/* ---- Cascade slider accent ---- */
+.text-cascade-item__title.text-accent_aqua {
+  color: var(--secondary) !important;
+}
+
+/* ---- Relocate hashes text ---- */
+.text-relocate__hashes {
+  color: var(--text-dim) !important;
+}
+
+/* ---- Animated link ---- */
+.animated-link__text,
+.animated-link__append {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+}
+.animated-link__append.text-accent_violet {
+  color: var(--accent) !important;
+}
+
+/* ---- Moving text SVG ---- */
+.moving-text svg path {
+  fill: var(--accent);
+}
+
+/* ---- Block-cross-out borders ---- */
+.block-cross-out,
+.block-cross-in,
+.block-cross-in-link {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ---- Menu gradient ---- */
 .menu__item_gradient a,
 .menu-footer__item_gradient a {
   background: transparent !important;
@@ -116,29 +207,28 @@ body {
   color: var(--accent) !important;
 }
 
-.animated-link__append.text-accent_violet {
-  color: var(--accent) !important;
+/* ---- Footer ---- */
+.footer__copyright {
+  color: var(--text-muted) !important;
 }
 
-.moving-text svg path {
-  fill: var(--accent);
+/* ---- Popup ---- */
+.popup__content {
+  background: var(--bg) !important;
 }
 
-.block-cross-out,
-.block-cross-in,
-.block-cross-in-link {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
+/* ---- Glass blur ---- */
 ._glass-blured {
   background: rgba(10, 11, 14, 0.75) !important;
   backdrop-filter: blur(12px);
 }
 
-.typed-cursor {
-  color: var(--accent) !important;
+/* ---- Cascade item background ---- */
+.cascade-item {
+  background: rgba(10, 11, 14, 0.85) !important;
 }
 
+/* ---- Swiper navigation buttons ---- */
 .swiper-button-prev::after,
 .swiper-button-next::after {
   color: var(--accent) !important;
@@ -150,6 +240,7 @@ body {
   background: var(--accent) !important;
 }
 
+/* ---- Scrollbar styling ---- */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -159,33 +250,4 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 3px;
-}
-
-.card-partner__wrapper img,
-.partners__card img {
-  filter: brightness(0) invert(1) opacity(0.85);
-}
-
-.footer__copyright {
-  color: var(--text-muted) !important;
-}
-
-.popup__content {
-  background: var(--bg) !important;
-}
-
-.cascade-item {
-  background: rgba(10, 11, 14, 0.85) !important;
-}
-
-.text-cascade-item__title.text-accent_aqua {
-  color: var(--secondary) !important;
-}
-
-.text-relocate__hashes {
-  color: var(--text-dim) !important;
-}
-
-.position-job__wrapper {
-  border-color: var(--accent) !important;
 }

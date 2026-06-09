@@ -51,10 +51,11 @@ export default function CTA() {
                 <ArrowUpRight size={14} />
               </a>
               <a
-                href="#departments"
+                href="careers.html"
                 className="btn-filled inline-flex items-center gap-2 px-6 py-3.5 text-[clamp(10px,0.7vw,12px)] tracking-[0.12em] uppercase font-inter font-bold"
               >
-                View Departments
+                Open Positions
+                <ArrowUpRight size={14} />
               </a>
             </div>
           </div>
