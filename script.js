@@ -70,55 +70,49 @@
 
   const collapsedDesktop = 84;
   const collapsedMobile = 96;
-  const stackHeight = stack.offsetHeight;
   const totalCards = cards.length;
 
   function updateAccordion() {
+    const stackHeight = stack.offsetHeight;
+    if (stackHeight === 0) return;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight;
     const sh = rect.height;
     const scrollable = sh - vh;
-    const progress = Math.max(0, Math.min(1, (-rect.top) / scrollable));
+    const progress = Math.max(0, Math.min(1, scrollable > 0 ? (-rect.top) / scrollable : 0));
 
-    // Determine which card segment we're in
     const collapsed = window.innerWidth <= 820 ? collapsedMobile : collapsedDesktop;
     const segment = 1 / totalCards;
-    const rawIndex = progress / segment;
-    const activeIndex = Math.min(totalCards - 1, Math.floor(rawIndex));
+    const activeIndex = Math.min(totalCards - 1, Math.floor(progress / segment));
 
-    // Update tabs
     tabs.forEach((tab, i) => {
       tab.classList.toggle('active', i === activeIndex);
     });
 
-    // Animate each card
     cards.forEach((card, i) => {
       const p = Math.max(0, Math.min(1, (progress - i * segment) / segment));
-      // Card starts off-bottom at (stackHeight + collapsed)
-      // Moves up to (i * collapsed)
-      const yStart = stackHeight + collapsed;
-      const yEnd = i * collapsed;
-      const y = yStart - (yStart - yEnd) * p;
+      // Card 0 starts visible, others start off-bottom
+      let y;
+      if (i === 0) {
+        y = -(stackHeight - collapsed) * p;
+      } else {
+        const yStart = stackHeight + collapsed;
+        const yEnd = i * collapsed;
+        y = yStart - (yStart - yEnd) * p;
+      }
       card.style.setProperty('--card-y', y + 'px');
 
-      // Clip: previous cards show collapsed header strip
       let clipBottom = 0;
       if (i < activeIndex) {
-        // This card is in the past — clip to show only collapsed header
-        const headerHeight = collapsed;
-        clipBottom = 100 - (headerHeight / card.offsetHeight) * 100;
-      } else if (i === activeIndex) {
-        // Active card — fully visible
-        clipBottom = 0;
-      } else {
-        // Future card — hidden
+        const oh = card.offsetHeight;
+        clipBottom = oh > 0 ? 100 - (collapsed / oh) * 100 : 100;
+      } else if (i > activeIndex) {
         clipBottom = 100;
       }
       card.style.setProperty('--card-clip-bottom', clipBottom + '%');
     });
   }
 
-  // Tab click -> smooth scroll
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const idx = parseInt(tab.dataset.index, 10);
@@ -128,7 +122,6 @@
       const vh = window.innerHeight;
       const scrollable = sh - vh;
       const segment = 1 / totalCards;
-      // Scroll to the beginning of that segment
       const targetRatio = idx * segment;
       const targetScroll = window.scrollY + rect.top + scrollable * targetRatio;
       window.scrollTo({ top: targetScroll, behavior: 'smooth' });
@@ -146,7 +139,11 @@
     }
   });
 
-  window.addEventListener('resize', updateAccordion);
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateAccordion, 80);
+  });
   setTimeout(updateAccordion, 100);
 })();
 
