@@ -12,7 +12,7 @@
   color-scheme: dark;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background:radial-gradient(circle at top left,rgba(255,216,121,0.18),transparent 28rem),var(--bg);
   background-color:var(--bg);
