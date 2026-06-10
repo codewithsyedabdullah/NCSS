@@ -3,13 +3,375 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NCSS — NUST Computer Science Society</title>
+    <meta name="theme-color" content="#17130d" />
+    <title>Nimbus Grid — Secure cloud storage capacity</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="app">
+
+      <!-- Section 1 — Hero -->
+      <section id="hero" class="hero-section">
+        <iframe class="shader-bg" src="https://fragcoord.xyz/embed/c6zisyc6?viewport=1422x800" allow="autoplay; fullscreen" referrerpolicy="no-referrer"></iframe>
+        <div class="shader-fallback"></div>
+
+        <div class="hero-inner">
+          <header class="site-header">
+            <div class="header-brand">NIMBUS GRID</div>
+            <nav class="header-nav">
+              <a href="#platform">Technology</a>
+              <a href="#security">Security</a>
+              <a href="#pricing">Capacity</a>
+              <a href="#operations">Operations</a>
+            </nav>
+            <button class="header-cta">Get Started</button>
+          </header>
+
+          <div class="hero-grid">
+            <div class="console-card">
+              <div class="console-tabs">
+                <button class="console-tab active" data-pane="cli">CLI</button>
+                <button class="console-tab" data-pane="api">API</button>
+                <button class="console-tab" data-pane="console">Console</button>
+                <span class="console-spacer"></span>
+                <span class="console-winctrl square"></span>
+                <span class="console-winctrl wide"></span>
+              </div>
+              <div class="console-panes">
+                <div class="console-pane active" id="pane-cli">
+                  <pre>$ nimbus storage create \&#10;  --workspace prod-web \&#10;  --tier encrypted-fast \&#10;  --region eu-central</pre>
+                  <pre>$ <span class="accent typed-line" data-typed="storage pool web-db-test queued"></span><span class="cursor"></span></pre>
+                </div>
+                <div class="console-pane" id="pane-api">
+                  <pre>POST /v1/storage/pools</pre>
+                  <pre>{&#10;  "name": "web-db-test",&#10;  "tier": "encrypted-fast",&#10;  "quota": "8 TiB"&#10;}</pre>
+                  <pre class="accent">202 accepted: provisioning policy attached</pre>
+                </div>
+                <div class="console-pane" id="pane-console">
+                  <div class="console-form">
+                    <div class="console-field">
+                      <label>Instance name</label>
+                      <div class="console-input typed-field"><span data-typed="web-db-test"></span><span class="cursor"></span></div>
+                    </div>
+                    <div class="console-field">
+                      <label>Image</label>
+                      <div class="console-input">ubuntu-24.04-noble<span class="console-select-arrow">▾</span></div>
+                    </div>
+                    <div class="console-row">
+                      <div class="console-field">
+                        <label>Memory</label>
+                        <div class="console-input">8 GiB<span class="console-select-arrow">▾</span></div>
+                      </div>
+                      <div class="console-field">
+                        <label>CPUs</label>
+                        <div class="console-input">2<span class="console-select-arrow">▾</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-copy">
+              <div class="hero-copy-bg"></div>
+              <h1>Cloud space that scales with your business systems.</h1>
+              <p>Nimbus Grid sells secure cloud storage capacity for companies that need fast onboarding, predictable throughput, encrypted collaboration, and modern data residency controls.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 — Platform accordion -->
+      <section id="platform" class="platform-section">
+        <div class="accordion-inner">
+          <div class="accordion-nav">
+            <button class="acc-tab active" data-index="0"><span class="acc-dot"></span>Programmable infra</button>
+            <button class="acc-tab" data-index="1"><span class="acc-dot"></span>Data residency</button>
+            <button class="acc-tab" data-index="2"><span class="acc-dot"></span>Elastic scaling</button>
+            <button class="acc-tab" data-index="3"><span class="acc-dot"></span>Unified visibility</button>
+          </div>
+          <div class="accordion-stack" id="accordionStack">
+            <div class="accordion-card" data-index="0">
+              <div class="acc-card-copy">
+                <h3>Programmable infra</h3>
+                <p>Define storage pools, policies, and regions as code. Nimbus Grid infrastructure integrates with CI/CD pipelines and version-controlled workflows so your team can treat capacity like any other cloud resource.</p>
+              </div>
+              <div class="acc-card-visual">
+                <div class="code-window">
+                  <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                  <pre>01 storage_pool = {&#10;02   name = "client-vault"&#10;03   region = "eu-central"&#10;04   quota = "24 TiB"&#10;05   policy = encrypted_fast&#10;06 }</pre>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-card" data-index="1">
+              <div class="acc-card-copy">
+                <h3>Data residency</h3>
+                <p>Control exactly where data lives, moves, and replicates. Regional policy enforcement, retention locking, and geo-fencing give legal and compliance teams the controls they need without blocking engineering velocity.</p>
+              </div>
+              <div class="acc-card-visual">
+                <div class="code-window">
+                  <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                  <pre>Region policy&#10;EU Central     locked&#10;US East        allowed&#10;AP Southeast   review&#10;Retention      7 years</pre>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-card" data-index="2">
+              <div class="acc-card-copy">
+                <h3>Elastic scaling</h3>
+                <p>Scale from terabytes to petabytes without reprovisioning. Nimbus Grid's burst architecture automatically allocates capacity when active workloads spike and cools down reserved space during quiet cycles.</p>
+              </div>
+              <div class="acc-card-visual">
+                <div class="code-window">
+                  <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                  <pre>Capacity forecast&#10;Used       18.4 TiB&#10;Reserved   24 TiB&#10;Burst      ready&#10;Next tier  approved</pre>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-card" data-index="3">
+              <div class="acc-card-copy">
+                <h3>Unified visibility</h3>
+                <p>One dashboard to monitor pool health, track usage trends, review policy compliance, and export audit reports. Every storage operation across every region is visible and queryable from a single pane of glass.</p>
+              </div>
+              <div class="acc-card-visual">
+                <div class="code-window">
+                  <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                  <pre>Operations view&#10;Sync health    stable&#10;Cold data      14%&#10;Policy drift   0&#10;Audit export   live</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 — Pricing -->
+      <section id="pricing" class="pricing-section">
+        <div class="pricing-inner">
+          <div class="pricing-top">
+            <div class="pricing-copy">
+              <div class="eyebrow">Pricing</div>
+              <h2>Only pay for cloud storage your teams actually use.</h2>
+              <p>Scale capacity up for active projects and cool it down when workspaces go quiet. Nimbus Grid keeps storage, transfer, and policy costs visible before they become invoices.</p>
+            </div>
+            <div class="pricing-table-wrap">
+              <div class="pricing-table">
+                <div class="pricing-head">
+                  <span>Storage costs</span>
+                  <span class="billing-toggle"><span class="bill-muted">Per month</span><span class="bill-active">Per GiB</span></span>
+                </div>
+                <div class="pricing-row">
+                  <span>Encrypted active storage</span>
+                  <span class="pricing-val">$0.021 / GiB / month</span>
+                </div>
+                <div class="pricing-row">
+                  <span>Warm collaboration tier</span>
+                  <span class="pricing-val">$0.012 / GiB / month</span>
+                </div>
+                <div class="pricing-row">
+                  <span>Cold retained archive</span>
+                  <span class="pricing-val">$0.004 / GiB / month</span>
+                </div>
+                <div class="pricing-row">
+                  <span>Regional accelerated transfer</span>
+                  <span class="pricing-val">$0.018 / GiB moved</span>
+                </div>
+                <div class="pricing-row">
+                  <span>Customer-managed key vault</span>
+                  <span class="pricing-val">included</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-bars" id="pricingBars">
+          <div class="pricing-bar" style="--bar-height:66%"></div>
+          <div class="pricing-bar muted" style="--bar-height:58%"></div>
+          <div class="pricing-bar" style="--bar-height:50%"></div>
+          <div class="pricing-bar muted" style="--bar-height:62%"></div>
+          <div class="pricing-bar" style="--bar-height:45%"></div>
+          <div class="pricing-bar muted" style="--bar-height:54%"></div>
+          <div class="pricing-bar" style="--bar-height:48%"></div>
+          <div class="pricing-bar muted" style="--bar-height:64%"></div>
+          <div class="pricing-bar" style="--bar-height:72%"></div>
+          <div class="pricing-bar muted" style="--bar-height:70%"></div>
+          <div class="pricing-bar" style="--bar-height:78%"></div>
+          <div class="pricing-bar muted" style="--bar-height:82%"></div>
+        </div>
+
+        <div class="pricing-inner">
+          <div class="plan-row">
+            <div class="plan-card">
+              <h3>Starter</h3>
+              <p>For small teams consolidating shared project files.</p>
+              <button class="plan-cta">Start small</button>
+            </div>
+            <div class="plan-card featured">
+              <h3>Team</h3>
+              <p>For departments scaling collaboration and regional transfer.</p>
+              <button class="plan-cta">Build team plan</button>
+            </div>
+            <div class="plan-card">
+              <h3>Enterprise</h3>
+              <p>For organizations prioritizing governance, residency, and support.</p>
+              <button class="plan-cta">Talk to sales</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 — Security -->
+      <section id="security" class="security-section">
+        <div class="security-inner">
+          <div class="security-head">
+            <div>
+              <div class="eyebrow">Security</div>
+              <h2>Modern encryption and compliance controls without slowing the team down.</h2>
+            </div>
+            <p>Role-based access, customer-managed keys, immutable retention, and regional storage policies give business clients a cloud layer that can satisfy procurement, IT, and legal from the first deployment.</p>
+          </div>
+
+          <div class="security-cards">
+            <div class="sec-card">
+              <h3>Full policy control</h3>
+              <p>First-class API access for storage pools, keys, regions, and retention rules. No vendor lock-in to proprietary workflows.</p>
+              <div class="sec-visual">
+                <div class="api-window">
+                  <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                  <pre>-&gt; nimbus auth login&#10;Enter code&#10;VAULT-9AMP&#10;&#10;-&gt; policy attach&#10;workspace/client-vault</pre>
+                </div>
+                <div class="api-spec">
+                  <pre>openapi: 3.0.0&#10;info:&#10;  title: Nimbus API&#10;paths:&#10;  /storage/pools:&#10;  /keys:&#10;  /regions:&#10;  /retention:</pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec-card">
+              <h3>Full compliance</h3>
+              <p>SOC 2, ISO 27001, and GDPR-ready controls help teams satisfy audits, procurement reviews, and data residency requirements.</p>
+              <div class="compliance-rows">
+                <div class="comp-row">
+                  <span class="comp-check"></span>
+                  <div><strong>SOC 2</strong><br />Type II controls</div>
+                </div>
+                <div class="comp-row">
+                  <span class="comp-check"></span>
+                  <div><strong>ISO 27001</strong><br />Security management</div>
+                </div>
+                <div class="comp-row">
+                  <span class="comp-check"></span>
+                  <div><strong>GDPR</strong><br />Regional data policy</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec-card">
+              <h3>Ownership and predictable economics</h3>
+              <p>Reserved capacity, clear transfer lanes, and audit-ready billing make storage spend easy to forecast across business units.</p>
+              <div class="sec-visual">
+                <pre class="binary-map">1111111111111111111111111111&#10;1111100000000000000000111111&#10;1111000000000000000000011111&#10;1110000000000000000000001111&#10;1110000000000000000000001111&#10;1110000000000000000000001111&#10;1111000000000000000000011111&#10;1111100000000000000000111111&#10;1111110000000000000001111111&#10;1111111111111111111111111111</pre>
+                <div class="asset-table">
+                  <div class="asset-row"><span class="asset-label">Reserved tier</span><span class="asset-val">24 TiB</span></div>
+                  <div class="asset-row"><span class="asset-label">Transfer lane</span><span class="asset-val">EU Central</span></div>
+                  <div class="asset-row"><span class="asset-label">Revision</span><span class="asset-val">Q603</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 — Console showcase -->
+      <section id="plans" class="plans-section">
+        <div class="plans-inner">
+          <div class="plans-head">
+            <h2>The biggest forward leap in business cloud storage operations.</h2>
+            <p>A single control plane for provisioning storage pools, reviewing policy, watching growth, and shipping audit-ready reports without asking teams to change how they work.</p>
+          </div>
+
+          <div class="figure-label">Fig. 2  Nimbus Grid web console</div>
+
+          <div class="dashboard-shell" id="dashboardShell">
+            <div class="dash-topbar">
+              <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+              <span class="dash-title">Nimbus Grid Console</span>
+            </div>
+            <div class="dash-body">
+              <div class="dash-sidebar">
+                <div class="dash-sidebar-head">Client Vault</div>
+                <nav class="dash-nav">
+                  <a href="#">Workspaces</a>
+                  <a href="#" class="active">Storage Pools</a>
+                  <a href="#">Retention</a>
+                  <a href="#">Access</a>
+                  <a href="#">Transfers</a>
+                  <a href="#">Reports</a>
+                </nav>
+              </div>
+              <div class="dash-main">
+                <div class="dash-main-head">
+                  <h3>Storage Pools</h3>
+                  <button class="dash-btn">New pool</button>
+                </div>
+                <table class="dash-table">
+                  <thead>
+                    <tr><th>Name</th><th>Region</th><th>Used</th><th>Policy</th><th>State</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>finance-vault</td><td>EU Central</td><td>18.4 TiB</td><td>7 years</td><td class="state">Healthy</td></tr>
+                    <tr><td>design-assets</td><td>US East</td><td>9.8 TiB</td><td>Versioned</td><td class="state">Syncing</td></tr>
+                    <tr><td>legal-archive</td><td>EU Central</td><td>42.1 TiB</td><td>Immutable</td><td class="state">Healthy</td></tr>
+                    <tr><td>migration-lane</td><td>AP South</td><td>6.2 TiB</td><td>Temporary</td><td class="state">Queued</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dash-toast">Pool created / finance-vault ready</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6 — Operations cube -->
+      <section id="operations" class="operations-section">
+        <div class="operations-inner">
+          <div class="ops-copy">
+            <div class="eyebrow">Operations</div>
+            <h2>A control layer for every storage move your business makes.</h2>
+            <p>Route migrations, active workspaces, archives, and compliance exports through one operational grid. Nimbus Grid keeps capacity, policy, and transfer status visible before teams hit a limit.</p>
+            <button class="ops-cta">Plan operations</button>
+          </div>
+          <div class="ops-visual">
+            <div class="modal-cube-shell" id="cubeShell" tabindex="0" role="button" aria-label="Toggle cube explode animation">
+              <div class="operations-core-cube" id="coreCube">
+                <div class="cube-face front"></div>
+                <div class="cube-face back"></div>
+                <div class="cube-face right"></div>
+                <div class="cube-face left"></div>
+                <div class="cube-face top"></div>
+                <div class="cube-face bottom"></div>
+              </div>
+              <div class="cube-particle" style="--tx:-310;--ty:-250;--tz:30;--s:0.58;--r:24;--d:0"></div>
+              <div class="cube-particle" style="--tx:280;--ty:-220;--tz:90;--s:0.42;--r:-18;--d:0.06"></div>
+              <div class="cube-particle" style="--tx:330;--ty:180;--tz:-40;--s:0.36;--r:42;--d:0.12"></div>
+              <div class="cube-particle" style="--tx:-290;--ty:210;--tz:120;--s:0.28;--r:-36;--d:0.18"></div>
+              <div class="cube-particle" style="--tx:160;--ty:225;--tz:-80;--s:0.48;--r:12;--d:0.24"></div>
+              <div class="cube-particle" style="--tx:-180;--ty:-180;--tz:180;--s:0.32;--r:-48;--d:0.3"></div>
+              <div class="cube-particle" style="--tx:200;--ty:80;--tz:200;--s:0.18;--r:60;--d:0.36"></div>
+              <div class="cube-particle" style="--tx:-240;--ty:90;--tz:-60;--s:0.44;--r:-12;--d:0.42"></div>
+              <div class="cube-particle" style="--tx:-120;--ty:-90;--tz:210;--s:0.22;--r:30;--d:0.48"></div>
+              <div class="cube-particle" style="--tx:80;--ty:-60;--tz:-120;--s:0.38;--r:-24;--d:0.54"></div>
+              <div class="cube-particle dot" style="--tx:270;--ty:140;--tz:70;--s:0.12;--r:0;--d:0.08"></div>
+              <div class="cube-particle dot" style="--tx:-200;--ty:60;--tz:150;--s:0.09;--r:0;--d:0.2"></div>
+              <div class="cube-particle dot" style="--tx:140;--ty:-140;--tz:100;--s:0.14;--r:0;--d:0.32"></div>
+              <div class="cube-particle dot" style="--tx:-80;--ty:160;--tz:-30;--s:0.11;--r:0;--d:0.44"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <script type="module" src="/script.js"></script>
   </body>
 </html>
