@@ -1,26 +1,4 @@
-// ─── 1. Shader resize ───
-(function shaderResize() {
-  const shader = document.querySelector('.shader-bg');
-  if (!shader) return;
-
-  function fitShader() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    const width = Math.min(w, 1422);
-    const height = Math.min(h, 800);
-    const scale = Math.max(w / width, (h + 110) / height);
-    shader.style.setProperty('--shader-scale', scale);
-  }
-
-  fitShader();
-  let timer;
-  window.addEventListener('resize', () => {
-    clearTimeout(timer);
-    timer = setTimeout(fitShader, 180);
-  });
-})();
-
-// ─── 2. Console tabs + typewriter ───
+// ─── 1. Console tabs + typewriter ───
 (function consoleTabs() {
   const tabs = document.querySelectorAll('.console-tab');
   const panes = {
