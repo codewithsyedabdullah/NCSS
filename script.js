@@ -92,31 +92,31 @@
 
     cards.forEach((card, i) => {
       const oh = card.offsetHeight;
-      let y, clipBottomPct, z;
+      let clipTopPct, clipBottomPct, z;
 
       if (i < activeIndex) {
-        y = i * collapsed;
         const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
+        clipTopPct = 0;
         clipBottomPct = 100 - hc;
-        z = totalCards - i;
+        z = 1000 + (totalCards - i);
       } else if (i === activeIndex) {
-        y = i * collapsed;
         const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
         const maxClip = 100 - hc;
+        clipTopPct = 0;
         clipBottomPct = i === totalCards - 1 ? 0 : maxClip * activeP;
         z = 100;
       } else if (i === activeIndex + 1) {
-        y = i * collapsed;
-        clipBottomPct = 100 - activeP * 100;
+        clipTopPct = 100 * (1 - activeP);
+        clipBottomPct = 0;
         z = 50;
       } else {
-        y = stackHeight;
+        clipTopPct = 0;
         clipBottomPct = 100;
         z = 1;
       }
 
-      card.style.setProperty('--card-y', y + 'px');
-      card.style.setProperty('--card-clip-top', '0px');
+      card.style.setProperty('--card-y', '0px');
+      card.style.setProperty('--card-clip-top', clipTopPct + '%');
       card.style.setProperty('--card-clip-bottom', clipBottomPct + '%');
       card.style.zIndex = z;
     });
