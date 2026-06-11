@@ -96,12 +96,14 @@
 
       if (i < activeIndex) {
         y = i * collapsed;
-        clipBottomPct = oh > 0 ? 100 - (collapsed / oh) * 100 : 100;
+        const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
+        clipBottomPct = 100 - hc;
         z = totalCards - i;
       } else if (i === activeIndex) {
         y = i * collapsed;
-        const maxClip = oh > 0 ? 100 - (collapsed / oh) * 100 : 100;
-        clipBottomPct = maxClip * activeP;
+        const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
+        const maxClip = 100 - hc;
+        clipBottomPct = i === totalCards - 1 ? 0 : maxClip * activeP;
         z = 100;
       } else if (i === activeIndex + 1) {
         y = i * collapsed;
