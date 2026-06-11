@@ -92,27 +92,38 @@
     cards.forEach((card, i) => {
       const p = Math.max(0, Math.min(1, (progress - i * segment) / segment));
 
-      let y, z;
+      let y, clipTopPx, clipBottomPct, z;
 
       if (i === activeIndex) {
         y = -(stackHeight - collapsed) * p;
+        clipTopPx = Math.max(0, Math.min(stackHeight - collapsed, activeIndex * collapsed - y));
+        clipBottomPct = 0;
         z = 10;
       } else if (i === activeIndex + 1) {
         const activeP = Math.max(0, Math.min(1, (progress - activeIndex * segment) / segment));
         const blendStart = 0.55;
         const t = activeP > blendStart ? Math.min(1, (activeP - blendStart) / (1 - blendStart)) : 0;
-        y = stackHeight * (1 - t);
-        z = 5;
+        const activeY = -(stackHeight - collapsed) * activeP;
+        y = (activeY + stackHeight) * (1 - t);
+        clipTopPx = activeIndex * collapsed * t;
+        clipBottomPct = 0;
+        z = 9;
       } else if (i < activeIndex) {
-        y = -(stackHeight - collapsed);
+        y = i * collapsed;
+        clipTopPx = 0;
+        const oh = card.offsetHeight;
+        clipBottomPct = oh > 0 ? 100 - (collapsed / oh) * 100 : 100;
         z = 1;
       } else {
         y = stackHeight;
+        clipTopPx = 0;
+        clipBottomPct = 100;
         z = 1;
       }
 
       card.style.setProperty('--card-y', y + 'px');
-      card.style.setProperty('--card-clip-bottom', '0%');
+      card.style.setProperty('--card-clip-top', clipTopPx + 'px');
+      card.style.setProperty('--card-clip-bottom', clipBottomPct + '%');
       card.style.zIndex = z;
     });
   }
