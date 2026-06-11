@@ -77,7 +77,7 @@
     if (stackHeight === 0) return;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight;
-    const sh = section.scrollHeight;
+    const sh = section.offsetHeight;
     const scrollable = sh - vh;
     const progress = Math.max(0, Math.min(1, scrollable > 0 ? (-rect.top) / scrollable : 0));
 
