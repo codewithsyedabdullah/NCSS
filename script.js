@@ -91,25 +91,29 @@
 
     cards.forEach((card, i) => {
       const p = Math.max(0, Math.min(1, (progress - i * segment) / segment));
-      // Card 0 starts visible, others start off-bottom
-      let y;
-      if (i === 0) {
-        y = -(stackHeight - collapsed) * p;
-      } else {
-        const yStart = stackHeight + collapsed;
-        const yEnd = i * collapsed;
-        y = yStart - (yStart - yEnd) * p;
-      }
-      card.style.setProperty('--card-y', y + 'px');
 
-      let clipBottom = 0;
-      if (i < activeIndex) {
-        const oh = card.offsetHeight;
-        clipBottom = oh > 0 ? 100 - (collapsed / oh) * 100 : 100;
-      } else if (i > activeIndex) {
-        clipBottom = 100;
+      let y, z;
+
+      if (i === activeIndex) {
+        y = -(stackHeight - collapsed) * p;
+        z = 10;
+      } else if (i === activeIndex + 1) {
+        const activeP = Math.max(0, Math.min(1, (progress - activeIndex * segment) / segment));
+        const blendStart = 0.55;
+        const t = activeP > blendStart ? Math.min(1, (activeP - blendStart) / (1 - blendStart)) : 0;
+        y = stackHeight * (1 - t);
+        z = 5;
+      } else if (i < activeIndex) {
+        y = -(stackHeight - collapsed);
+        z = 1;
+      } else {
+        y = stackHeight;
+        z = 1;
       }
-      card.style.setProperty('--card-clip-bottom', clipBottom + '%');
+
+      card.style.setProperty('--card-y', y + 'px');
+      card.style.setProperty('--card-clip-bottom', '0%');
+      card.style.zIndex = z;
     });
   }
 
