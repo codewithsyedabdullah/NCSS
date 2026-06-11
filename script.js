@@ -77,7 +77,7 @@
     if (stackHeight === 0) return;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight;
-    const sh = rect.height;
+    const sh = section.scrollHeight;
     const scrollable = sh - vh;
     const progress = Math.max(0, Math.min(1, scrollable > 0 ? (-rect.top) / scrollable : 0));
 
@@ -92,32 +92,30 @@
 
     cards.forEach((card, i) => {
       const oh = card.offsetHeight;
-      let clipTopPct, clipBottomPct, z;
+      const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
+      const maxClip = 100 - hc;
+
+      let y, clipBottom, z;
 
       if (i < activeIndex) {
-        const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
-        clipTopPct = 0;
-        clipBottomPct = 100 - hc;
-        z = 1000 + (totalCards - i);
+        y = i * collapsed;
+        clipBottom = maxClip;
+        z = 100 + (totalCards - i);
       } else if (i === activeIndex) {
-        const hc = oh > 0 ? (collapsed / oh) * 100 : 0;
-        const maxClip = 100 - hc;
-        clipTopPct = 0;
-        clipBottomPct = i === totalCards - 1 ? 0 : maxClip * activeP;
-        z = 100;
-      } else if (i === activeIndex + 1) {
-        clipTopPct = 100 * (1 - activeP);
-        clipBottomPct = 0;
-        z = 50;
+        const startY = stackHeight + collapsed;
+        const endY = activeIndex * collapsed;
+        y = startY + (endY - startY) * activeP;
+        clipBottom = maxClip * activeP;
+        z = 200;
       } else {
-        clipTopPct = 0;
-        clipBottomPct = 100;
-        z = 1;
+        y = stackHeight + collapsed;
+        clipBottom = 0;
+        z = 10;
       }
 
-      card.style.setProperty('--card-y', '0px');
-      card.style.setProperty('--card-clip-top', clipTopPct + '%');
-      card.style.setProperty('--card-clip-bottom', clipBottomPct + '%');
+      card.style.setProperty('--card-y', y + 'px');
+      card.style.setProperty('--card-clip-top', '0%');
+      card.style.setProperty('--card-clip-bottom', clipBottom + '%');
       card.style.zIndex = z;
     });
   }
