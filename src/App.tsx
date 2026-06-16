@@ -1,27 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
+import Loader from "./components/Loader";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Departments from "./components/Departments";
-import WhyNCSS from "./components/WhyNCSS";
-import CTA from "./components/CTA";
-import use3DStage from "./hooks/use3DStage";
+import Reel from "./components/Reel";
+import GridSection from "./components/GridSection";
+import Footer from "./components/Footer";
 
 export default function App() {
-  const stageRef = useRef<HTMLCanvasElement | null>(null);
-  use3DStage(stageRef);
-
   useEffect(() => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    const html = document.documentElement;
-    html.classList.add("lenis", "lenis-smooth");
-
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1,
     });
 
     function raf(time: number) {
@@ -30,27 +20,22 @@ export default function App() {
     }
     requestAnimationFrame(raf);
 
-    return () => {
-      lenis.destroy();
-      html.classList.remove("lenis", "lenis-smooth");
-    };
+    const vh = window.innerHeight / 100;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+    return () => lenis.destroy();
   }, []);
 
   return (
     <>
-      <div id="Stage">
-        <canvas ref={stageRef} />
-      </div>
+      <Loader />
       <Navbar />
-      <div className="page">
-        <main>
-          <Hero />
-          <About />
-          <Departments />
-          <WhyNCSS />
-          <CTA />
-        </main>
-      </div>
+      <main>
+        <Hero />
+        <Reel />
+        <GridSection />
+        <Footer />
+      </main>
     </>
   );
 }

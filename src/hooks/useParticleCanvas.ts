@@ -13,9 +13,7 @@ export default function useParticleCanvas(
     let w = 0;
     let h = 0;
     const particles: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
-    const COUNT = 60;
-    let targetMX = 0;
-    let targetMY = 0;
+    const COUNT = 40;
     let mouseX = 0;
     let mouseY = 0;
 
@@ -31,41 +29,33 @@ export default function useParticleCanvas(
         particles.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.2,
-          vy: (Math.random() - 0.5) * 0.2,
-          r: Math.random() * 2.5 + 1.5,
-          a: Math.random() * 0.4 + 0.1,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 2 + 1,
+          a: Math.random() * 0.3 + 0.05,
         });
       }
     }
 
     function draw() {
-      mouseX += (targetMX - mouseX) * 0.1;
-      mouseY += (targetMY - mouseY) * 0.1;
-
       ctx!.clearRect(0, 0, w, h);
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
-
-        if (p.x < -10) p.x = w + 10;
-        if (p.x > w + 10) p.x = -10;
-        if (p.y < -10) p.y = h + 10;
-        if (p.y > h + 10) p.y = -10;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
 
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 250) {
-          const force = (250 - dist) / 250;
-          p.vx += (dx / dist) * force * 0.03;
-          p.vy += (dy / dist) * force * 0.03;
+        if (dist < 200) {
+          p.vx -= dx / 5000;
+          p.vy -= dy / 5000;
         }
-
-        p.vx *= 0.98;
-        p.vy *= 0.98;
-        p.vx = Math.max(-0.8, Math.min(0.8, p.vx));
-        p.vy = Math.max(-0.8, Math.min(0.8, p.vy));
+        p.vx = Math.max(-0.5, Math.min(0.5, p.vx));
+        p.vy = Math.max(-0.5, Math.min(0.5, p.vy));
 
         ctx!.beginPath();
         ctx!.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -76,20 +66,19 @@ export default function useParticleCanvas(
     }
 
     function onMouse(e: MouseEvent) {
-      targetMX = e.clientX;
-      targetMY = e.clientY;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     }
 
     resize();
     init();
     draw();
     window.addEventListener("mousemove", onMouse, { passive: true });
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", () => { resize(); });
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("mousemove", onMouse);
-      window.removeEventListener("resize", resize);
     };
   }, [canvasRef]);
 }
