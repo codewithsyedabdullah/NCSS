@@ -80,7 +80,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           A community of builders and <strong className="text-white font-semibold">innovators.</strong>
         </div>
 
-        <div className="animate-fade-up-delay-3 mt-8 lg:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+        <div className="animate-fade-up-delay-3 mt-6 lg:mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
           <button className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
             <span>OUR EVENTS</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -94,7 +94,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           </div>
         </div>
 
-        <div className="animate-fade-up-delay-4 mt-8 sm:mt-10 lg:mt-14 flex flex-wrap items-end justify-between gap-6">
+        <div className="animate-fade-up-delay-4 mt-6 sm:mt-8 lg:mt-10 flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
             {[
               { val: '500+', label: 'Active Members' },
