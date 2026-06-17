@@ -87,17 +87,24 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           </div>
         </div>
 
-        <div className="animate-fade-up-delay-4 mt-8 sm:mt-10 lg:mt-14 flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
-          {[
-            { val: '500+', label: 'Active Members' },
-            { val: '15+', label: 'Years Established' },
-            { val: '50+', label: 'Events per Year' },
-          ].map(s => (
-            <div key={s.label} className="flex flex-col">
-              <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>
-              <span className="text-white/50 text-[9px] sm:text-xs tracking-widest uppercase mt-1">{s.label}</span>
-            </div>
-          ))}
+        <div className="animate-fade-up-delay-4 mt-8 sm:mt-10 lg:mt-14 flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
+            {[
+              { val: '500+', label: 'Active Members' },
+              { val: '15+', label: 'Years Established' },
+              { val: '50+', label: 'Events per Year' },
+            ].map(s => (
+              <div key={s.label} className="flex flex-col">
+                <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>
+                <span className="text-white/50 text-[9px] sm:text-xs tracking-widest uppercase mt-1">{s.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <span className="px-3 py-1.5 text-[10px] sm:text-xs tracking-widest uppercase font-inter font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors cursor-pointer">CLI</span>
+            <span className="px-3 py-1.5 text-[10px] sm:text-xs tracking-widest uppercase font-inter font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors cursor-pointer">API</span>
+            <span className="px-3 py-1.5 text-[10px] sm:text-xs tracking-widest uppercase font-inter font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors cursor-pointer">Console</span>
+          </div>
         </div>
       </div>
     </section>
