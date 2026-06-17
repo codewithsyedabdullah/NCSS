@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react'
 import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 import NimbusConsole from './ui/nimbus-console'
 import MeshBackground from './ui/mesh-background'
@@ -17,8 +18,39 @@ interface Props {
 }
 
 export default function Hero({ menuOpen, setMenuOpen }: Props) {
+  const heroRef = useRef<HTMLElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [contentScale, setContentScale] = useState(1)
+
+  useEffect(() => {
+    const fit = () => {
+      const hero = heroRef.current
+      const content = contentRef.current
+      if (!hero || !content) return
+      requestAnimationFrame(() => {
+        const nav = hero.querySelector('nav') as HTMLElement | null
+        const navH = nav ? nav.offsetHeight : 0
+        const avail = hero.clientHeight - navH - 20
+        const natural = content.scrollHeight
+        if (natural > avail) {
+          setContentScale(avail / natural)
+        } else {
+          setContentScale(1)
+        }
+      })
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    const ro = new ResizeObserver(fit)
+    if (heroRef.current) ro.observe(heroRef.current)
+    return () => {
+      window.removeEventListener('resize', fit)
+      ro.disconnect()
+    }
+  }, [])
+
   return (
-    <section className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
+    <section ref={heroRef} className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
       <MeshBackground />
       <div className="absolute inset-0 bg-black/20 z-0" />
 
@@ -63,7 +95,8 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
         </div>
       </div>
 
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pb-20">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16 pb-20 overflow-hidden">
+        <div ref={contentRef} className="w-full max-w-7xl" style={{ transform: `scale(${contentScale})`, transformOrigin: 'center center' }}>
         <div className="animate-fade-up mb-6 lg:mb-8 flex items-center gap-2">
           <Crown className="w-4 h-4 text-white/70" />
           <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">NUST Computer Science Society</span>
@@ -81,10 +114,10 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
         </div>
 
         <div className="animate-fade-up-delay-3 mt-8 lg:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
-          <button className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
+          <a href="#events" className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
             <span>OUR EVENTS</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </button>
+          </a>
           <div className="hidden sm:flex items-center gap-3">
             <Award className="w-8 h-8 text-white/50" />
             <div className="flex flex-col text-white/60 text-xs tracking-wider uppercase">
@@ -108,6 +141,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
             ))}
           </div>
           <NimbusConsole />
+        </div>
         </div>
       </div>
     </section>

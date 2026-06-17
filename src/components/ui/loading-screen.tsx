@@ -9,8 +9,12 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
   const charIndex = useRef(0)
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden'
     const t1 = setTimeout(() => setPhase("text"), 1000)
-    return () => clearTimeout(t1)
+    return () => {
+      clearTimeout(t1)
+      document.body.style.overflow = ''
+    }
   }, [])
 
   useEffect(() => {
@@ -26,7 +30,10 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
         clearInterval(interval)
         setTimeout(() => {
           setFadeOut(true)
-          setTimeout(onFinish, 1000)
+          setTimeout(() => {
+            document.body.style.overflow = ''
+            onFinish()
+          }, 1000)
         }, 1400)
       }
     }, 70)
