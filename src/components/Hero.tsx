@@ -16,7 +16,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
       <div className="absolute inset-0 bg-black/40 z-0" />
 
       <nav className="relative z-20 flex items-center justify-between px-6 py-5 sm:px-10 lg:px-16 lg:py-7">
-        <div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">VANGUARD</div>
+        <div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">NCSS</div>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(l => (
             <a key={l} href="#" className="font-inter text-sm text-white/80 tracking-widest uppercase hover:text-white transition-colors">{l}</a>
