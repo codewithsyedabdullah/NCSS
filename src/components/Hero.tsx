@@ -132,12 +132,12 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           </div>
         </div>
 
-        <div className="animate-fade-up-delay-2 mt-6 lg:mt-8 text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
+        <div className="animate-fade-up-delay-2 mt-3 lg:mt-4 text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
           The official computing society of NUST.<br />
           A community of builders and <strong className="text-white font-semibold">innovators.</strong>
         </div>
 
-        <div className="animate-fade-up-delay-3 mt-8 lg:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+        <div className="animate-fade-up-delay-3 mt-4 lg:mt-5 flex flex-wrap items-center gap-4 sm:gap-6">
           <a href="#events" className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
             <span>OUR EVENTS</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -151,7 +151,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           </div>
         </div>
 
-        <div className="animate-fade-up-delay-4 mt-8 sm:mt-10 lg:mt-14 flex flex-wrap items-end justify-between gap-6">
+        <div className="animate-fade-up-delay-4 mt-4 sm:mt-5 lg:mt-6 flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
             {[
               { val: '500+', label: 'Active Members' },
