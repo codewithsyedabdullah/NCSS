@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import Cursor from './components/ui/inverted-cursor'
 import Hero from './components/Hero'
 import SectionWhoWeAre from './components/SectionWhoWeAre'
 import SectionFeaturedWork from './components/SectionFeaturedWork'
@@ -12,18 +13,9 @@ import Footer from './components/Footer'
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handle = (e: MouseEvent) => {
-      document.documentElement.style.setProperty('--x', `${(e.clientX / window.innerWidth) * 100}%`)
-      document.documentElement.style.setProperty('--y', `${(e.clientY / window.innerHeight) * 100}%`)
-    }
-    window.addEventListener('mousemove', handle)
-    return () => window.removeEventListener('mousemove', handle)
-  }, [])
-
   return (
-    <div className="bg-black text-white selection:bg-red-600 selection:text-white">
-      <div className="spotlight" />
+    <div className="bg-black text-white selection:bg-red-600 selection:text-white" style={{ cursor: 'none' }}>
+      <Cursor size={60} />
       <Hero menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <SectionWhoWeAre />
       <SectionFeaturedWork />
