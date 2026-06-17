@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
 @font-face {
   font-family: 'Press Start 2P';
   font-style: normal;
@@ -7,20 +11,8 @@
   size-adjust: 60%;
 }
 
-@font-face {
-  font-family: 'FSP DEMO - PODIUM Sharp 4.11';
-  src: url('https://db.onlinewebfonts.com/t/8b75d9dcff6a48c35a46656192adf019.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/8b75d9dcff6a48c35a46656192adf019.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@import "tailwindcss";
-@import "tw-animate-css";
-
 @theme {
-  --font-podium: "FSP DEMO - PODIUM Sharp 4.11", sans-serif;
+  --font-podium: "Anton", sans-serif;
   --font-inter: "Press Start 2P", cursive;
 }
 
