@@ -91,9 +91,9 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
         <div className="animate-fade-up-delay-4 mt-8 sm:mt-10 lg:mt-14 flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
             {[
-              { val: '500+', label: 'Active Members' },
-              { val: '15+', label: 'Years Established' },
-              { val: '50+', label: 'Events per Year' },
+              { val: '500', label: 'Active Members' },
+              { val: '15', label: 'Years Established' },
+              { val: '50', label: 'Events per Year' },
             ].map(s => (
               <div key={s.label} className="flex flex-col">
                 <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>
