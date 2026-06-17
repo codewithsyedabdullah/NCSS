@@ -112,7 +112,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
             </h1>
           </div>
           <Perspective className="hidden lg:block flex-shrink-0 mt-2">
-            <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
+            <p className="font-inter text-white/60 text-base leading-relaxed text-right max-w-[380px]">
               <Highlight color="red">The future of computing</Highlight>{" "}
               isn't built in silence — it's forged in a{" "}
               <Highlight color="purple">community</Highlight> of
@@ -120,8 +120,9 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               someone else to lead. <br />
               <Highlight color="green">NCSS</Highlight> is where that
               begins now — a space where curious minds collide, bold
-              ideas take shape, and the next generation of
-              technologists rise.
+              ideas take shape, and next generation of technologists
+              rise and build together. <br />
+              This right here is where potential meets opportunity.
             </p>
             <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-right">
               Syed Abdullah Yaqoob, President
