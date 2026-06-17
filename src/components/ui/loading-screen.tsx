@@ -1,30 +1,17 @@
 import { useEffect, useState, useRef } from "react"
-import ShaderAnimation from "./shader-animation"
-import LiquidLoading from "./liquid-loader"
+import SmokeBackground from "./smoke-background"
 
 export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
-  const [phase, setPhase] = useState<"loading" | "transition" | "text" | "done">("loading")
+  const [phase, setPhase] = useState<"loading" | "text" | "done">("loading")
   const [displayedText, setDisplayedText] = useState("")
-  const fullText = "WELCOME TO NCSS</>"
-  const [showLoader, setShowLoader] = useState(true)
-  const [showText, setShowText] = useState(false)
+  const fullText = "WELCOME TO NCSS"
   const [fadeOut, setFadeOut] = useState(false)
   const charIndex = useRef(0)
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("transition"), 3000)
+    const t1 = setTimeout(() => setPhase("text"), 1000)
     return () => clearTimeout(t1)
   }, [])
-
-  useEffect(() => {
-    if (phase !== "transition") return
-    setShowLoader(false)
-    const t2 = setTimeout(() => {
-      setShowText(true)
-      setPhase("text")
-    }, 600)
-    return () => clearTimeout(t2)
-  }, [phase])
 
   useEffect(() => {
     if (phase !== "text") return
@@ -49,40 +36,27 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black transition-opacity duration-1000 ease-out ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center transition-opacity duration-1000 ease-out ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
       <div className="absolute inset-0">
-        <ShaderAnimation />
+        <SmokeBackground smokeColor="#FF0000" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center gap-12">
         <div
-          className="transition-all duration-600 ease-out"
-          style={{
-            opacity: showLoader ? 1 : 0,
-            transform: showLoader ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
-            transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
-          }}
-        >
-          {showLoader && <LiquidLoading />}
-        </div>
-
-        <div
           className="transition-all duration-700 ease-out"
           style={{
-            opacity: showText ? 1 : 0,
-            transform: showText ? "translateY(0) scale(1)" : "translateY(30px) scale(0.9)",
+            opacity: phase === "text" ? 1 : 0,
+            transform: phase === "text" ? "translateY(0) scale(1)" : "translateY(30px) scale(0.9)",
             transition: "opacity 0.7s ease-out, transform 0.7s ease-out",
           }}
         >
-          {showText && (
-            <h1 className="font-podium text-white text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight">
-              {displayedText}
-              <span className="inline-block w-[3px] h-[0.9em] bg-red-500 ml-1 animate-pulse align-middle" />
-            </h1>
-          )}
+          <h1 className="font-podium text-white text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight">
+            {displayedText}
+            <span className="inline-block w-[3px] h-[0.9em] bg-red-500 ml-1 animate-pulse align-middle" />
+          </h1>
         </div>
 
         <p

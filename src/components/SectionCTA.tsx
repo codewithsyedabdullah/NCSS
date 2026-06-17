@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import RippleEffect from './ui/ripple-effect'
 
 export default function SectionCTA() {
   return (
@@ -14,10 +15,12 @@ export default function SectionCTA() {
         className="max-w-4xl mx-auto text-center relative z-10"
       >
         <p className="text-red-500 text-xs tracking-widest uppercase mb-6 font-inter font-bold">Get Involved</p>
-        <h2 className="font-podium text-5xl sm:text-7xl lg:text-9xl leading-[0.85] tracking-tight uppercase text-white mb-8">
-          Ready to Join<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">the Community?</span>
-        </h2>
+        <RippleEffect>
+          <h2 className="font-podium text-5xl sm:text-7xl lg:text-9xl leading-[0.85] tracking-tight uppercase text-white mb-8">
+            Ready to Join<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">the Community?</span>
+          </h2>
+        </RippleEffect>
         <p className="font-inter text-white/60 text-base lg:text-lg max-w-lg mx-auto mb-10">
           Become part of NUST's most dynamic computing society. There's a place for you at NCSS.
         </p>
