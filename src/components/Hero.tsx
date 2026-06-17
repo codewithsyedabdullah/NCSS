@@ -116,10 +116,9 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               <Highlight color="red">The future of computing</Highlight>{" "}
               isn't built in silence — it's forged in a{" "}
               <Highlight color="purple">community</Highlight> of
-              builders who refuse to wait their turn. <br />
-              <Highlight color="green">NCSS</Highlight> is where
-              builders, thinkers, and dreamers come together to turn
-              bold ideas into reality — one line of code at a time.
+              builders and dreamers who won't wait. <br />
+              <Highlight color="green">NCSS</Highlight> is where that
+              begins now.
             </p>
             <p className="font-podium text-white/40 text-[10px] tracking-[0.2em] uppercase mt-3 text-right">
               Syed Abdullah Yaqoob, President
