@@ -2,10 +2,10 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
 const services = [
-  { title: "Development", desc: "Web, mobile, and software development projects. Our dev team builds production-grade applications and open-source tools." },
-  { title: "AI & Data Science", desc: "Exploring ML, deep learning, and data analytics through hands-on workshops, projects, and research collaborations." },
-  { title: "Design", desc: "UI/UX, graphic design, and branding. We craft visually compelling digital experiences for the society." },
-  { title: "Marketing & Media", desc: "Content creation, social media, photography, and PR to amplify NCSS's reach and impact across campus." },
+  { title: "Development", desc: "Web, mobile, and software development projects. Our dev team builds production-grade applications and open-source tools.", icon: "01" },
+  { title: "AI & Data Science", desc: "Exploring ML, deep learning, and data analytics through hands-on workshops, projects, and research collaborations.", icon: "02" },
+  { title: "Design", desc: "UI/UX, graphic design, and branding. We craft visually compelling digital experiences for the society.", icon: "03" },
+  { title: "Marketing & Media", desc: "Content creation, social media, photography, and PR to amplify NCSS's reach and impact across campus.", icon: "04" },
 ]
 
 export default function SectionServices() {
@@ -35,6 +35,7 @@ export default function SectionServices() {
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group relative p-10 lg:p-14 bg-black hover:bg-red-950/20 transition-colors duration-500 cursor-pointer"
             >
+              <span className="font-podium text-6xl sm:text-7xl lg:text-8xl text-white/5 absolute top-4 right-6 leading-none select-none">{s.icon}</span>
               <h3 className="font-podium text-2xl sm:text-3xl lg:text-4xl text-white uppercase tracking-tight mb-4 relative z-10">{s.title}</h3>
               <p className="font-inter text-white/60 text-sm lg:text-base leading-relaxed max-w-sm relative z-10">{s.desc}</p>
               <div className="mt-6 flex items-center gap-2 text-white/30 group-hover:text-red-500 transition-colors duration-500 relative z-10">

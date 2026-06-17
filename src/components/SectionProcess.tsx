@@ -59,8 +59,8 @@ export default function SectionProcess() {
                 className="relative flex lg:flex-col gap-6 lg:gap-10 items-start"
               >
                 {/* Node circle */}
-                <div className="relative z-10 w-[46px] h-[46px] lg:w-[88px] lg:h-[88px] rounded-full bg-black border-2 border-red-600 flex items-center justify-center shadow-[0_0_25px_rgba(220,38,38,0.4)] hover:scale-110 hover:bg-red-600 transition-all duration-500 cursor-default flex-shrink-0">
-                  <div className="w-3 h-3 lg:w-5 lg:h-5 rounded-full bg-red-600" />
+                <div className="relative z-10 w-[46px] h-[46px] lg:w-[88px] lg:h-[88px] rounded-full bg-black border-2 border-red-600 flex items-center justify-center font-podium text-lg lg:text-3xl text-white shadow-[0_0_25px_rgba(220,38,38,0.4)] hover:scale-110 hover:bg-red-600 transition-all duration-500 cursor-default flex-shrink-0">
+                  <span className="relative z-10">{step.id}</span>
                 </div>
 
                 {/* Content */}
