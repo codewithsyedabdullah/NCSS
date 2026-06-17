@@ -64,9 +64,9 @@ export default function SectionProcess() {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 pt-0 lg:pt-4">
+                <div className="flex-1 pt-0 lg:pt-4 flex flex-col">
                   <h3 className="font-podium text-2xl sm:text-3xl text-white uppercase tracking-tight mb-3">{step.title}</h3>
-                  <p className="font-inter text-white/60 text-sm lg:text-base leading-relaxed max-w-xs">{step.desc}</p>
+                  <p className="font-inter text-white/60 text-sm lg:text-base leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}

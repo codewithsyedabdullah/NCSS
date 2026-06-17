@@ -31,10 +31,10 @@ export default function SectionTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 lg:p-10 border border-white/5 hover:border-red-900/40 transition-colors duration-500 bg-white/[0.02]"
+              className="p-8 lg:p-10 border border-white/5 hover:border-red-900/40 transition-colors duration-500 bg-white/[0.02] flex flex-col"
             >
-              <div className="text-red-500 text-5xl leading-none mb-4 font-podium">&ldquo;</div>
-              <p className="font-inter text-white/80 text-sm lg:text-base leading-relaxed mb-8">{t.quote}</p>
+              <div className="text-red-500 text-5xl leading-none mb-4 font-podium">{'\u201C'}</div>
+              <p className="font-inter text-white/80 text-sm lg:text-base leading-relaxed mb-8 flex-1">{t.quote}</p>
               <div className="border-t border-white/10 pt-5">
                 <p className="font-inter text-white font-semibold text-sm">{t.author}</p>
                 <p className="font-inter text-white/50 text-xs tracking-wider uppercase mt-1">{t.role}</p>
