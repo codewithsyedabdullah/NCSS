@@ -1,73 +1,36 @@
-import { useRef } from "react"
-import { useInView } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { motion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function SectionCTA() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
-    <section id="cta" className="relative bg-black py-32 overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#dc2626]/10 via-transparent to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#dc2626]/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-black relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-600/10 rounded-full blur-[200px] pointer-events-none" />
 
-      <div className="relative max-w-3xl mx-auto px-6 text-center">
-        <p
-          className="text-[#dc2626] text-sm tracking-[0.3em] uppercase mb-4"
-          style={{
-            transform: isInView ? "none" : "translateY(20px)",
-            opacity: isInView ? 1 : 0,
-            transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
-          }}
-        >
-          Get Involved
-        </p>
-        <h2
-          className="text-4xl md:text-6xl font-heading text-white leading-tight mb-6"
-          style={{
-            transform: isInView ? "none" : "translateY(20px)",
-            opacity: isInView ? 1 : 0,
-            transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.3s",
-          }}
-        >
-          Ready to Join the
-          <br />
-          <span className="text-[#dc2626]">Community</span>?
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-4xl mx-auto text-center relative z-10"
+      >
+        <p className="text-red-500 text-xs tracking-widest uppercase mb-6 font-inter font-bold">Let's Create</p>
+        <h2 className="font-podium text-5xl sm:text-7xl lg:text-9xl leading-[0.85] tracking-tight uppercase text-white mb-8">
+          Ready to<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Dominate?</span>
         </h2>
-        <p
-          className="text-white/50 max-w-lg mx-auto mb-10"
-          style={{
-            transform: isInView ? "none" : "translateY(20px)",
-            opacity: isInView ? 1 : 0,
-            transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s",
-          }}
-        >
-          Become part of NUST's most dynamic computing society. Whether you're a
-          beginner or an experienced developer, there's a place for you at NCSS.
+        <p className="font-inter text-white/60 text-base lg:text-lg max-w-lg mx-auto mb-10">
+          One conversation is all it takes. Let's build something that makes your competitors nervous.
         </p>
-        <div
-          className="flex flex-wrap items-center justify-center gap-4"
-          style={{
-            transform: isInView ? "none" : "translateY(20px)",
-            opacity: isInView ? 1 : 0,
-            transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-          }}
-        >
-          <a
-            href="#"
-            className="bg-white text-black px-8 py-3 rounded-full text-sm font-semibold tracking-wider uppercase hover:bg-white/90 transition-all inline-flex items-center gap-2"
-          >
-            Become a Member
-            <ArrowRight size={16} />
-          </a>
-          <a
-            href="#"
-            className="border border-white/30 text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wider uppercase hover:bg-white/10 transition-all"
-          >
-            Learn More
-          </a>
+        <div className="flex flex-wrap justify-center gap-4">
+          <button className="group flex items-center gap-2 bg-red-600 hover:bg-red-700 px-8 py-4 text-xs tracking-widest uppercase text-white transition-colors">
+            <span>Start Your Project</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </button>
+          <button className="group flex items-center gap-2 border border-white/20 hover:border-white/40 px-8 py-4 text-xs tracking-widest uppercase text-white/80 hover:text-white transition-colors">
+            <span>View Case Studies</span>
+          </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

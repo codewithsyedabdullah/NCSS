@@ -1,96 +1,61 @@
-import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion } from 'framer-motion'
 
 const stats = [
-  { value: "500+", label: "Active Members" },
-  { value: "15+", label: "Years Established" },
-  { value: "6", label: "Departments" },
-  { value: "50+", label: "Events per Year" },
+  { value: "250+", label: "Projects Delivered" },
+  { value: "95%", label: "Client Retention" },
+  { value: "10+", label: "Years Experience" },
+  { value: "30+", label: "Industry Awards" },
 ]
 
 export default function SectionWhoWeAre() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
-    <section id="about" className="relative bg-black py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#dc2626]/5 via-transparent to-transparent pointer-events-none" />
+    <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950 to-black relative overflow-hidden">
+      <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div ref={ref}>
-            <p className="text-[#dc2626] text-sm tracking-[0.3em] uppercase mb-4">
-              About NCSS
-            </p>
-            <h2
-              className="text-4xl md:text-5xl font-heading text-white leading-tight mb-6"
-              style={{
-                transform: isInView ? "none" : "translateX(-40px)",
-                opacity: isInView ? 1 : 0,
-                transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
-              }}
-            >
-              The Home of
-              <br />
-              <span className="text-[#dc2626]">Computing</span> at NUST
-            </h2>
-            <p
-              className="text-white/50 leading-relaxed mb-8"
-              style={{
-                transform: isInView ? "none" : "translateX(-40px)",
-                opacity: isInView ? 1 : 0,
-                transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s",
-              }}
-            >
-              NCSS is the official computer science society at NUST, founded to
-              foster a vibrant ecosystem of learning, innovation, and
-              collaboration. We bring together students across disciplines to
-              explore emerging technologies, build real-world projects, and
-              connect with industry leaders.
-            </p>
-            <div
-              className="grid grid-cols-2 gap-6"
-              style={{
-                transform: isInView ? "none" : "translateX(-40px)",
-                opacity: isInView ? 1 : 0,
-                transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.6s",
-              }}
-            >
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <p className="text-white text-3xl font-bold">{s.value}</p>
-                  <p className="text-white/40 text-xs tracking-widest uppercase">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div
-            className="relative"
-            style={{
-              transform: isInView ? "none" : "translateX(40px)",
-              opacity: isInView ? 1 : 0,
-              transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s",
-            }}
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-24 lg:mb-40">
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="aspect-[4/3] rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                alt="NCSS community"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 w-48 h-48 border border-white/10 rounded-lg flex items-center justify-center bg-black/80 backdrop-blur-sm">
-              <div className="text-center">
-                <p className="text-[#dc2626] text-3xl font-bold">15+</p>
-                <p className="text-white/40 text-xs tracking-widest uppercase">
-                  Years Strong
-                </p>
-              </div>
-            </div>
-          </div>
+            <p className="text-red-500 text-xs tracking-widest uppercase mb-6 font-inter font-bold">Who We Are</p>
+            <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
+              We Don't<br />Follow Trends.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">We Create Them.</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-end pb-4"
+          >
+            <p className="text-white/80 font-inter text-lg lg:text-2xl leading-relaxed max-w-lg border-l-2 border-red-600 pl-6 lg:pl-10">
+              Vanguard is a premium creative agency dedicated to crafting world-class digital experiences. We build brands, websites, campaigns, and digital products that push boundaries, demand attention, and drive meaningful growth.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className="relative p-10 flex flex-col justify-center items-start overflow-hidden group border border-red-900/30 bg-black/40 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+              <span className="font-podium text-5xl sm:text-6xl lg:text-7xl text-white mb-2 group-hover:text-red-500 transition-colors duration-500 relative z-10">{s.value}</span>
+              <span className="font-inter text-white/60 text-xs sm:text-sm tracking-widest uppercase relative z-10 font-medium">{s.label}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
