@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Cursor from './components/ui/inverted-cursor'
-import CursorDitherTrail from './components/ui/cursor-dither-trail'
 import LoadingScreen from './components/ui/loading-screen'
 import Hero from './components/Hero'
 import SectionWhoWeAre from './components/SectionWhoWeAre'
@@ -19,7 +18,6 @@ export default function App() {
   return (
     <>
       {!loaded && <LoadingScreen onFinish={() => setLoaded(true)} />}
-      <CursorDitherTrail trailColor="#ef4444" dotSize={4} fadeDuration={800} />
       <div className="bg-black text-white selection:bg-red-600 selection:text-white" style={{ cursor: 'none' }}>
         <Cursor size={60} />
         <Hero menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
