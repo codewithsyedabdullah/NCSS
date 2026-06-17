@@ -94,7 +94,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           </div>
         </div>
 
-        <div className="animate-fade-up-delay-4 mt-0 flex flex-wrap items-end justify-between gap-6">
+        <div className="animate-fade-up-delay-4 mt-2 sm:mt-4 lg:mt-6 flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
             {[
               { val: '500+', label: 'Active Members' },
