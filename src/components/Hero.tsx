@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 import NimbusConsole from './ui/nimbus-console'
 import MeshBackground from './ui/mesh-background'
+import { Perspective, Highlight } from './ui/perspective-highlight'
 
 const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
 
@@ -140,7 +141,22 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               </div>
             ))}
           </div>
-          <NimbusConsole />
+          <div className="flex flex-col items-end gap-4">
+            <Perspective className="hidden lg:block">
+              <p className="font-inter text-white/60 text-xs leading-relaxed text-right">
+                <Highlight color="red">The future of computing</Highlight>{" "}
+                isn't built in silence — it's forged in a{" "}
+                <Highlight color="purple">community</Highlight> of
+                builders who refuse to wait their turn. <br />
+                <Highlight color="green">NCSS</Highlight> is where that
+                starts.
+              </p>
+              <p className="font-podium text-white/40 text-[10px] tracking-[0.2em] uppercase mt-3 text-right">
+                Syed Abdullah Yaqoob, President
+              </p>
+            </Perspective>
+            <NimbusConsole />
+          </div>
         </div>
         </div>
       </div>

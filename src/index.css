@@ -17,10 +17,20 @@
 }
 
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   --font-podium: "FSP DEMO - PODIUM Sharp 4.11", sans-serif;
   --font-inter: "Press Start 2P", cursive;
+}
+
+:root {
+  --perspective-red-bg: #d48989;
+  --perspective-red-ring: 200, 120, 120;
+  --perspective-purple-bg: #a78fcd;
+  --perspective-purple-ring: 145, 110, 200;
+  --perspective-green-bg: #8dc77b;
+  --perspective-green-ring: 115, 185, 95;
 }
 
 @keyframes fade-up {
@@ -34,6 +44,10 @@
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
+}
+@keyframes perspective-blur-in {
+  from { opacity: 0; filter: blur(10px); transform: translateY(6px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
 .animate-fade-up { animation: fade-up 0.8s ease-out forwards; }
