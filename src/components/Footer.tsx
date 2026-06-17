@@ -1,13 +1,20 @@
 import { ArrowUpRight } from 'lucide-react'
 
+const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
+
 const socials = [
-  { name: 'Instagram', href: '#' },
-  { name: 'LinkedIn', href: '#' },
-  { name: 'GitHub', href: '#' },
-  { name: 'YouTube', href: '#' },
+  { name: 'Instagram', href: 'https://www.instagram.com/nustcomputersciencesociety' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/nustcomputersciencesociety' },
+  { name: 'Email', href: 'mailto:nustcomputersciencesociety@gmail.com' },
 ]
 
-const links = ['Events', 'Departments', 'About', 'Join', 'Contact']
+const links: { label: string; href: string }[] = [
+  { label: 'Events', href: '#' },
+  { label: 'Departments', href: '#' },
+  { label: 'About', href: '#' },
+  { label: 'Join', href: JOIN_LINK },
+  { label: 'Contact', href: '#' },
+]
 
 export default function Footer() {
   return (
@@ -19,14 +26,14 @@ export default function Footer() {
               NUST Computer<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Science Society.</span>
             </h3>
-            <a href="mailto:ncss@nust.edu.pk" className="font-inter text-white/60 hover:text-red-500 transition-colors text-lg lg:text-xl tracking-tight">
-              ncss@nust.edu.pk
+            <a href="mailto:nustcomputersciencesociety@gmail.com" className="font-inter text-white/60 hover:text-red-500 transition-colors text-lg lg:text-xl tracking-tight">
+              nustcomputersciencesociety@gmail.com
             </a>
           </div>
           <div className="flex flex-col gap-3">
             <p className="font-inter text-white/30 text-xs tracking-widest uppercase mb-2">Navigate</p>
             {links.map(l => (
-              <a key={l} href="#" className="font-inter text-white/70 hover:text-white transition-colors text-sm tracking-wider uppercase">{l}</a>
+              <a key={l.label} href={l.href} className="font-inter text-white/70 hover:text-white transition-colors text-sm tracking-wider uppercase">{l.label}</a>
             ))}
           </div>
         </div>

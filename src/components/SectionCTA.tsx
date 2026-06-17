@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
+const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
+
 export default function SectionCTA() {
   return (
     <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-black relative overflow-hidden">
@@ -22,10 +24,10 @@ export default function SectionCTA() {
           Become part of NUST's most dynamic computing society. There's a place for you at NCSS.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button className="group flex items-center gap-2 bg-red-600 hover:bg-red-700 px-8 py-4 text-xs tracking-widest uppercase text-white transition-colors">
+          <a href={JOIN_LINK} className="group flex items-center gap-2 bg-red-600 hover:bg-red-700 px-8 py-4 text-xs tracking-widest uppercase text-white transition-colors inline-flex">
             <span>Become a Member</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </button>
+          </a>
           <button className="group flex items-center gap-2 border border-white/20 hover:border-white/40 px-8 py-4 text-xs tracking-widest uppercase text-white/80 hover:text-white transition-colors">
             <span>Learn More</span>
           </button>

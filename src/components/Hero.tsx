@@ -2,7 +2,14 @@ import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 import NimbusConsole from './ui/nimbus-console'
 import MeshBackground from './ui/mesh-background'
 
-const navLinks = ['Events', 'Departments', 'About', 'Join']
+const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
+
+const navLinks: { label: string; href: string }[] = [
+  { label: 'Events', href: '#' },
+  { label: 'Departments', href: '#' },
+  { label: 'About', href: '#' },
+  { label: 'Join', href: JOIN_LINK },
+]
 
 interface Props {
   menuOpen: boolean
@@ -19,10 +26,10 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
         <div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">NCSS</div>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(l => (
-            <a key={l} href="#" className="font-inter text-sm text-white/80 tracking-widest uppercase hover:text-white transition-colors">{l}</a>
+            <a key={l.label} href={l.href} className="font-inter text-sm text-white/80 tracking-widest uppercase hover:text-white transition-colors">{l.label}</a>
           ))}
         </div>
-          <a href="#" className="hidden md:flex items-center gap-2 border border-white/30 hover:border-white/60 px-6 py-3 text-xs tracking-widest uppercase hover:bg-white/10 transition-colors text-white group">
+          <a href={JOIN_LINK} className="hidden md:flex items-center gap-2 border border-white/30 hover:border-white/60 px-6 py-3 text-xs tracking-widest uppercase hover:bg-white/10 transition-colors text-white group">
             <span>JOIN NCSS</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
@@ -42,13 +49,13 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
         </div>
         <div className="flex-1 flex flex-col items-center justify-center gap-8">
           {navLinks.map((l, i) => (
-            <a key={l} href="#" onClick={() => setMenuOpen(false)}
+            <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)}
               className="font-podium text-4xl sm:text-5xl text-white uppercase transition-all duration-500 ease-out hover:text-red-500"
               style={{ transitionDelay: `${i * 80 + 100}ms`, opacity: menuOpen ? 1 : 0, transform: menuOpen ? 'translateY(0)' : 'translateY(20px)' }}>
-              {l}
+              {l.label}
             </a>
           ))}
-          <a href="#" onClick={() => setMenuOpen(false)}
+          <a href={JOIN_LINK} onClick={() => setMenuOpen(false)}
             className="mt-8 border border-white/30 px-8 py-4 text-sm tracking-widest uppercase text-white hover:bg-white/10 transition-all duration-500 ease-out"
             style={{ transitionDelay: `${navLinks.length * 80 + 100}ms`, opacity: menuOpen ? 1 : 0, transform: menuOpen ? 'translateY(0)' : 'translateY(20px)' }}>
             JOIN NCSS

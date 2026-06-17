@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { X, ArrowUpRight } from "lucide-react";
 
+const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
+
 const links = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
@@ -38,7 +40,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center">
           <a
-            href="#contact"
+            href={JOIN_LINK}
             className="btn-filled-2 inline-flex items-center gap-1.5 px-5 py-2.5 text-[clamp(9px,0.65vw,11px)] tracking-[0.12em] uppercase font-inter font-bold"
           >
             Join NCSS
@@ -88,7 +90,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={JOIN_LINK}
             className="btn-filled-2 inline-flex items-center gap-2 px-7 py-3.5 text-xs tracking-[0.12em] uppercase font-inter font-bold mt-3"
             style={{
               transition: `opacity 0.4s ease-out, transform 0.4s ease-out`,
