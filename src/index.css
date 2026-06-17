@@ -49,6 +49,10 @@ body {
   overflow-x: hidden;
 }
 
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #000; }
 ::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
