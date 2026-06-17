@@ -10,7 +10,7 @@ const stats = [
 
 export default function SectionWhoWeAre() {
   return (
-    <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950 to-black relative overflow-hidden">
+    <section id="about" className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950 to-black relative overflow-hidden">
       <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative mb-16 -mx-6 sm:-mx-10 lg:-mx-16">

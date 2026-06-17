@@ -12,7 +12,7 @@ const projects = [
 
 export default function SectionFeaturedWork() {
   return (
-    <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950/30 to-black relative">
+    <section id="events" className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950/30 to-black relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-20 lg:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.h2

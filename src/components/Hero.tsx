@@ -5,9 +5,9 @@ import MeshBackground from './ui/mesh-background'
 const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
 
 const navLinks: { label: string; href: string }[] = [
-  { label: 'Events', href: '#' },
-  { label: 'Departments', href: '#' },
-  { label: 'About', href: '#' },
+  { label: 'Events', href: '#events' },
+  { label: 'Departments', href: '#departments' },
+  { label: 'About', href: '#about' },
   { label: 'Join', href: JOIN_LINK },
 ]
 

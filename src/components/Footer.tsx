@@ -9,11 +9,11 @@ const socials = [
 ]
 
 const links: { label: string; href: string }[] = [
-  { label: 'Events', href: '#' },
-  { label: 'Departments', href: '#' },
-  { label: 'About', href: '#' },
+  { label: 'Events', href: '#events' },
+  { label: 'Departments', href: '#departments' },
+  { label: 'About', href: '#about' },
   { label: 'Join', href: JOIN_LINK },
-  { label: 'Contact', href: '#' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Footer() {
