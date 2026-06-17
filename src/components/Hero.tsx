@@ -18,7 +18,7 @@ interface Props {
 
 export default function Hero({ menuOpen, setMenuOpen }: Props) {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex flex-col">
+    <section className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
       <MeshBackground />
       <div className="absolute inset-0 bg-black/20 z-0" />
 
