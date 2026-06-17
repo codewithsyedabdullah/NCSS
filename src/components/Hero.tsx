@@ -103,20 +103,15 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">NUST Computer Science Society</span>
         </div>
 
-        <div className="animate-fade-up flex-1">
-          <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
-            <div className="animate-fade-up">Build.</div>
-            <div className="animate-fade-up-delay-1">Innovate.</div>
-            <div className="animate-fade-up-delay-2">Lead.</div>
-          </h1>
-        </div>
-
-        <div className="animate-fade-up-delay-2 mt-6 lg:mt-8 flex items-start justify-between gap-8">
-          <div className="text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
-            The official computing society of NUST.<br />
-            A community of builders and <strong className="text-white font-semibold">innovators.</strong>
+        <div className="flex items-start justify-between gap-8">
+          <div className="flex-1">
+            <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
+              <div className="animate-fade-up">Build.</div>
+              <div className="animate-fade-up-delay-1">Innovate.</div>
+              <div className="animate-fade-up-delay-2">Lead.</div>
+            </h1>
           </div>
-          <Perspective className="hidden lg:block flex-shrink-0 mt-1">
+          <Perspective className="hidden lg:block flex-shrink-0 mt-2">
             <p className="font-inter text-white/60 text-xs leading-relaxed text-right max-w-[260px]">
               <Highlight color="red">The future of computing</Highlight>{" "}
               isn't built in silence — it's forged in a{" "}
@@ -129,6 +124,11 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               Syed Abdullah Yaqoob, President
             </p>
           </Perspective>
+        </div>
+
+        <div className="animate-fade-up-delay-2 mt-6 lg:mt-8 text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
+          The official computing society of NUST.<br />
+          A community of builders and <strong className="text-white font-semibold">innovators.</strong>
         </div>
 
         <div className="animate-fade-up-delay-3 mt-8 lg:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
