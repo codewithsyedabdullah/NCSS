@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const stats = [
-  { value: "250+", label: "Projects Delivered" },
-  { value: "95%", label: "Client Retention" },
-  { value: "10+", label: "Years Experience" },
-  { value: "30+", label: "Industry Awards" },
+  { value: "500+", label: "Active Members" },
+  { value: "15+", label: "Years Established" },
+  { value: "6", label: "Departments" },
+  { value: "50+", label: "Events per Year" },
 ]
 
 export default function SectionWhoWeAre() {
@@ -20,10 +20,10 @@ export default function SectionWhoWeAre() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-red-500 text-xs tracking-widest uppercase mb-6 font-inter font-bold">Who We Are</p>
+            <p className="text-red-500 text-xs tracking-widest uppercase mb-6 font-inter font-bold">About NCSS</p>
             <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
-              We Don't<br />Follow Trends.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">We Create Them.</span>
+              The Home of<br />Computing<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">at NUST.</span>
             </h2>
           </motion.div>
 
@@ -35,7 +35,7 @@ export default function SectionWhoWeAre() {
             className="flex items-end pb-4"
           >
             <p className="text-white/80 font-inter text-lg lg:text-2xl leading-relaxed max-w-lg border-l-2 border-red-600 pl-6 lg:pl-10">
-              Vanguard is a premium creative agency dedicated to crafting world-class digital experiences. We build brands, websites, campaigns, and digital products that push boundaries, demand attention, and drive meaningful growth.
+              NCSS is the official computer science society at NUST, fostering a vibrant ecosystem of learning, innovation, and collaboration. We bring students together to explore emerging tech, build real-world projects, and connect with industry leaders.
             </p>
           </motion.div>
         </div>

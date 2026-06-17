@@ -2,12 +2,12 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
-  { name: "Nike Vision", category: "Digital Experience", year: "2026", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1000" },
-  { name: "Tesla Motion", category: "Motion Graphics", year: "2025", image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80&w=1000" },
-  { name: "Red Bull X", category: "Campaign", year: "2025", image: "https://images.unsplash.com/photo-1563539129026-b8e73455122b?auto=format&fit=crop&q=80&w=1000" },
-  { name: "Vanguard Originals", category: "Brand Identity", year: "2026", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000" },
-  { name: "Quantum AI", category: "Web Design", year: "2026", image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000" },
-  { name: "Apex Motors", category: "Product Design", year: "2025", image: "https://images.unsplash.com/photo-1617814076367-b7c106609058?auto=format&fit=crop&q=80&w=1000" },
+  { name: "Hackathon 2025", category: "Flagship Event", year: "2025", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000" },
+  { name: "AI Workshop", category: "Technical Workshop", year: "2025", image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=1000" },
+  { name: "Speaker Series", category: "Seminar", year: "2025", image: "https://images.unsplash.com/photo-1559223607-a43c990c692c?auto=format&fit=crop&q=80&w=1000" },
+  { name: "Web Dev Bootcamp", category: "Training Program", year: "2026", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1000" },
+  { name: "Capture The Flag", category: "Cybersecurity", year: "2026", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000" },
+  { name: "Annual Tech Fest", category: "Showcase", year: "2026", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1000" },
 ]
 
 export default function SectionFeaturedWork() {
@@ -22,7 +22,7 @@ export default function SectionFeaturedWork() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="font-podium text-6xl sm:text-7xl lg:text-9xl leading-[0.85] tracking-tight uppercase text-white"
           >
-            Featured<br />Work
+            Featured<br />Events
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -31,7 +31,7 @@ export default function SectionFeaturedWork() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-white/60 font-inter text-sm lg:text-lg max-w-sm pb-2 border-l-2 border-red-600 pl-4"
           >
-            A selection of our most impactful creative work.
+            A look at our most impactful events and activities.
           </motion.p>
         </div>
 

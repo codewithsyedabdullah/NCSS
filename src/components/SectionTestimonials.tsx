@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
 const testimonials = [
-  { quote: "Vanguard didn't just redesign our website — they redefined how the world sees our brand. The results exceeded every expectation.", author: "Sarah Chen", role: "CMO, Nike Vision" },
-  { quote: "Working with Vanguard felt like finding the missing piece. Their strategic approach and creative execution are second to none.", author: "Marcus Webb", role: "CEO, Apex Motors" },
-  { quote: "The campaign Vanguard built for us became the most talked-about launch in our sector. Absolutely world-class work.", author: "Elena Torres", role: "VP Marketing, Red Bull X" },
+  { quote: "NCSS gave me the platform to learn beyond the classroom. The workshops and hackathons were instrumental in landing my internship.", author: "Ahmed Raza", role: "CS Senior, Former Tech Lead" },
+  { quote: "Being part of NCSS felt like joining a family of passionate builders. The collaborative energy is unlike anything else on campus.", author: "Fatima Khan", role: "AI/ML Department Head" },
+  { quote: "From a complete beginner to building my first full-stack app in one semester — NCSS made it possible.", author: "Usman Ali", role: "First-Year Member" },
 ]
 
 export default function SectionTestimonials() {
@@ -19,7 +19,7 @@ export default function SectionTestimonials() {
         >
           <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">Testimonials</p>
           <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
-            Client Voices
+            Member Stories
           </h2>
         </motion.div>
 

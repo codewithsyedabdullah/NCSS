@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { Award } from 'lucide-react'
 
 const awards = [
-  { title: "Agency of the Year", org: "Design Masters Awards", year: "2026" },
-  { title: "Best Brand Identity", org: "Creative Circle", year: "2025" },
-  { title: "Gold — Digital Experience", org: "Webby Awards", year: "2025" },
-  { title: "Innovation in Motion", org: "Motion Society", year: "2024" },
-  { title: "Platinum — Campaign Strategy", org: "Effie Awards", year: "2024" },
+  { title: "Best Student Society", org: "NUST Annual Awards", year: "2024" },
+  { title: "Best Tech Event — Hackathon", org: "National Computing Recognition", year: "2023" },
+  { title: "Innovation in Education", org: "Pakistan HEC", year: "2022" },
+  { title: "Most Active Student Chapter", org: "ACM Pakistan", year: "2021" },
+  { title: "Outstanding Community Impact", org: "NUST Student Affairs", year: "2020" },
 ]
 
 export default function SectionAwards() {

@@ -2,10 +2,10 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
 const services = [
-  { title: "Brand Identity", desc: "Strategic brand development from identity design to voice and positioning — we build brands that command attention.", icon: "01" },
-  { title: "Digital Design", desc: "Websites, apps, and digital products crafted with precision. Every pixel purposeful, every interaction intentional.", icon: "02" },
-  { title: "Motion & Video", desc: "Explainer videos, brand films, and motion design that bring your story to life with cinematic quality.", icon: "03" },
-  { title: "Campaign Strategy", desc: "Data-backed campaigns that cut through the noise. From concept to execution, we drive results.", icon: "04" },
+  { title: "Development", desc: "Web, mobile, and software development projects. Our dev team builds production-grade applications and open-source tools.", icon: "01" },
+  { title: "AI & Data Science", desc: "Exploring ML, deep learning, and data analytics through hands-on workshops, projects, and research collaborations.", icon: "02" },
+  { title: "Design", desc: "UI/UX, graphic design, and branding. We craft visually compelling digital experiences for the society.", icon: "03" },
+  { title: "Marketing & Media", desc: "Content creation, social media, photography, and PR to amplify NCSS's reach and impact across campus.", icon: "04" },
 ]
 
 export default function SectionServices() {
@@ -19,9 +19,9 @@ export default function SectionServices() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 lg:mb-24"
         >
-          <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">What We Do</p>
+          <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">Our Departments</p>
           <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
-            Services
+            What We Do
           </h2>
         </motion.div>
 

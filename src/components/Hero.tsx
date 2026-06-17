@@ -1,6 +1,6 @@
 import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 
-const navLinks = ['Projects', 'Studio', 'Offerings', 'Inquire']
+const navLinks = ['Events', 'Departments', 'About', 'Join']
 
 interface Props {
   menuOpen: boolean
@@ -22,10 +22,10 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
             <a key={l} href="#" className="font-inter text-sm text-white/80 tracking-widest uppercase hover:text-white transition-colors">{l}</a>
           ))}
         </div>
-        <a href="#" className="hidden md:flex items-center gap-2 border border-white/30 hover:border-white/60 px-6 py-3 text-xs tracking-widest uppercase hover:bg-white/10 transition-colors text-white group">
-          <span>GET IN TOUCH</span>
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </a>
+          <a href="#" className="hidden md:flex items-center gap-2 border border-white/30 hover:border-white/60 px-6 py-3 text-xs tracking-widest uppercase hover:bg-white/10 transition-colors text-white group">
+            <span>JOIN NCSS</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
         <button className="md:hidden flex flex-col items-end gap-1.5 z-50 group" onClick={() => setMenuOpen(true)}>
           <div className="w-6 h-0.5 bg-white transition-all group-hover:w-8" />
           <div className="w-6 h-0.5 bg-white transition-all group-hover:w-8" />
@@ -35,7 +35,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
 
       <div className={`fixed inset-0 z-50 bg-black/95 backdrop-blur-sm transition-all duration-500 flex flex-col md:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <div className="flex items-center justify-between px-6 py-5 sm:px-10">
-          <div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">VANGUARD</div>
+<div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">NCSS</div>
           <button onClick={() => setMenuOpen(false)} className="text-white hover:text-white/70 transition-colors">
             <X className="w-8 h-8" />
           </button>
@@ -51,7 +51,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           <a href="#" onClick={() => setMenuOpen(false)}
             className="mt-8 border border-white/30 px-8 py-4 text-sm tracking-widest uppercase text-white hover:bg-white/10 transition-all duration-500 ease-out"
             style={{ transitionDelay: `${navLinks.length * 80 + 100}ms`, opacity: menuOpen ? 1 : 0, transform: menuOpen ? 'translateY(0)' : 'translateY(20px)' }}>
-            GET IN TOUCH
+            JOIN NCSS
           </a>
         </div>
       </div>
@@ -59,39 +59,39 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
       <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pb-20">
         <div className="animate-fade-up mb-6 lg:mb-8 flex items-center gap-2">
           <Crown className="w-4 h-4 text-white/70" />
-          <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">World-Class Digital Collective</span>
+          <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">NUST Computer Science Society</span>
         </div>
 
         <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
-          <div className="animate-fade-up">Design.</div>
-          <div className="animate-fade-up-delay-1">Disrupt.</div>
-          <div className="animate-fade-up-delay-2">Conquer.</div>
+          <div className="animate-fade-up">Build.</div>
+          <div className="animate-fade-up-delay-1">Innovate.</div>
+          <div className="animate-fade-up-delay-2">Lead.</div>
         </h1>
 
         <div className="animate-fade-up-delay-2 mt-6 lg:mt-8 text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
-          We build fierce brand identities<br />
-          that don't just turn heads -- <strong className="text-white font-semibold">they lead.</strong>
+          The official computing society of NUST.<br />
+          A community of builders and <strong className="text-white font-semibold">innovators.</strong>
         </div>
 
         <div className="animate-fade-up-delay-3 mt-8 lg:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
           <button className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
-            <span>SEE OUR WORK</span>
+            <span>OUR EVENTS</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
           <div className="hidden sm:flex items-center gap-3">
             <Award className="w-8 h-8 text-white/50" />
             <div className="flex flex-col text-white/60 text-xs tracking-wider uppercase">
-              <span>Top-Rated</span>
-              <span>Brand Studio</span>
+              <span>Official</span>
+              <span>Student Society</span>
             </div>
           </div>
         </div>
 
         <div className="animate-fade-up-delay-4 mt-8 sm:mt-10 lg:mt-14 flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
           {[
-            { val: '250+', label: 'Brands Transformed' },
-            { val: '95%', label: 'Client Retention' },
-            { val: '10+', label: 'Years in the Game' },
+            { val: '500+', label: 'Active Members' },
+            { val: '15+', label: 'Years Established' },
+            { val: '50+', label: 'Events per Year' },
           ].map(s => (
             <div key={s.label} className="flex flex-col">
               <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>

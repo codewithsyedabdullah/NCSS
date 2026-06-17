@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const steps = [
-  { step: "01", title: "Discovery", desc: "We deep-dive into your brand, market, and goals to uncover the strategic foundation for every decision ahead." },
-  { step: "02", title: "Strategy", desc: "With insights in hand, we craft a roadmap that aligns creative vision with measurable business outcomes." },
-  { step: "03", title: "Creation", desc: "Design, code, and content converge. Our team brings the vision to life with relentless attention to detail." },
-  { step: "04", title: "Launch", desc: "We deploy, test, and optimize. Then we hand you the keys to a brand experience built to scale." },
+  { step: "01", title: "Join", desc: "Sign up as an NCSS member. Open to all NUST students across every discipline, no prior experience required." },
+  { step: "02", title: "Learn", desc: "Attend workshops, seminars, and bootcamps. Dive into web dev, AI, cybersecurity, and more." },
+  { step: "03", title: "Build", desc: "Work on real projects, participate in hackathons, and collaborate on open-source and industry initiatives." },
+  { step: "04", title: "Lead", desc: "Take on leadership roles, mentor new members, and represent NCSS at competitions." },
 ]
 
 export default function SectionProcess() {
@@ -18,9 +18,9 @@ export default function SectionProcess() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 lg:mb-24"
         >
-          <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">How We Work</p>
+          <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">Your Journey</p>
           <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
-            Our Process
+            Get Involved
           </h2>
         </motion.div>
 

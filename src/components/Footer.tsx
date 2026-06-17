@@ -2,12 +2,12 @@ import { ArrowUpRight } from 'lucide-react'
 
 const socials = [
   { name: 'Instagram', href: '#' },
-  { name: 'X / Twitter', href: '#' },
   { name: 'LinkedIn', href: '#' },
-  { name: 'Dribbble', href: '#' },
+  { name: 'GitHub', href: '#' },
+  { name: 'YouTube', href: '#' },
 ]
 
-const links = ['Projects', 'Studio', 'Offerings', 'Careers', 'Contact']
+const links = ['Events', 'Departments', 'About', 'Join', 'Contact']
 
 export default function Footer() {
   return (
@@ -16,11 +16,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 mb-16 lg:mb-24">
           <div className="md:col-span-2">
             <h3 className="font-podium text-4xl sm:text-5xl lg:text-7xl text-white uppercase leading-[0.85] tracking-tight mb-6">
-              Let's Build<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Something Iconic.</span>
+              NUST Computer<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Science Society.</span>
             </h3>
-            <a href="mailto:hello@vanguard.agency" className="font-inter text-white/60 hover:text-red-500 transition-colors text-lg lg:text-xl tracking-tight">
-              hello@vanguard.agency
+            <a href="mailto:ncss@nust.edu.pk" className="font-inter text-white/60 hover:text-red-500 transition-colors text-lg lg:text-xl tracking-tight">
+              ncss@nust.edu.pk
             </a>
           </div>
           <div className="flex flex-col gap-3">
@@ -41,7 +41,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="font-inter text-white/20 text-[10px] tracking-wider uppercase">
-            &copy; {new Date().getFullYear()} Vanguard Agency. All rights reserved.
+            &copy; {new Date().getFullYear()} NUST Computer Science Society. All rights reserved.
           </p>
         </div>
       </div>
