@@ -18,7 +18,7 @@ export default function SectionTestimonials() {
           className="mb-16 lg:mb-24"
         >
           <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">Testimonials</p>
-          <h2 className="font-podium text-6xl sm:text-7xl lg:text-9xl leading-[0.85] tracking-tight uppercase text-white">
+          <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
             Member Stories
           </h2>
         </motion.div>
