@@ -1,5 +1,6 @@
 import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 import NimbusConsole from './ui/nimbus-console'
+import MeshBackground from './ui/mesh-background'
 
 const navLinks = ['Events', 'Departments', 'About', 'Join']
 
@@ -11,10 +12,8 @@ interface Props {
 export default function Hero({ menuOpen, setMenuOpen }: Props) {
   return (
     <section className="relative h-screen w-full overflow-hidden flex flex-col">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0" style={{ minWidth: '100%', minHeight: '100%' }}>
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260606_154941_df1a96e1-a06f-450c-bd02-d863414cc1a0.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/40 z-0" />
+      <MeshBackground />
+      <div className="absolute inset-0 bg-black/20 z-0" />
 
       <nav className="relative z-20 flex items-center justify-between px-6 py-5 sm:px-10 lg:px-16 lg:py-7">
         <div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">NCSS</div>
