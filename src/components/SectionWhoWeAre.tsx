@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import InfiniteRibbon from './ui/infinite-ribbon'
 
 const stats = [
   { value: "500+", label: "Active Members" },
@@ -11,6 +12,15 @@ export default function SectionWhoWeAre() {
   return (
     <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950 to-black relative overflow-hidden">
       <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative mb-16 -mx-6 sm:-mx-10 lg:-mx-16">
+        <InfiniteRibbon className="absolute top-0 left-0" duration={28} rotation={3}>
+          Build · Innovate · Lead &nbsp;&nbsp;✦&nbsp;&nbsp; NUST Computer Science Society &nbsp;&nbsp;✦&nbsp;&nbsp;
+        </InfiniteRibbon>
+        <InfiniteRibbon duration={28} reverse rotation={-3}>
+          Join 500+ members · 15+ years · 50+ events yearly &nbsp;&nbsp;✦&nbsp;&nbsp;
+        </InfiniteRibbon>
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-24 lg:mb-40">
