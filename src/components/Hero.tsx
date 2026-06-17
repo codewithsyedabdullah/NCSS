@@ -1,4 +1,5 @@
 import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
+import NimbusConsole from './ui/nimbus-console'
 
 const navLinks = ['Events', 'Departments', 'About', 'Join']
 
@@ -100,11 +101,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               </div>
             ))}
           </div>
-          <div className="flex gap-2">
-            <span className="px-3 py-1.5 text-[10px] sm:text-xs tracking-widest uppercase font-inter font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors cursor-pointer">CLI</span>
-            <span className="px-3 py-1.5 text-[10px] sm:text-xs tracking-widest uppercase font-inter font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors cursor-pointer">API</span>
-            <span className="px-3 py-1.5 text-[10px] sm:text-xs tracking-widest uppercase font-inter font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors cursor-pointer">Console</span>
-          </div>
+          <NimbusConsole />
         </div>
       </div>
     </section>
