@@ -1,48 +1,100 @@
-import { ArrowUpRight } from 'lucide-react'
+import { useRef } from "react"
+import { useInView } from "framer-motion"
 
-const socials = [
-  { name: 'Instagram', href: '#' },
-  { name: 'X / Twitter', href: '#' },
-  { name: 'LinkedIn', href: '#' },
-  { name: 'Dribbble', href: '#' },
+const footerLinks = [
+  { label: "About", href: "#about" },
+  { label: "Events", href: "#work" },
+  { label: "Departments", href: "#services" },
+  { label: "Join", href: "#cta" },
 ]
 
-const links = ['Projects', 'Studio', 'Offerings', 'Careers', 'Contact']
+const socialLinks = [
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "GitHub", href: "#" },
+  { label: "YouTube", href: "#" },
+]
 
 export default function Footer() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+
   return (
-    <footer className="py-16 lg:py-24 px-6 sm:px-10 lg:px-16 bg-black border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 mb-16 lg:mb-24">
+    <footer className="bg-black border-t border-white/5 py-16" ref={ref}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div
+          className="grid md:grid-cols-4 gap-10 mb-12"
+          style={{
+            transform: isInView ? "none" : "translateY(20px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
+          }}
+        >
           <div className="md:col-span-2">
-            <h3 className="font-podium text-4xl sm:text-5xl lg:text-7xl text-white uppercase leading-[0.85] tracking-tight mb-6">
-              Let's Build<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Something Iconic.</span>
-            </h3>
-            <a href="mailto:hello@vanguard.agency" className="font-inter text-white/60 hover:text-red-500 transition-colors text-lg lg:text-xl tracking-tight">
-              hello@vanguard.agency
-            </a>
+            <p className="text-white font-bold tracking-widest text-sm uppercase mb-4">
+              NCSS
+            </p>
+            <p className="text-white/30 text-sm leading-relaxed max-w-sm">
+              NUST Computer Science Society — empowering students to build,
+              innovate, and lead through technology and community.
+            </p>
           </div>
-          <div className="flex flex-col gap-3">
-            <p className="font-inter text-white/30 text-xs tracking-widest uppercase mb-2">Navigate</p>
-            {links.map(l => (
-              <a key={l} href="#" className="font-inter text-white/70 hover:text-white transition-colors text-sm tracking-wider uppercase">{l}</a>
-            ))}
+
+          <div>
+            <p className="text-white/50 text-xs tracking-[0.2em] uppercase mb-4">
+              Navigation
+            </p>
+            <div className="space-y-2">
+              {footerLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="block text-white/30 text-sm hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-white/50 text-xs tracking-[0.2em] uppercase mb-4">
+              Social
+            </p>
+            <div className="space-y-2">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="block text-white/30 text-sm hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-between items-end gap-8 pt-8 border-t border-white/5">
-          <div className="flex flex-wrap gap-6">
-            {socials.map(s => (
-              <a key={s.name} href={s.href} className="group flex items-center gap-1 text-white/40 hover:text-red-500 transition-colors text-xs tracking-widest uppercase font-inter">
-                {s.name}
-                <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-            ))}
-          </div>
-          <p className="font-inter text-white/20 text-[10px] tracking-wider uppercase">
-            &copy; {new Date().getFullYear()} Vanguard Agency. All rights reserved.
+        <div
+          className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          style={{
+            transform: isInView ? "none" : "translateY(20px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s",
+          }}
+        >
+          <p className="text-white/20 text-xs">
+            &copy; {new Date().getFullYear()} NUST Computer Science Society. All
+            rights reserved.
           </p>
+          <div className="flex gap-6">
+            <a href="mailto:ncss@nust.edu.pk" className="text-white/20 text-xs hover:text-white/50 transition-colors">
+              ncss@nust.edu.pk
+            </a>
+            <a href="#" className="text-white/20 text-xs hover:text-white/50 transition-colors">
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>

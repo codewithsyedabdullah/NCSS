@@ -1,45 +1,82 @@
-import { motion } from 'framer-motion'
+import { useRef } from "react"
+import { useInView } from "framer-motion"
 
 const testimonials = [
-  { quote: "Vanguard didn't just redesign our website — they redefined how the world sees our brand. The results exceeded every expectation.", author: "Sarah Chen", role: "CMO, Nike Vision" },
-  { quote: "Working with Vanguard felt like finding the missing piece. Their strategic approach and creative execution are second to none.", author: "Marcus Webb", role: "CEO, Apex Motors" },
-  { quote: "The campaign Vanguard built for us became the most talked-about launch in our sector. Absolutely world-class work.", author: "Elena Torres", role: "VP Marketing, Red Bull X" },
+  {
+    quote:
+      "NCSS gave me the platform to learn beyond the classroom. The workshops and hackathons were instrumental in landing my internship.",
+    author: "Ahmed Raza",
+    role: "CS Senior, Former NCSS Tech Lead",
+  },
+  {
+    quote:
+      "Being part of NCSS felt like joining a family of passionate builders. The collaborative energy here is unlike anything else on campus.",
+    author: "Fatima Khan",
+    role: "AI/ML Department Head",
+  },
+  {
+    quote:
+      "From a complete beginner to building my first full-stack app in one semester — NCSS made it possible. The mentorship culture is incredible.",
+    author: "Usman Ali",
+    role: "First-Year Member",
+  },
 ]
 
 export default function SectionTestimonials() {
-  return (
-    <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-black relative">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-16 lg:mb-24"
-        >
-          <p className="text-red-500 text-xs tracking-widest uppercase mb-4 font-inter font-bold">Testimonials</p>
-          <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
-            Client Voices
-          </h2>
-        </motion.div>
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.author}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 lg:p-10 border border-white/5 hover:border-red-900/40 transition-colors duration-500 bg-white/[0.02]"
+  return (
+    <section className="bg-black py-32" ref={ref}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-16">
+          <p className="text-[#dc2626] text-sm tracking-[0.3em] uppercase mb-4">
+            Testimonials
+          </p>
+          <h2
+            className="text-4xl md:text-5xl font-heading text-white leading-tight"
+            style={{
+              transform: isInView ? "none" : "translateY(30px)",
+              opacity: isInView ? 1 : 0,
+              transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
+            }}
+          >
+            Voices from
+            <br />
+            <span className="text-[#dc2626]">Our Community</span>
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {testimonials.map((item, i) => (
+            <div
+              key={item.author}
+              className="border border-white/10 rounded-lg p-8"
+              style={{
+                transform: isInView ? "none" : "translateY(40px)",
+                opacity: isInView ? 1 : 0,
+                transition: `all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.3 + i * 0.15}s`,
+              }}
             >
-              <div className="text-red-500 text-5xl leading-none mb-4 font-podium">&ldquo;</div>
-              <p className="font-inter text-white/80 text-sm lg:text-base leading-relaxed mb-8">{t.quote}</p>
-              <div className="border-t border-white/10 pt-5">
-                <p className="font-inter text-white font-semibold text-sm">{t.author}</p>
-                <p className="font-inter text-white/50 text-xs tracking-wider uppercase mt-1">{t.role}</p>
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, j) => (
+                  <span key={j} className="text-[#dc2626] text-sm">
+                    &#9733;
+                  </span>
+                ))}
               </div>
-            </motion.div>
+              <p className="text-white/60 leading-relaxed text-sm mb-6">
+                &ldquo;{item.quote}&rdquo;
+              </p>
+              <div>
+                <p className="text-white text-sm font-semibold">
+                  {item.author}
+                </p>
+                <p className="text-white/30 text-xs tracking-wider uppercase">
+                  {item.role}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
