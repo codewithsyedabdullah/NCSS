@@ -111,22 +111,25 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               <div className="animate-fade-up-delay-2">Lead.</div>
             </h1>
           </div>
-          <Perspective className="hidden lg:block flex-shrink-0 mt-2">
-            <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
-              <Highlight color="red">The future of computing</Highlight>{" "}
-              isn't built in silence — it's forged in a{" "}
-              <Highlight color="purple">community</Highlight> of
-              builders and dreamers who won't wait their turn for
-              someone else to lead. <br />
-              <Highlight color="green">NCSS</Highlight> is where that
-              begins now — a space where curious minds collide, bold
-              ideas take shape, and the next generation of
-              technologists rise.
-            </p>
-            <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-right">
-              Syed Abdullah Yaqoob, President
-            </p>
-          </Perspective>
+          <div className="hidden lg:flex flex-col items-end gap-4">
+            <Perspective className="flex-shrink-0 mt-2">
+              <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
+                <Highlight color="red">The future of computing</Highlight>{" "}
+                isn't built in silence — it's forged in a{" "}
+                <Highlight color="purple">community</Highlight> of
+                builders and dreamers who won't wait their turn for
+                someone else to lead. <br />
+                <Highlight color="green">NCSS</Highlight> is where that
+                begins now — a space where curious minds collide, bold
+                ideas take shape, and the next generation of
+                technologists rise.
+              </p>
+              <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-right">
+                Syed Abdullah Yaqoob, President
+              </p>
+            </Perspective>
+            <NimbusConsole />
+          </div>
         </div>
 
         <div className="animate-fade-up-delay-2 mt-6 lg:mt-8 text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
@@ -161,7 +164,6 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               </div>
             ))}
           </div>
-          <NimbusConsole />
         </div>
         </div>
       </div>
