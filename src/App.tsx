@@ -18,20 +18,23 @@ export default function App() {
   return (
     <>
       {!loaded && <LoadingScreen onFinish={() => setLoaded(true)} />}
-      {loaded && (
-        <div className="bg-black text-white selection:bg-red-600 selection:text-white animate-fade-in" style={{ cursor: 'none' }}>
-          <Cursor size={60} />
-          <Hero menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-          <SectionWhoWeAre />
-          <SectionFeaturedWork />
-          <SectionServices />
-          <SectionProcess />
-          <SectionTestimonials />
-          <SectionAwards />
-          <SectionCTA />
-          <Footer />
-        </div>
-      )}
+      <div
+        className={`bg-black text-white selection:bg-red-600 selection:text-white transition-opacity duration-700 ${
+          loaded ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        style={{ cursor: 'none' }}
+      >
+        <Cursor size={60} />
+        <Hero menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <SectionWhoWeAre />
+        <SectionFeaturedWork />
+        <SectionServices />
+        <SectionProcess />
+        <SectionTestimonials />
+        <SectionAwards />
+        <SectionCTA />
+        <Footer />
+      </div>
     </>
   )
 }
