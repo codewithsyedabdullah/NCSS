@@ -24,7 +24,7 @@ export default function App() {
         }`}
         style={{ cursor: 'none' }}
       >
-        <Cursor size={60} />
+        <Cursor size={32} />
         <Hero menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <SectionWhoWeAre />
         <SectionFeaturedWork />
