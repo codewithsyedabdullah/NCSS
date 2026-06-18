@@ -103,16 +103,49 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">NUST Computer Science Society</span>
         </div>
 
-        <div className="flex items-start justify-between gap-8">
-          <div className="flex-1">
-            <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
-              <div className="animate-fade-up">Build.</div>
-              <div className="animate-fade-up-delay-1">Innovate.</div>
-              <div className="animate-fade-up-delay-2">Lead.</div>
-            </h1>
+        <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
+          <div className="animate-fade-up">Build.</div>
+          <div className="animate-fade-up-delay-1">Innovate.</div>
+          <div className="animate-fade-up-delay-2">Lead.</div>
+        </h1>
+
+        <div className="mt-3 lg:mt-4 flex items-start justify-between gap-8">
+          <div className="flex flex-col gap-4 sm:gap-7">
+            <div className="text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
+              The official computing society of NUST.<br />
+              A community of builders and <strong className="text-white font-semibold">innovators.</strong>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <a href="#events" className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
+                <span>OUR EVENTS</span>
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+              <div className="hidden sm:flex items-center gap-3">
+                <Award className="w-8 h-8 text-white/50" />
+                <div className="flex flex-col text-white/60 text-xs tracking-wider uppercase">
+                  <span>Official</span>
+                  <span>Student Society</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
+              {[
+                { val: '500+', label: 'Active Members' },
+                { val: '15+', label: 'Years Established' },
+                { val: '50+', label: 'Events per Year' },
+              ].map(s => (
+                <div key={s.label} className="flex flex-col">
+                  <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>
+                  <span className="text-white/50 text-[9px] sm:text-xs tracking-widest uppercase mt-1">{s.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="hidden lg:flex flex-col items-end gap-4">
-            <Perspective className="flex-shrink-0 mt-2">
+
+          <div className="hidden lg:flex flex-col items-end gap-4 mt-1">
+            <Perspective className="flex-shrink-0">
               <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
                 <Highlight color="red">The future of computing</Highlight>{" "}
                 isn't built in silence — it's forged in a{" "}
@@ -129,40 +162,6 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               </p>
             </Perspective>
             <NimbusConsole />
-          </div>
-        </div>
-
-        <div className="animate-fade-up-delay-2 mt-3 lg:mt-4 text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
-          The official computing society of NUST.<br />
-          A community of builders and <strong className="text-white font-semibold">innovators.</strong>
-        </div>
-
-        <div className="animate-fade-up-delay-3 mt-4 lg:mt-5 flex flex-wrap items-center gap-4 sm:gap-6">
-          <a href="#events" className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
-            <span>OUR EVENTS</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
-          <div className="hidden sm:flex items-center gap-3">
-            <Award className="w-8 h-8 text-white/50" />
-            <div className="flex flex-col text-white/60 text-xs tracking-wider uppercase">
-              <span>Official</span>
-              <span>Student Society</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="animate-fade-up-delay-4 mt-4 sm:mt-5 lg:mt-6 flex flex-wrap items-end justify-between gap-6">
-          <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
-            {[
-              { val: '500+', label: 'Active Members' },
-              { val: '15+', label: 'Years Established' },
-              { val: '50+', label: 'Events per Year' },
-            ].map(s => (
-              <div key={s.label} className="flex flex-col">
-                <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>
-                <span className="text-white/50 text-[9px] sm:text-xs tracking-widest uppercase mt-1">{s.label}</span>
-              </div>
-            ))}
           </div>
         </div>
         </div>
