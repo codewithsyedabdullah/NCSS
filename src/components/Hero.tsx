@@ -103,15 +103,36 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">NUST Computer Science Society</span>
         </div>
 
-        <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
-          <div className="animate-fade-up">Build.</div>
-          <div className="animate-fade-up-delay-1">Innovate.</div>
-          <div className="animate-fade-up-delay-2">Lead.</div>
-        </h1>
+        <div className="flex items-start justify-between gap-8">
+          <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
+            <div className="animate-fade-up">Build.</div>
+            <div className="animate-fade-up-delay-1">Innovate.</div>
+            <div className="animate-fade-up-delay-2">Lead.</div>
+          </h1>
+          <div className="hidden lg:flex flex-col items-end gap-4 mt-1">
+            <Perspective className="flex-shrink-0">
+              <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
+                <Highlight color="red">The future of computing</Highlight>{" "}
+                isn't built in silence — it's forged in a{" "}
+                <Highlight color="purple">community</Highlight> of
+                builders and dreamers who won't wait their turn for
+                someone else to lead. <br />
+                <Highlight color="green">NCSS</Highlight> is where that
+                begins now — a space where curious minds collide, bold
+                ideas take shape, and the next generation of
+                technologists rise.
+              </p>
+              <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-right">
+                Syed Abdullah Yaqoob, President
+              </p>
+            </Perspective>
+            <NimbusConsole />
+          </div>
+        </div>
 
-        <div className="mt-3 lg:mt-4 flex items-start justify-between gap-8">
-          <div className="flex flex-col gap-4 sm:gap-7">
-            <div className="text-white/70 text-sm sm:text-base font-inter leading-relaxed max-w-md">
+        <div className="mt-3 lg:mt-4">
+          <div className="flex flex-col gap-4 sm:gap-7 max-w-xl">
+            <div className="text-white/70 text-sm sm:text-base font-inter leading-relaxed">
               The official computing society of NUST.<br />
               A community of builders and <strong className="text-white font-semibold">innovators.</strong>
             </div>
@@ -142,26 +163,6 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="hidden lg:flex flex-col items-end gap-4 mt-1">
-            <Perspective className="flex-shrink-0">
-              <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
-                <Highlight color="red">The future of computing</Highlight>{" "}
-                isn't built in silence — it's forged in a{" "}
-                <Highlight color="purple">community</Highlight> of
-                builders and dreamers who won't wait their turn for
-                someone else to lead. <br />
-                <Highlight color="green">NCSS</Highlight> is where that
-                begins now — a space where curious minds collide, bold
-                ideas take shape, and the next generation of
-                technologists rise.
-              </p>
-              <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-right">
-                Syed Abdullah Yaqoob, President
-              </p>
-            </Perspective>
-            <NimbusConsole />
           </div>
         </div>
         </div>
