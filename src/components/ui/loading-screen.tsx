@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import SmokeBackground from "./smoke-background"
-import TextTypewriter from "./the-typewriter"
 
 export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
   const [phase, setPhase] = useState<"loading" | "text" | "done">("loading")
+  const [displayedText, setDisplayedText] = useState("")
+  const fullText = "WELCOME TO NCSS"
   const [fadeOut, setFadeOut] = useState(false)
+  const charIndex = useRef(0)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -17,14 +19,26 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
 
   useEffect(() => {
     if (phase !== "text") return
-    const t2 = setTimeout(() => {
-      setFadeOut(true)
-      setTimeout(() => {
-        document.body.style.overflow = ''
-        onFinish()
-      }, 1000)
-    }, 5000)
-    return () => clearTimeout(t2)
+
+    charIndex.current = 0
+    setDisplayedText("")
+
+    const interval = setInterval(() => {
+      charIndex.current++
+      setDisplayedText(fullText.slice(0, charIndex.current))
+      if (charIndex.current >= fullText.length) {
+        clearInterval(interval)
+        setTimeout(() => {
+          setFadeOut(true)
+          setTimeout(() => {
+            document.body.style.overflow = ''
+            onFinish()
+          }, 1000)
+        }, 1400)
+      }
+    }, 70)
+
+    return () => clearInterval(interval)
   }, [phase, onFinish])
 
   return (
@@ -47,9 +61,8 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
           }}
         >
           <h1 className="font-podium text-white text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight">
-            <TextTypewriter duration={2.5}>
-              WELCOME TO NCSS
-            </TextTypewriter>
+            {displayedText}
+            <span className="inline-block w-[3px] h-[0.9em] bg-red-500 ml-1 animate-pulse align-middle" />
           </h1>
         </div>
 
