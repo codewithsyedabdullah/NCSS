@@ -163,13 +163,11 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                 Syed Abdullah Yaqoob, President
               </p>
             </Perspective>
-            <div className="mt-5">
-              <NimbusConsole />
-            </div>
+            <NimbusConsole />
           </div>
         </div>
+        </div>
       </div>
-    </div>
     </section>
   )
 }
