@@ -130,7 +130,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
           </div>
         </div>
 
-        <div className="-mt-1 lg:-mt-2">
+        <div className="-mt-4 lg:-mt-5">
           <div className="flex flex-col gap-4 sm:gap-7 max-w-xl">
             <div className="text-white/70 text-sm sm:text-base font-inter leading-relaxed">
               The official computing society of NUST.<br />
