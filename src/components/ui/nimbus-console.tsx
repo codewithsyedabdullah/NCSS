@@ -44,12 +44,14 @@ const panes = [
 function TypewriterLines({ lines, active }: { lines: typeof panes[0]["lines"]; active: boolean }) {
   const [visibleLines, setVisibleLines] = useState(0)
   const [typedChars, setTypedChars] = useState(0)
+  const [restartKey, setRestartKey] = useState(0)
   const timerRef = useRef<ReturnType<typeof setInterval>>()
 
   useEffect(() => {
     if (!active) {
       setVisibleLines(0)
       setTypedChars(0)
+      setRestartKey(0)
       return
     }
 
@@ -62,6 +64,7 @@ function TypewriterLines({ lines, active }: { lines: typeof panes[0]["lines"]; a
       idx++
       if (idx > fullText.length) {
         clearInterval(timerRef.current)
+        setTimeout(() => setRestartKey((k) => k + 1), 2000)
         return
       }
       const sliced = fullText.slice(0, idx)
@@ -71,7 +74,7 @@ function TypewriterLines({ lines, active }: { lines: typeof panes[0]["lines"]; a
     }, 25)
 
     return () => clearInterval(timerRef.current)
-  }, [active, lines])
+  }, [active, lines, restartKey])
 
   if (!active) return null
 
