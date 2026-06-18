@@ -31,7 +31,7 @@ export default function Footer() {
             </a>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="font-inter text-white/30 text-xs tracking-widest uppercase mb-2">Navigate</p>
+            <p className="font-inter text-white/30 text-sm tracking-widest uppercase mb-2">Navigate</p>
             {links.map(l => (
               <a key={l.label} href={l.href} className="font-inter text-white/70 hover:text-white transition-colors text-sm tracking-wider uppercase">{l.label}</a>
             ))}
@@ -48,7 +48,16 @@ export default function Footer() {
             ))}
           </div>
           <p className="font-inter text-white/20 text-[10px] tracking-wider uppercase">
-            &copy; {new Date().getFullYear()} NUST Computer Science Society. All rights reserved.
+            &copy; {new Date().getFullYear()} NUST Computer Science Society. All rights reserved.<br />
+            designed and developed by{" "}
+            <a
+              href="https://www.linkedin.com/in/syedabdullahyaqoob"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-white/50 transition-colors"
+            >
+              Syed Abdullah Yaqoob
+            </a>
           </p>
         </div>
       </div>

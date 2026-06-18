@@ -15,7 +15,7 @@ export default function SectionAwards() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-4">
           <Award className="w-6 h-6 text-red-500" />
-          <p className="text-red-500 text-xs tracking-widest uppercase font-inter font-bold">Recognition</p>
+          <p className="text-red-500 text-sm tracking-widest uppercase font-inter font-bold">Recognition</p>
         </div>
 
         <motion.h2
