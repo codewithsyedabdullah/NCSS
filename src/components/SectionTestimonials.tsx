@@ -17,7 +17,7 @@ export default function SectionTestimonials() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 lg:mb-24"
         >
-          <p className="text-red-500 text-sm tracking-widest uppercase mb-4 font-inter font-bold">Testimonials</p>
+          <p className="text-red-500 text-base tracking-widest uppercase mb-4 font-inter font-bold">Testimonials</p>
           <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
             Member Stories
           </h2>

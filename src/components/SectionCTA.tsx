@@ -15,7 +15,7 @@ export default function SectionCTA() {
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-4xl mx-auto text-center relative z-10"
       >
-        <p className="text-red-500 text-sm tracking-widest uppercase mb-6 font-inter font-bold">Get Involved</p>
+        <p className="text-red-500 text-base tracking-widest uppercase mb-6 font-inter font-bold">Get Involved</p>
         <h2 className="font-podium text-5xl sm:text-7xl lg:text-9xl leading-[0.85] tracking-tight uppercase text-white mb-8">
           Ready to Join<br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">the Community?</span>

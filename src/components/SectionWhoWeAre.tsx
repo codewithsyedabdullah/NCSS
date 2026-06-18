@@ -30,7 +30,7 @@ export default function SectionWhoWeAre() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-red-500 text-sm tracking-widest uppercase mb-6 font-inter font-bold">About NCSS</p>
+            <p className="text-red-500 text-base tracking-widest uppercase mb-6 font-inter font-bold">About NCSS</p>
             <h2 className="font-podium text-5xl sm:text-6xl lg:text-8xl leading-[0.85] tracking-tight uppercase text-white">
               The Home of<br />Computing<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">at NUST.</span>

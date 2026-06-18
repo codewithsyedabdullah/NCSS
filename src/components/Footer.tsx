@@ -31,7 +31,7 @@ export default function Footer() {
             </a>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="font-inter text-white/30 text-sm tracking-widest uppercase mb-2">Navigate</p>
+            <p className="font-inter text-white/30 text-base tracking-widest uppercase mb-2">Navigate</p>
             {links.map(l => (
               <a key={l.label} href={l.href} className="font-inter text-white/70 hover:text-white transition-colors text-sm tracking-wider uppercase">{l.label}</a>
             ))}
