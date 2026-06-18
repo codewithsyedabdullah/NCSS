@@ -146,7 +146,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
               </div>
             </div>
           </div>
-          <div className="hidden lg:flex flex-col items-end gap-4 mt-6">
+          <div className="hidden lg:flex flex-col items-end gap-4 mt-1">
             <Perspective className="flex-shrink-0">
               <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
                 <Highlight color="red">The future of computing</Highlight>{" "}
