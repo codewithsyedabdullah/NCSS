@@ -1,4 +1,3 @@
-import { useRef, useEffect, useState } from 'react'
 import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 import NimbusConsole from './ui/nimbus-console'
 import MeshBackground from './ui/mesh-background'
@@ -19,39 +18,9 @@ interface Props {
 }
 
 export default function Hero({ menuOpen, setMenuOpen }: Props) {
-  const heroRef = useRef<HTMLElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const [contentScale, setContentScale] = useState(1)
-
-  useEffect(() => {
-    const fit = () => {
-      const hero = heroRef.current
-      const content = contentRef.current
-      if (!hero || !content) return
-      requestAnimationFrame(() => {
-        const nav = hero.querySelector('nav') as HTMLElement | null
-        const navH = nav ? nav.offsetHeight : 0
-        const avail = hero.clientHeight - navH - 20
-        const natural = content.scrollHeight
-        if (natural > avail) {
-          setContentScale(avail / natural)
-        } else {
-          setContentScale(1)
-        }
-      })
-    }
-    fit()
-    window.addEventListener('resize', fit)
-    const ro = new ResizeObserver(fit)
-    if (heroRef.current) ro.observe(heroRef.current)
-    return () => {
-      window.removeEventListener('resize', fit)
-      ro.disconnect()
-    }
-  }, [])
 
   return (
-    <section ref={heroRef} className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
+    <section className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
       <MeshBackground />
       <div className="absolute inset-0 bg-black/20 z-0" />
 
@@ -97,20 +66,20 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
       </div>
 
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16 pb-20">
-        <div ref={contentRef} className="w-full max-w-7xl" style={{ transform: `scale(${contentScale})`, transformOrigin: 'center center' }}>
+        <div className="w-full max-w-7xl">
         <div className="animate-fade-up mb-6 lg:mb-8 flex items-center gap-2">
           <Crown className="w-4 h-4 text-white/70" />
-          <span className="text-white/70 text-xs sm:text-sm font-inter tracking-[0.3em] uppercase">NUST Computer Science Society</span>
+          <span className="text-white/70 text-[10px] sm:text-sm font-inter tracking-[0.2em] sm:tracking-[0.3em] uppercase">NUST Computer Science Society</span>
         </div>
 
-        <div className="flex items-start justify-between gap-8">
-          <div>
-            <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.8rem,8vw,7rem)]">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12">
+          <div className="w-full lg:max-w-2xl">
+            <h1 className="font-podium text-white uppercase leading-[0.92] tracking-tight text-[clamp(2.5rem,10vw,7rem)]">
               <div className="animate-fade-up">Build.</div>
               <div className="animate-fade-up-delay-1">Innovate.</div>
               <div className="animate-fade-up-delay-2">Lead.</div>
             </h1>
-            <div className="mt-5">
+            <div className="mt-4 sm:mt-5">
               <div className="flex flex-col gap-4 sm:gap-7 max-w-xl">
                 <div className="text-white/70 text-sm sm:text-base font-inter leading-relaxed">
                   The official computing society of NUST.<br />
@@ -122,8 +91,8 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                     <span>OUR EVENTS</span>
                     <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
-                  <div className="hidden sm:flex items-center gap-3">
-                    <Award className="w-8 h-8 text-white/50" />
+                  <div className="flex items-center gap-3">
+                    <Award className="w-6 h-6 sm:w-8 sm:h-8 text-white/50" />
                     <div className="flex flex-col text-white/60 text-xs tracking-wider uppercase">
                       <span>Official</span>
                       <span>Student Society</span>
@@ -131,7 +100,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-6 sm:gap-12 lg:gap-16">
+                <div className="flex flex-wrap gap-4 sm:gap-12 lg:gap-16">
                   {[
                     { val: '500+', label: 'Active Members' },
                     { val: '15+', label: 'Years Established' },
@@ -139,16 +108,16 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                   ].map(s => (
                     <div key={s.label} className="flex flex-col">
                       <span className="font-inter text-white text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">{s.val}</span>
-                      <span className="text-white/50 text-[9px] sm:text-xs tracking-widest uppercase mt-1">{s.label}</span>
+                      <span className="text-white/50 text-[10px] sm:text-xs tracking-widest uppercase mt-1">{s.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-          <div className="hidden lg:flex flex-col items-end gap-4 mt-1">
-            <Perspective className="flex-shrink-0">
-              <p className="font-inter text-white/60 text-sm leading-relaxed text-right max-w-[320px]">
+          <div className="w-full lg:max-w-sm flex flex-col items-start lg:items-end gap-4 mt-1">
+            <Perspective className="flex-shrink-0 w-full">
+              <p className="font-inter text-white/60 text-sm leading-relaxed text-left lg:text-right max-w-full lg:max-w-[320px]">
                 <Highlight color="red">The future of computing</Highlight>{" "}
                 isn't built in silence — it's forged in a{" "}
                 <Highlight color="purple">community</Highlight> of
@@ -159,11 +128,13 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                 ideas take shape, and the next generation of
                 technologists rise.
               </p>
-              <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-right">
+              <p className="font-podium text-white/40 text-xs tracking-[0.2em] uppercase mt-3 text-left lg:text-right">
                 Syed Abdullah Yaqoob, President
               </p>
             </Perspective>
-            <NimbusConsole />
+            <div className="w-full max-w-[380px] lg:max-w-none">
+              <NimbusConsole />
+            </div>
           </div>
         </div>
         </div>

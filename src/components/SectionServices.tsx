@@ -35,7 +35,7 @@ export default function SectionServices() {
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group relative p-10 lg:p-14 bg-black hover:bg-red-950/20 transition-colors duration-500 cursor-pointer"
             >
-              <span className="font-podium text-6xl sm:text-7xl lg:text-8xl text-white/5 absolute top-4 right-6 leading-none select-none">{s.icon}</span>
+              <span className="font-podium text-4xl sm:text-7xl lg:text-8xl text-white/5 absolute top-3 right-4 sm:top-4 sm:right-6 leading-none select-none">{s.icon}</span>
               <h3 className="font-podium text-2xl sm:text-3xl lg:text-4xl text-white uppercase tracking-tight mb-4 relative z-10">{s.title}</h3>
               <p className="font-inter text-white/60 text-sm lg:text-base leading-relaxed max-w-sm relative z-10">{s.desc}</p>
               <div className="mt-6 flex items-center gap-2 text-white/30 group-hover:text-red-500 transition-colors duration-500 relative z-10">

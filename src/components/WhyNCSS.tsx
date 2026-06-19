@@ -44,7 +44,7 @@ export default function WhyNCSS() {
           </div>
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 btn-filled-2 px-6 py-3 text-[clamp(9px,0.6vw,11px)] tracking-[0.12em] uppercase font-inter font-bold glow-accent"
+            className="inline-flex items-center gap-1.5 btn-filled-2 px-5 sm:px-6 py-2.5 sm:py-3 text-[clamp(9px,0.6vw,11px)] tracking-[0.12em] uppercase font-inter font-bold glow-accent"
           >
             Join Now
             <ArrowUpRight size={12} />

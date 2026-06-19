@@ -67,7 +67,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
         </div>
 
         <p
-          className="text-white/40 text-[22px] tracking-[0.3em] uppercase font-inter"
+          className="text-white/40 text-[clamp(14px,2.5vw,22px)] tracking-[0.3em] uppercase font-inter"
           style={{
             opacity: phase !== "loading" ? 1 : 0,
             transition: "opacity 0.8s ease-out 0.3s",
