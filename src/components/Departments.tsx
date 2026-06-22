@@ -1,6 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import { LiquidButton } from "./ui/liquid-glass-button";
-import { GlassOverlay } from "./ui/glass-surface";
 
 const departments = [
   {
@@ -32,8 +30,7 @@ const departments = [
 export default function Departments() {
   return (
     <section id="departments" className="relative py-32 sm:py-36 lg:py-48 bg-[#0a0b0e]">
-      <GlassOverlay />
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-16 sm:mb-20">
           <div>
             <div className="inline-flex items-center gap-2 border border-white/5 bg-white/[0.02] px-4 py-2 mb-6">
@@ -45,22 +42,21 @@ export default function Departments() {
               Our Divisions
             </h2>
           </div>
-          <LiquidButton asChild size="default" className="!text-[clamp(11px,0.7vw,13px)] tracking-[0.12em] uppercase font-inter font-bold hidden sm:inline-flex">
-            <a href="#contact" className="inline-flex items-center gap-2">
-              Join a Department
-              <ArrowUpRight size={12} />
-            </a>
-          </LiquidButton>
+          <a
+            href="#contact"
+            className="hidden sm:inline-flex items-center gap-2 btn-filled-2 px-6 py-3 text-[clamp(11px,0.7vw,13px)] tracking-[0.12em] uppercase font-inter font-bold"
+          >
+            Join a Department
+            <ArrowUpRight size={12} />
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {departments.map((dept) => (
             <div
               key={dept.name}
-              className="group relative border border-white/5 bg-white/[0.02] p-8 sm:p-10 hover:bg-white/[0.04] transition-all overflow-hidden"
+              className="group border border-white/5 bg-white/[0.02] p-8 sm:p-10 hover:bg-white/[0.04] transition-all"
             >
-              <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
-              <div className="relative z-10">
               <div
                 className="w-12 h-12 flex items-center justify-center text-sm font-bold font-inter mb-6"
                 style={{ backgroundColor: `${dept.accent}15`, color: dept.accent }}
@@ -80,17 +76,17 @@ export default function Departments() {
                 <ArrowUpRight size={13} className="text-[#666] group-hover:text-accent transition-colors" />
               </div>
             </div>
-          </div>
           ))}
         </div>
 
         <div className="mt-6 sm:hidden text-center">
-          <LiquidButton asChild size="default" className="!text-[clamp(11px,0.7vw,13px)] tracking-[0.12em] uppercase font-inter font-bold">
-            <a href="#contact" className="inline-flex items-center gap-2">
-              Join a Department
-              <ArrowUpRight size={12} />
-            </a>
-          </LiquidButton>
+          <a
+            href="#contact"
+            className="btn-filled-2 inline-flex items-center gap-2 px-6 py-3.5 text-[clamp(11px,0.7vw,13px)] tracking-[0.12em] uppercase font-inter font-bold"
+          >
+            Join a Department
+            <ArrowUpRight size={12} />
+          </a>
         </div>
       </div>
     </section>

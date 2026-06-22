@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
-import { GlassOverlay } from './ui/glass-surface'
 
 const services = [
   { title: "Development", desc: "Web, mobile, and software development projects. Our dev team builds production-grade applications and open-source tools.", icon: "01" },
@@ -12,8 +11,7 @@ const services = [
 export default function SectionServices() {
   return (
     <section id="departments" className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-black relative">
-      <GlassOverlay />
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
-import { GlassOverlay } from './ui/glass-surface'
 
 const projects = [
   { name: "Hackathon 2025", category: "Flagship Event", year: "2025", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000" },
@@ -14,7 +13,6 @@ const projects = [
 export default function SectionFeaturedWork() {
   return (
     <section id="events" className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950/30 to-black relative">
-      <GlassOverlay />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-20 lg:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.h2

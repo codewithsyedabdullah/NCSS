@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { GlassOverlay } from './ui/glass-surface'
 
 const testimonials = [
   { quote: "NCSS gave me the platform to learn beyond the classroom. The workshops and hackathons were instrumental in landing my internship.", author: "Ahmed Raza", role: "CS Senior, Former Tech Lead" },
@@ -10,8 +9,7 @@ const testimonials = [
 export default function SectionTestimonials() {
   return (
     <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-black relative">
-      <GlassOverlay />
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,16 +31,13 @@ export default function SectionTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative p-8 lg:p-10 border border-white/5 hover:border-red-900/40 transition-colors duration-500 bg-white/[0.02] flex flex-col overflow-hidden"
+              className="p-8 lg:p-10 border border-white/5 hover:border-red-900/40 transition-colors duration-500 bg-white/[0.02] flex flex-col"
             >
-              <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
-              <div className="relative z-10">
               <div className="text-red-500 text-5xl leading-none mb-4 font-podium">{'\u201C'}</div>
               <p className="font-inter text-white/80 text-sm lg:text-base leading-relaxed mb-8 flex-1">{t.quote}</p>
               <div className="border-t border-white/10 pt-5">
                 <p className="font-inter text-white font-semibold text-sm">{t.author}</p>
                 <p className="font-inter text-white/50 text-xs tracking-wider uppercase mt-1">{t.role}</p>
-              </div>
               </div>
             </motion.div>
           ))}

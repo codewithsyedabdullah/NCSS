@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import InfiniteRibbon from './ui/infinite-ribbon'
-import { GlassOverlay } from './ui/glass-surface'
 
 const stats = [
   { value: "500+", label: "Active Members" },
@@ -13,7 +12,6 @@ export default function SectionWhoWeAre() {
   return (
     <section id="about" className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950 to-black relative overflow-hidden">
       <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[120px] pointer-events-none" />
-      <GlassOverlay />
 
       <div className="relative mb-16 -mx-6 sm:-mx-10 lg:-mx-16">
         <InfiniteRibbon className="absolute top-0 left-0" duration={28} rotation={3}>
@@ -62,7 +60,6 @@ export default function SectionWhoWeAre() {
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               className="relative p-10 flex flex-col justify-center items-start overflow-hidden group border border-red-900/30 bg-black/40 backdrop-blur-sm"
             >
-              <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
               <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-red-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
               <span className="font-podium text-5xl sm:text-6xl lg:text-7xl text-white mb-2 group-hover:text-red-500 transition-colors duration-500 relative z-10">{s.value}</span>

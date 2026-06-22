@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { GlassOverlay } from './ui/glass-surface'
 
 const steps = [
   { id: "01", title: "Join", desc: "Sign up as an NCSS member. Open to all NUST students across every discipline, no prior experience required." },
@@ -20,7 +19,6 @@ export default function SectionProcess() {
 
   return (
     <section ref={containerRef} className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950/20 to-black relative">
-      <GlassOverlay />
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -61,8 +59,7 @@ export default function SectionProcess() {
                 className="relative flex lg:flex-col gap-6 lg:gap-10 items-start"
               >
                 {/* Node circle */}
-                <div className="relative z-10 w-[46px] h-[46px] lg:w-[88px] lg:h-[88px] rounded-full bg-black border-2 border-red-600 flex items-center justify-center font-podium text-lg lg:text-3xl text-white shadow-[0_0_25px_rgba(220,38,38,0.4)] hover:scale-110 hover:bg-red-600 transition-all duration-500 cursor-default flex-shrink-0 overflow-hidden">
-                  <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
+                <div className="relative z-10 w-[46px] h-[46px] lg:w-[88px] lg:h-[88px] rounded-full bg-black border-2 border-red-600 flex items-center justify-center font-podium text-lg lg:text-3xl text-white shadow-[0_0_25px_rgba(220,38,38,0.4)] hover:scale-110 hover:bg-red-600 transition-all duration-500 cursor-default flex-shrink-0">
                   <span className="relative z-10">{step.id}</span>
                 </div>
 
