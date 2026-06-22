@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import { GlassOverlay } from './ui/glass-surface'
 
 const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
 
@@ -18,8 +19,9 @@ const links: { label: string; href: string }[] = [
 
 export default function Footer() {
   return (
-    <footer className="py-16 lg:py-24 px-6 sm:px-10 lg:px-16 bg-black border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
+    <footer className="py-16 lg:py-24 px-6 sm:px-10 lg:px-16 bg-black border-t border-white/5 relative overflow-hidden">
+      <GlassOverlay />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 mb-16 lg:mb-24">
           <div className="md:col-span-2">
             <h3 className="font-podium text-4xl sm:text-5xl lg:text-7xl text-white uppercase leading-[0.85] tracking-tight mb-6">

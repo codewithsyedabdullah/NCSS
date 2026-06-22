@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Cursor from './components/ui/inverted-cursor'
 import LoadingScreen from './components/ui/loading-screen'
+import { GlassFilter } from './components/ui/liquid-glass-button'
 import Hero from './components/Hero'
 import SectionWhoWeAre from './components/SectionWhoWeAre'
 import SectionFeaturedWork from './components/SectionFeaturedWork'
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <>
+      <GlassFilter />
       {!loaded && <LoadingScreen onFinish={() => setLoaded(true)} />}
       <div
         className={`bg-black text-white selection:bg-red-600 selection:text-white transition-opacity duration-700 ${

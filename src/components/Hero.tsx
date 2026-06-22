@@ -2,6 +2,8 @@ import { ArrowUpRight, Award, Crown, X } from 'lucide-react'
 import NimbusConsole from './ui/nimbus-console'
 import MeshBackground from './ui/mesh-background'
 import { Perspective, Highlight } from './ui/perspective-highlight'
+import { LiquidButton } from './ui/liquid-glass-button'
+import { GlassOverlay } from './ui/glass-surface'
 
 const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
 
@@ -23,6 +25,7 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
     <section className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
       <MeshBackground />
       <div className="absolute inset-0 bg-black/20 z-0" />
+      <GlassOverlay className="z-[1]" />
 
       <nav className="relative z-20 flex items-center justify-between px-6 py-5 sm:px-10 lg:px-16 lg:py-7">
         <div className="font-podium text-white font-bold uppercase text-2xl sm:text-3xl tracking-wider">NCSS</div>
@@ -31,10 +34,12 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
             <a key={l.label} href={l.href} className="font-inter text-sm text-white/80 tracking-widest uppercase hover:text-white transition-colors">{l.label}</a>
           ))}
         </div>
-          <a href={JOIN_LINK} className="hidden md:flex items-center gap-2 border border-white/30 hover:border-white/60 px-6 py-3 text-xs tracking-widest uppercase hover:bg-white/10 transition-colors text-white group">
-            <span>JOIN NCSS</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          <LiquidButton asChild size="default" className="!text-xs tracking-widest uppercase">
+            <a href={JOIN_LINK} className="flex items-center gap-2">
+              <span>JOIN NCSS</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </LiquidButton>
         <button className="md:hidden flex flex-col items-end gap-1.5 z-50 group" onClick={() => setMenuOpen(true)}>
           <div className="w-6 h-0.5 bg-white transition-all group-hover:w-8" />
           <div className="w-6 h-0.5 bg-white transition-all group-hover:w-8" />
@@ -87,10 +92,12 @@ export default function Hero({ menuOpen, setMenuOpen }: Props) {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                  <a href="#events" className="group flex items-center gap-2 bg-black hover:bg-neutral-900 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors">
-                    <span>OUR EVENTS</span>
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
+                  <LiquidButton asChild size="lg" className="!text-[11px] sm:!text-xs tracking-widest uppercase">
+                    <a href="#events" className="flex items-center gap-2">
+                      <span>OUR EVENTS</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  </LiquidButton>
                   <div className="flex items-center gap-3">
                     <Award className="w-6 h-6 sm:w-8 sm:h-8 text-white/50" />
                     <div className="flex flex-col text-white/60 text-xs tracking-wider uppercase">

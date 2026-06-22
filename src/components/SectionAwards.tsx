@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Award } from 'lucide-react'
+import { GlassOverlay } from './ui/glass-surface'
 
 const awards = [
   { title: "Best Student Society", org: "NUST Annual Awards", year: "2024" },
@@ -12,7 +13,8 @@ const awards = [
 export default function SectionAwards() {
   return (
     <section className="py-24 lg:py-40 px-6 sm:px-10 lg:px-16 bg-gradient-to-b from-black via-red-950/10 to-black relative">
-      <div className="max-w-7xl mx-auto">
+      <GlassOverlay />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-3 mb-4">
           <Award className="w-6 h-6 text-red-500" />
           <p className="text-red-500 text-lg tracking-widest uppercase font-inter font-bold">Recognition</p>

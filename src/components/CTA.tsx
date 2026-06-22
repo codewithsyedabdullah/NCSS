@@ -1,4 +1,6 @@
 import { ArrowUpRight, Mail } from "lucide-react";
+import { LiquidButton } from "./ui/liquid-glass-button";
+import { GlassOverlay } from "./ui/glass-surface";
 
 const socialLinks = [
   {
@@ -25,7 +27,8 @@ const socialLinks = [
 export default function CTA() {
   return (
     <section id="contact" className="relative py-32 sm:py-36 lg:py-48 bg-[#0a0b0e]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+      <GlassOverlay />
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <div>
             <div className="inline-flex items-center gap-2 border border-white/5 bg-white/[0.02] px-4 py-2 mb-6">
@@ -43,20 +46,18 @@ export default function CTA() {
               Let&apos;s build something amazing together.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
-                href="mailto:info@ncss.edu.pk"
-                className="btn-filled-2 inline-flex items-center gap-2 px-8 sm:px-10 py-4 sm:py-4.5 text-[clamp(12px,0.8vw,14px)] tracking-[0.12em] uppercase font-inter font-bold glow-accent"
-              >
-                Contact Us
-                <ArrowUpRight size={15} />
-              </a>
-              <a
-                href="careers.html"
-                className="btn-filled inline-flex items-center gap-2 px-8 sm:px-10 py-4 sm:py-4.5 text-[clamp(12px,0.8vw,14px)] tracking-[0.12em] uppercase font-inter font-bold"
-              >
-                Open Positions
-                <ArrowUpRight size={15} />
-              </a>
+              <LiquidButton asChild size="xl" className="!text-[clamp(12px,0.8vw,14px)] tracking-[0.12em] uppercase font-inter font-bold">
+                <a href="mailto:info@ncss.edu.pk" className="inline-flex items-center gap-2">
+                  Contact Us
+                  <ArrowUpRight size={15} />
+                </a>
+              </LiquidButton>
+              <LiquidButton asChild size="xl" variant="outline" className="!text-[clamp(12px,0.8vw,14px)] tracking-[0.12em] uppercase font-inter font-bold">
+                <a href="careers.html" className="inline-flex items-center gap-2">
+                  Open Positions
+                  <ArrowUpRight size={15} />
+                </a>
+              </LiquidButton>
             </div>
           </div>
 
@@ -66,7 +67,9 @@ export default function CTA() {
                 Connect
               </span>
             </div>
-            <div className="border border-white/5 bg-white/[0.02] p-8 sm:p-10">
+            <div className="relative border border-white/5 bg-white/[0.02] p-8 sm:p-10 overflow-hidden">
+              <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
+              <div className="relative z-10">
               <p className="font-inter text-[clamp(0.9rem,0.95vw,1rem)] text-[#999] mb-5 font-normal">
                 Follow us on social media for updates on events, workshops, and more.
               </p>
@@ -91,14 +94,18 @@ export default function CTA() {
                   </a>
                 ))}
               </div>
+              </div>
             </div>
-            <div className="border border-white/5 bg-white/[0.02] p-8 sm:p-10">
+            <div className="relative border border-white/5 bg-white/[0.02] p-8 sm:p-10 overflow-hidden">
+              <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
+              <div className="relative z-10">
               <p className="font-anton text-white text-[clamp(1.2rem,1.4vw,1.5rem)] uppercase tracking-tight mb-1.5 font-normal">
                 NUST Computer Science Society
               </p>
               <p className="font-mono text-[clamp(10px,0.6vw,12px)] text-[#666] uppercase tracking-[0.08em]">
                 &copy; {new Date().getFullYear()} NCSS. All rights reserved.
               </p>
+              </div>
             </div>
           </div>
         </div>

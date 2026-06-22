@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { LiquidButton } from "./ui/liquid-glass-button";
+import { GlassOverlay } from "./ui/glass-surface";
 
 const cards = [
   {
@@ -30,6 +32,7 @@ const cards = [
 export default function WhyNCSS() {
   return (
     <section id="why" className="relative py-32 sm:py-36 lg:py-48 bg-[#0a0b0e]">
+      <GlassOverlay />
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-16 sm:mb-20">
           <div>
@@ -42,21 +45,22 @@ export default function WhyNCSS() {
               Why Choose Us
             </h2>
           </div>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 btn-filled-2 px-5 sm:px-6 py-2.5 sm:py-3 text-[clamp(9px,0.6vw,11px)] tracking-[0.12em] uppercase font-inter font-bold glow-accent"
-          >
-            Join Now
-            <ArrowUpRight size={12} />
-          </a>
+          <LiquidButton asChild size="default" className="!text-[clamp(9px,0.6vw,11px)] tracking-[0.12em] uppercase font-inter font-bold">
+            <a href="#contact" className="inline-flex items-center gap-1.5">
+              Join Now
+              <ArrowUpRight size={12} />
+            </a>
+          </LiquidButton>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {cards.map((card) => (
             <div
               key={card.title}
-              className="group border border-white/5 bg-white/[0.02] p-8 sm:p-10 hover:bg-white/[0.04] transition-all"
+              className="group relative border border-white/5 bg-white/[0.02] p-8 sm:p-10 hover:bg-white/[0.04] transition-all overflow-hidden"
             >
+              <div className="absolute inset-0 pointer-events-none" style={{ backdropFilter: 'url("#container-glass")' }} />
+              <div className="relative z-10">
               <div className="flex items-center gap-3 mb-5">
                 <span
                   className="inline-block font-mono text-[clamp(11px,0.65vw,12px)] uppercase tracking-[0.12em] px-3 py-1.5 font-medium"
@@ -80,6 +84,7 @@ export default function WhyNCSS() {
                 </a>
               </div>
             </div>
+          </div>
           ))}
         </div>
       </div>

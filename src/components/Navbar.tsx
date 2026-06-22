@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, ArrowUpRight } from "lucide-react";
+import { LiquidButton } from "./ui/liquid-glass-button";
 
 const JOIN_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSe2D8ffYSC9e6NxWQN09ViwsiV6TifENeM0_qPt5NxNC-NHxA/viewform?usp=header'
 
@@ -39,13 +40,12 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center">
-          <a
-            href={JOIN_LINK}
-            className="btn-filled-2 inline-flex items-center gap-1.5 px-5 py-2.5 text-[clamp(9px,0.65vw,11px)] tracking-[0.12em] uppercase font-inter font-bold"
-          >
-            Join NCSS
-            <ArrowUpRight size={12} />
-          </a>
+          <LiquidButton asChild size="default" className="!text-[clamp(9px,0.65vw,11px)] tracking-[0.12em] uppercase font-inter font-bold">
+            <a href={JOIN_LINK} className="inline-flex items-center gap-1.5">
+              Join NCSS
+              <ArrowUpRight size={12} />
+            </a>
+          </LiquidButton>
         </div>
 
         <button
@@ -89,20 +89,18 @@ export default function Navbar() {
               {external && <ArrowUpRight size={20} className="opacity-50" />}
             </a>
           ))}
-          <a
-            href={JOIN_LINK}
-            className="btn-filled-2 inline-flex items-center gap-2 px-7 py-3.5 text-xs tracking-[0.12em] uppercase font-inter font-bold mt-3"
+          <LiquidButton asChild size="default" className="!text-xs tracking-[0.12em] uppercase font-inter font-bold mt-3"
             style={{
               transition: `opacity 0.4s ease-out, transform 0.4s ease-out`,
               transitionDelay: `${links.length * 60 + 80}ms`,
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(16px)",
-            }}
-            onClick={() => setOpen(false)}
-          >
-            Join NCSS
-            <ArrowUpRight size={14} />
-          </a>
+            }}>
+            <a href={JOIN_LINK} className="inline-flex items-center gap-2" onClick={() => setOpen(false)}>
+              Join NCSS
+              <ArrowUpRight size={14} />
+            </a>
+          </LiquidButton>
         </div>
       </div>
     </header>
