@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ncss.vercel.app/sitemap.xml
